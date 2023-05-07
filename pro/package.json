@@ -1,7 +1,6 @@
 {
-  "name": "corona-react",
+  "name": "react",
   "version": "1.1.0",
-  "homepage": "http://bootstrapdash.com/demo/corona-react-free/template/demo_1/preview",
   "private": true,
   "dependencies": {
     "@lourenci/react-kanban": "^0.13.0",
@@ -39,6 +38,7 @@
     "react-dom": "^16.9.0",
     "react-dragula": "^1.1.17",
     "react-dropzone": "^10.1.9",
+    "react-gauge-chart": "^0.3.0",
     "react-i18next": "^11.1.0",
     "react-images": "^1.0.0",
     "react-input-mask": "^3.0.0-alpha.0",
@@ -62,7 +62,7 @@
     "typicons.font": "^2.0.9"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set port=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

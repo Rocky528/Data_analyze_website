@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
-
+import GaugeChart from "react-gauge-chart";
 import ButtonTag from '../Component/ButtonTag';
 
 const mapData = {
@@ -113,22 +113,29 @@ export class Dashboard extends Component {
             </div>
             <div className='row mb-4'>
               <div className='col-sm-12'>
-                <div className="card" style={{ borderRadius: '8px' }}>
+                <div className="card">
                   <div className="card-body">
-                    <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                    <h4 style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
+                    <h6 style={{ color: '#7071A4' }}>Risk Reward (%)</h6>
                     <div className="row mt-4">
-                      <div className="col-6">
-                        <FormTag color="green" title="BBBO2" value="$286" />
-                      </div>
-                      <div className="col-6">
-                        <FormTag color="red" title="BBBO2" value="$546" />
+                      <div className="col-sm-12">
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
+                          <GaugeChart
+                            textColor="#FFFF"
+                            nrOfLevels={4}
+                            colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
+                            formatTextValue={(value) => '3X'}
+                            percent={0.3}
+                            arcsLength={[0.2, 0.1, 0.2, 0.5]}
+                          />
+                        </div>
+                        <h4 className="text-center mt-4">HHHO3 = 102.93 = C20/C9</h4>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
           {/* 2 */}
           <div className="col-sm-4">

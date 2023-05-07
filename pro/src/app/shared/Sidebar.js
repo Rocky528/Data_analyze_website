@@ -56,7 +56,7 @@ class Sidebar extends Component {
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
         <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
 
-          <a className="sidebar-brand brand-logo" style={{color:'white'}} href="index.html"><h3>Info kay</h3></a>
+          <a className="sidebar-brand brand-logo" style={{ color: 'white' }} href="index.html"><h3>Info kay</h3></a>
           {/* <a className="sidebar-brand brand-logo-mini" href="index.html"><img src={require('../../assets/images/logo-mini.svg')} alt="logo" /></a> */}
         </div>
         <ul className="nav">
@@ -128,12 +128,19 @@ class Sidebar extends Component {
               <span className="menu-title"><Trans>Second Page</Trans></span>
             </Link>
           </li>
+
           <li className={this.isPathActive('/tab2') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <Link className="nav-link" to="/tab2">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
               <span className="menu-title"><Trans>Third Page</Trans></span>
             </Link>
           </li>
+          {/* <li className={this.isPathActive('/tab3') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
+            <Link className="nav-link" to="/tab3">
+              <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
+              <span className="menu-title"><Trans>Second Page</Trans></span>
+            </Link>
+          </li> */}
           {/* <li className={this.isPathActive('/basic-ui') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <div className={this.state.basicUiMenuOpen ? 'nav-link menu-expanded' : 'nav-link'} onClick={() => this.toggleMenuState('basicUiMenuOpen')} data-toggle="collapse">
               <span className="menu-icon">

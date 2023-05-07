@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Form } from 'react-bootstrap';
 
 
-export class LabelTag extends Component {
+export class FormTag2 extends Component {
 
     renderSwitch(param) {
         switch (param) {
@@ -41,13 +41,4 @@ export class LabelTag extends Component {
     }
 }
 
-export default LabelTag
-{/* <div> */ }
-{/* <span className="px-2" style={{ fontSize: 15, color: "#CBCBE2", textAlign: 'center' }} >{this.props.title}</span> */ }
-{/* {this.props.title == 't1' ? <div className="mt-2 ml-2" style={this.renderSwitch(this.props.title)}>
-                        <img style={{ width: '30%', height: '30%' }} src={require('../../assets/images/cc-success.png')} />
-                        {this.props.value}</div> : <div className="mt-2 ml-2" style={this.renderSwitch(this.props.title)}>{this.props.value}</div>} */}
-{/* <div className="mt-2 ml-2" style={this.renderSwitch(this.props.title)}>
-                        <img style={{ width: '30%', height: '30%' }} src={require('../../assets/images/cc-success.png')} />
-                        {this.props.value}</div> */}
-{/* </div> */ }
+export default FormTag2;
