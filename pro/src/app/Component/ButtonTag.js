@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form } from 'react-bootstrap';
 
 
-export class LabelTag extends Component {
+export class ButtonTag extends Component {
 
     renderSwitch(param) {
         switch (param) {
@@ -28,4 +28,4 @@ export class LabelTag extends Component {
     }
 }
 
-export default LabelTag
+export default ButtonTag;

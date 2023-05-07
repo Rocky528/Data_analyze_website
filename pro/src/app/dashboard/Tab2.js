@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
 import FormTag2 from '../Component/FormTag2';
-import { Dropdown, ButtonGroup } from 'react-bootstrap';
 import ButtonTag from '../Component/ButtonTag';
+import GaugeChart from "react-gauge-chart";
 
 const mapData = {
     "BZ": 75.00,
@@ -14,7 +14,7 @@ const mapData = {
     "GE": 33.25
 }
 
-export class Dashboard extends Component {
+export class Tab2 extends Component {
 
     transactionHistoryData = {
         labels: ["Paypal", "Stripe", "Cash"],
@@ -128,28 +128,20 @@ export class Dashboard extends Component {
                                 <div className="card">
                                     <div className="card-body">
                                         <h4 style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
-                                        <div className="row mt-5">
-                                            <div className="col-6">
-                                                <FormTag1 color="red" title="HHHO1" value="1K" />
-                                            </div>
-                                            <div className="col-6">
-                                                <FormTag1 color="blue" title="MMMO1" value="42.9" />
-                                            </div>
-                                        </div>
+                                        <h6 style={{ color: '#7071A4' }}>Risk Reward (%)</h6>
                                         <div className="row mt-4">
-                                            <div className="col-6">
-                                                <FormTag1 color="red" title="IIIO2" value="$ 45.5" />
-                                            </div>
-                                            <div className="col-6">
-                                                <FormTag1 color="green" title="JJJO2" value="$ 42.9" />
-                                            </div>
-                                        </div>
-                                        <div className="row mt-4">
-                                            <div className="col-6">
-                                                <FormTag1 color="red" title="KKKO1" value="$ 5.4" />
-                                            </div>
-                                            <div className="col-6">
-                                                <FormTag1 color="green" title="KKKO2" value="$ 444.4" />
+                                            <div className="col-sm-12">
+                                                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
+                                                    <GaugeChart
+                                                        textColor="#FFFF"
+                                                        nrOfLevels={4}
+                                                        colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
+                                                        formatTextValue={(value) => '3X'}
+                                                        percent={0.3}
+                                                        arcsLength={[0.2, 0.1, 0.2, 0.5]}
+                                                    />
+                                                </div>
+                                                <h4 className="text-center mt-4">HHHO3 = 102.93 = C20/C9</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +169,7 @@ export class Dashboard extends Component {
                                                 <FormTag1 color="green" title="JJJO2" value="$ 42.9" />
                                             </div>
                                         </div>
-                                        <div className="row mt-4">
+                                        <div className="row mt-4 mb-3">
                                             <div className="col-6">
                                                 <FormTag1 color="red" title="KKKO1" value="$ 5.4" />
                                             </div>
@@ -242,14 +234,14 @@ export class Dashboard extends Component {
                 </div>
                 {/* 4 */}
                 <div className='row'>
-                    <div className="col-sm-8 mb-4">
+                    <div className="col-sm-8 mb-5">
                         <div className="card">
                             <div className="card-body">
                                 <div class="row">
                                     <div class="col">
                                         <h4 className="card-title">Responsive Table</h4>
                                     </div>
-                                    <div class="col text-right" style={{marginTop:"-7px"}}>
+                                    <div class="col text-right" style={{ marginTop: "-7px" }}>
                                         <ButtonTag color="input_green" title="Percent" value="Log Plan" />
                                     </div>
                                 </div>
@@ -279,65 +271,6 @@ export class Dashboard extends Component {
                                                         <td>Pending</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Messsy</td>
-                                                        <td>53275532</td>
-                                                        <td>15 May 2017</td>
-                                                        <td>In progress</td>
-                                                        <td>In progress</td>
-                                                        <td>In progress</td>
-                                                        <td>In progress</td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>John</td>
-                                                        <td>53275533</td>
-                                                        <td>14 May 2017</td>
-                                                        <td>Fixed</td>
-                                                        <td>53275533</td>
-                                                        <td>14 May 2017</td>
-                                                        <td>Fixed</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>John</td>
-                                                        <td>53275533</td>
-                                                        <td>14 May 2017</td>
-                                                        <td>Fixed</td>
-                                                        <td>53275533</td>
-                                                        <td>14 May 2017</td>
-                                                        <td>Fixed</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* <div className="card-body">
-                                <div class="row">
-                                    <div class="col mt-3">
-                                        <h4 className="card-title">Responsive Table</h4>
-                                    </div>
-                                    <div class="col text-right">
-                                        <ButtonTag color="input_green" title="Percent" value="Log Plan" />
-                                    </div>
-                                </div>
-                                <div className='row'>
-                                    <div className='col-sm-12'>
-                                        <div className="table-responsive">
-                                            <table className="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>TICKER HEADING</th>
-                                                        <th>BUY PRICE</th>
-                                                        <th>POSITION SIZE</th>
-                                                        <th>STOP PRICE</th>
-                                                        <th>SELL PRICE</th>
-                                                        <th>TRADE RATING</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
                                                         <td>Jacob</td>
                                                         <td>53275531</td>
                                                         <td>12 May 2017</td>
@@ -365,12 +298,21 @@ export class Dashboard extends Component {
                                                         <td>14 May 2017</td>
                                                         <td>Fixed</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td>John</td>
+                                                        <td>53275533</td>
+                                                        <td>14 May 2017</td>
+                                                        <td>Fixed</td>
+                                                        <td>53275533</td>
+                                                        <td>14 May 2017</td>
+                                                        <td>Fixed</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                     <div className="col-sm-4">
@@ -389,7 +331,7 @@ export class Dashboard extends Component {
                                             <li className="d-flex mb-4 pb-1">
                                                 <FormTag2 color="red" title="FFFO2" value="849k" img="a3" />
                                             </li>
-                                            <li className="d-flex mb-4 pb-1">
+                                            <li className="d-flex ">
                                                 <FormTag2 color="green" title="FFFO3" value="99k" img="a1" />
                                             </li>
                                         </ul>
@@ -405,4 +347,4 @@ export class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default Tab2;
