@@ -37,15 +37,22 @@ export class FormTag extends Component {
                         <label className='px-2 mb-2' style={this.renderSwitch(this.props.color)}>{this.props.title}</label>
                         <Form.Group >
                             <div className="input-group mb-2" >
-                                <Form.Control type="text" style={{ color: "white", borderRadius: '6px 0px 0px 6px', backgroundColor: "#3B4758", borderColor: "#3B4758" }} className="form-control" aria-label="Username" aria-describedby="basic-addon1" />
+                                <Form.Control 
+                                    type="number" 
+                                    style={{ color: "white", borderRadius: '6px 0px 0px 6px', backgroundColor: "#3B4758", borderColor: "#3B4758" }} 
+                                    className="form-control" 
+                                    aria-label="Username" 
+                                    aria-describedby="basic-addon1" 
+                                    onChange = {this.props.onChange}
+                                />
                                 <div className="input-group-prepend">
-                                    <span className="input-group-text " style={{ fontSize: 14, borderRadius: '0px 6px 6px 0px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>$</span>
+                                    <span className="input-group-text " style={{ fontSize: 14, borderRadius: '0px 6px 6px 0px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
                                 </div>
                             </div>
                         </Form.Group>
                     </div> : <div>
                         <span className="px-2" style={this.renderSwitch(this.props.color)}>{this.props.title}</span>
-                        <div className="mt-2" style={{ fontSize: 26, color: "#CBCBE2" }}>{this.props.value}</div>
+                        <div className="mt-2" style={{ fontSize: 20, color: "#CBCBE2" }}>{this.props.value}</div>
                     </div>}
 
             </>

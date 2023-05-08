@@ -6,7 +6,7 @@ import Spinner from '../app/shared/Spinner';
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const Tab1 = lazy(() => import('./dashboard/chat'));
 const Tab2 = lazy(() => import('./dashboard/Tab2'));
-const Tab3 = lazy(() => import('./dashboard/Tab1'));
+// const Tab3 = lazy(() => import('./dashboard/Tab1'));
 
 
 const Buttons = lazy(() => import('./basic-ui/Buttons'));
@@ -36,7 +36,7 @@ class AppRoutes extends Component {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/tab1" component={Tab1} />
           <Route exact path="/tab2" component={Tab2} />
-          <Route exact path="/tab3" component={Tab3} />
+          {/* <Route exact path="/tab3" component={Tab3} /> */}
 
 
           <Route path="/basic-ui/buttons" component={Buttons} />

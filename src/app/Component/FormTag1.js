@@ -7,11 +7,11 @@ export class FormTag1 extends Component {
     renderSwitch(param) {
         switch (param) {
             case 'green':
-                return { color: '#71DD37', fontSize: 26, borderRadius: 20 };
+                return { color: '#71DD37', fontSize: 20, borderRadius: 20 };
             case 'red':
-                return { color: '#FF3E1D', fontSize: 26, borderRadius: 20 };
+                return { color: '#FF3E1D', fontSize: 20, borderRadius: 20 };
             case 'blue':
-                return { color: '#03C3EC', fontSize: 26, borderRadius: 20 };
+                return { color: '#03C3EC', fontSize: 20, borderRadius: 20 };
 
             default:
                 return 'foo';
