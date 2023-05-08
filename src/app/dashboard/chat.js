@@ -153,7 +153,7 @@ export default function App() {
                                     <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                                     <div className="row mt-5">
                                         <div className="col-6">
-                                            <FormTag1 color="red" title="HHHO2" value={HO2 + " k"} />
+                                            <FormTag1 color="red" title="HHHO2" value={"$ " + HO2} />
                                         </div>
                                         <div className="col-6">
                                             <FormTag1 color="blue" title="MMMO1" value={MMMO1} />
