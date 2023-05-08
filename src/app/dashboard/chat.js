@@ -47,7 +47,7 @@ export default function App() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-3 pr-5 d-none d-md-block text-right">
+                                <div className="col-md-3 pr-2 d-none d-md-block text-right">
                                     <div style={{ marginTop: "38px" }}>
                                         <FormTag3 color="white1" value="Alto1" />
                                     </div>
@@ -104,10 +104,10 @@ export default function App() {
                                     <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row mt-4">
                                         <div className="col-6">
-                                            <FormTag color="green" title="BBBO2" value="$286" />
+                                            <FormTag color="red" title="CCCO1" value="$286" />
                                         </div>
                                         <div className="col-6">
-                                            <FormTag color="red" title="BBBO2" value="$546" />
+                                            <FormTag color="green" title="CCCO2" value="$546" />
                                         </div>
                                     </div>
                                 </div>
