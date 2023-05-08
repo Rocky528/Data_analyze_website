@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-// import { increment, decrement } from '../../reducers/counterSlice'
-import { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } from '../../reducers/InputSlice'
+import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice'
 import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
 import GaugeChart from "react-gauge-chart";
@@ -10,11 +9,11 @@ import ButtonTag from '../Component/ButtonTag';
 const Dashboard = () => {
 
   // const count = useSelector((state) => state.counter.value);
-  // const { InputAAAO1, InputAAAO2, InputMMMO1, InputCCCO1, InputEEEO3 } = useSelector((state) => state.InputValue);
+  const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1 } = useSelector((state) => state.InputValue);
   const dispatch = useDispatch();
   //BBBO1 AO1*AO2
-  const [AO1, setAO1] = useState(0);
-  const [AO2, setAO2] = useState(0);
+  const [AO1, setAO1] = useState(AAAO1);
+  const [AO2, setAO2] = useState(AAAO2);
   const [BO1, setBO1] = useState(0);
   const handleAAAO1 = (evt) => {
     setAO1(evt.target.value);
@@ -26,8 +25,8 @@ const Dashboard = () => {
 
   //BBBO2 BO1/EO1/MO1
   const [BO2, setBO2] = useState(0);
-  const [EO1, setEO1] = useState(0);
-  const [MO1, setMO1] = useState(0);
+  const [EO1, setEO1] = useState(EEEO1);
+  const [MO1, setMO1] = useState(MMMO1);
 
   const handleMMMO1 = (evt) => {
     setMO1(evt.target.value);
@@ -38,8 +37,8 @@ const Dashboard = () => {
 
   //DDDO1 (CO1/(EO1-EO3)/MO1)*EO1*MO1
   const [DO1, setDO1] = useState(0);
-  const [CO1, setCO1] = useState(0);
-  const [EO3, setEO3] = useState(0);
+  const [CO1, setCO1] = useState(CCCO1);
+  const [EO3, setEO3] = useState(EEEO3);
   const handleCCCO1 = (evt) => {
     setCO1(evt.target.value);
   }
@@ -52,7 +51,7 @@ const Dashboard = () => {
 
   //HHHO2 EO1*EO2*MO1
   const [HO2, setHO2] = useState(0);
-  const [EO2, setEO2] = useState(0);
+  const [EO2, setEO2] = useState(EEEO2);
   const handleEEEO2 = (evt) => {
     setEO2(evt.target.value);
   }
@@ -65,14 +64,14 @@ const Dashboard = () => {
 
   //FFFO3 EO1+(EO1*CO2/HO2)
   const [FO3, setFO3] = useState(0);
-  const [CO2, setCO2] = useState(0);
+  const [CO2, setCO2] = useState(CCCO2);
   const handleCCCO2 = (evt) => {
     setCO2(evt.target.value);
   }
 
   //GGGO2 (EO2*GO1-EO2*EO1)*MO1
   const [GO2, setGO2] = useState(0);
-  const [GO1, setGO1] = useState(0);
+  const [GO1, setGO1] = useState(GGGO1);
   const handleGGGO1 = (evt) => {
     setGO1(evt.target.value);
   }
@@ -82,14 +81,14 @@ const Dashboard = () => {
 
   //IIIO2 HO2*IO1*0.01*-1
   const [IO2, setIO2] = useState(0);
-  const [IO1, setIO1] = useState(0);
+  const [IO1, setIO1] = useState(IIIO1);
   const handleIIIO1 = (evt) => {
     setIO1(evt.target.value);
   }
 
   //JJJO2 EO1*EO2*JO1*MO1
   const [JO2, setJO2] = useState(0);
-  const [JO1, setJO1] = useState(0);
+  const [JO1, setJO1] = useState(JJJO1);
   const handleJJJO1 = (evt) => {
     setJO1(evt.target.value);
   }
@@ -113,17 +112,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Update the document title using the browser API
-    dispatch(AAAO1(AO1));
-    dispatch(AAAO2(AO2));
-    dispatch(EEEO1(EO1));
-    dispatch(MMMO1(MO1));
-    dispatch(CCCO1(CO1));
-    dispatch(EEEO3(EO3));
-    dispatch(EEEO2(EO2));
-    dispatch(CCCO2(CO2));
-    dispatch(GGGO1(GO1));
-    dispatch(IIIO1(IO1));
-    dispatch(JJJO1(JO1));
+    dispatch(InputAAAO1(AO1));
+    dispatch(InputAAAO2(AO2));
+    dispatch(InputEEEO1(EO1));
+    dispatch(InputMMMO1(MO1));
+    dispatch(InputCCCO1(CO1));
+    dispatch(InputEEEO3(EO3));
+    dispatch(InputEEEO2(EO2));
+    dispatch(InputCCCO2(CO2));
+    dispatch(InputGGGO1(GO1));
+    dispatch(InputIIIO1(IO1));
+    dispatch(InputJJJO1(JO1));
     setBO1(AO1 * 0.01 * AO2);
     setBO2(BO1 / EO1 / MO1);
     setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
@@ -138,6 +137,7 @@ const Dashboard = () => {
     setJO2(EO1 * EO2 * JO1 * MO1);
     setKO1(EO1 - IO1 * EO1);
     setKO2(EO1 + (EO1 * JO2 / HO2));
+    setHO3(GO2 / CO1);
   },);
 
   return (
