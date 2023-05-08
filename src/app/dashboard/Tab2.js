@@ -4,6 +4,7 @@ import FormTag1 from '../Component/FormTag1';
 import FormTag2 from '../Component/FormTag2';
 import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
