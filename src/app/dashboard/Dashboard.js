@@ -130,13 +130,13 @@ const Dashboard = () => {
     setHO2(EO1 * EO2 * MO1);
     setFO1(HO2 - (EO3 / EO1 * HO2));
     setFO2(EO1 - (CO1 / EO2) / MO1);
-    setFO3(EO1 + (EO1 * CO2 / HO2));
+    setFO3(EO1 * 1 + (EO1 * CO2) / HO2);
     setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
-    setHO1(GO2 / HO2);
+    setHO1(GO2 * 100 / HO2);
     setIO2(HO2 * IO1 * 0.01 * -1);
-    setJO2(EO1 * EO2 * JO1 * MO1);
-    setKO1(EO1 - IO1 * EO1);
-    setKO2(EO1 + (EO1 * JO2 / HO2));
+    setJO2(EO1 * EO2 * JO1 * 0.01 * MO1);
+    setKO1(EO1 - IO1 * 0.01 * EO1);
+    setKO2(EO1 * 1 + (EO1 * JO2 / HO2));
     setHO3(GO2 / CO1);
   },);
 
@@ -189,7 +189,7 @@ const Dashboard = () => {
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_white" title="MMMO1($)" onChange={handleMMMO1} val="$" />
+                      <FormTag color="input_white" title="MMMO1" onChange={handleMMMO1} />
                     </div>
                   </div>
 
@@ -235,7 +235,7 @@ const Dashboard = () => {
                       <FormTag color="red" title="FFFO1" value={"$" + FO1} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="blue" title="DDDO2" value={"$" + DO2} />
+                      <FormTag color="blue" title="DDDO2" value={DO2} />
                     </div>
                   </div>
                   <div className="row mt-4">
@@ -259,7 +259,7 @@ const Dashboard = () => {
                       <FormTag color="yellow" title="DDDO1" value={"$ " + DO1} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="green" title="HHHO1" value={"$ " + HO1} />
+                      <FormTag color="green" title="HHHO1" value={HO1 + "%"} />
                     </div>
                   </div>
                 </div>
@@ -278,7 +278,7 @@ const Dashboard = () => {
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_blue" val="$" title="EEEO2($)" onChange={handleEEEO2} />
+                      <FormTag color="input_blue" title="EEEO2" onChange={handleEEEO2} />
                     </div>
                   </div>
                   <div className="row mt-1">
@@ -312,7 +312,7 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                   <div className="row mt-5">
                     <div className="col-6">
-                      <FormTag1 color="red" title="HHHO1" value={HO1 + " K"} />
+                      <FormTag1 color="red" title="HHHO2" value={HO1 + "%"} />
                     </div>
                     <div className="col-6">
                       <FormTag1 color="blue" title="MMMO1" value={MO1} />
@@ -350,17 +350,17 @@ const Dashboard = () => {
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_blue" val="$" title="EEEO2($)" onChange={handleEEEO2} />
+                      <FormTag color="input_blue" title="EEEO2" onChange={handleEEEO2} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_red" val="%" title="IIIO1($)" onChange={handleIIIO1} />
+                      <FormTag color="input_red" val="%" title="IIIO1(%)" onChange={handleIIIO1} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_green" val="%" title="JJJO1($)" onChange={handleJJJO1} />
+                      <FormTag color="input_green" val="%" title="JJJO1(%)" onChange={handleJJJO1} />
                     </div>
                   </div>
                   <div class="row mt-4">

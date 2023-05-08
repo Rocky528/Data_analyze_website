@@ -32,9 +32,9 @@ export default function App() {
     useEffect(() => {
         setHO2(EEEO1 * MMMO1 * EEEO2);
         setIO2(HO2 * IIIO1 * 0.01 * -1);
-        setJO2(EEEO1 * MMMO1 * EEEO2 * JJJO1);
-        setKO1(EEEO1 - IIIO1 * EEEO1);
-        setKO2(EEEO1 + (EEEO1 * JO2 / HO2));
+        setJO2(EEEO1 * MMMO1 * EEEO2 * JJJO1 * 0.01);
+        setKO1(EEEO1 - IIIO1 * 0.01 * EEEO1);
+        setKO2(EEEO1 * 1 + (EEEO1 * JO2 / HO2));
         setGO2((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MMMO1);
         setHO3(GO2 / CCCO1);
     },);

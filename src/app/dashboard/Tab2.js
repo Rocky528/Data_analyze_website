@@ -48,7 +48,7 @@ const Tab2 = () => {
         setFO3(EEEO1 + (EEEO1 * CCCO2 / HO2));
         setGO2((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MMMO1);
         setDO1((CCCO1 / (EEEO1 - EEEO3) / MMMO1) * EEEO1 * MMMO1);
-        setHO1(GO2 / HO2);
+        setHO1(GO2 * 100 / HO2);
         setHO3(GO2 / CCCO1);
         setIO2(HO2 * IIIO1 * 0.01 * -1);
         setJO2(EEEO1 * EEEO2 * JJJO1 * MMMO1);
@@ -74,7 +74,7 @@ const Tab2 = () => {
                                             <FormTag color="green" title="BBBO1" value={"$ " + BO1} />
                                         </div>
                                         <div className="col-6 col-sm-6">
-                                            <FormTag color="green" title="BBBO2" value={"$ " + BO2} />
+                                            <FormTag color="green" title="BBBO2" value={BO2} />
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@ const Tab2 = () => {
                                                 <FormTag color="red" title="FFFO1" value={"$ " + FO1} />
                                             </div>
                                             <div className="col-6">
-                                                <FormTag color="blue" title="DDDO2" value={"$ " + DO2} />
+                                                <FormTag color="blue" title="DDDO2" value={DO2} />
                                             </div>
                                         </div>
                                         <div className="row mt-4">
@@ -116,7 +116,7 @@ const Tab2 = () => {
                                                 <FormTag color="yellow" title="DDDO1" value={"$ " + DO1} />
                                             </div>
                                             <div className="col-6 mb-4">
-                                                <FormTag color="green" title="HHHO1" value={"$ " + HO1} />
+                                                <FormTag color="green" title="HHHO1" value={HO1 + "%"} />
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                                     <div className="row mt-5">
                                         <div className="col-6">
-                                            <FormTag1 color="red" title="HHHO1" value={HO1 + "K"} />
+                                            <FormTag1 color="red" title="HHHO2" value={HO2 + "%"} />
                                         </div>
                                         <div className="col-6">
                                             <FormTag1 color="blue" title="MMMO1" value={MMMO1} />
@@ -195,16 +195,16 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Price Trading Plan</h4>
                                     <ul className="p-0 mt-5">
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="yellow" title="EEEO1" value={EEEO1 + " k"} img="a1" />
+                                            <FormTag2 color="yellow" title="EEEO1" value={EEEO1 + " $"} img="a1" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="blue" title="EEEO2" value={EEEO2 + " k"} img="a2" />
+                                            <FormTag2 color="blue" title="EEEO2" value={EEEO2} img="a2" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="red" title="FFFO2" value={FO2 + " k"} img="a3" />
+                                            <FormTag2 color="red" title="FFFO2" value={"$ " + FO2} img="a3" />
                                         </li>
                                         <li className="d-flex pb-1">
-                                            <FormTag2 color="green" title="FFFO3" value={FO3 + " k"} img="a1" />
+                                            <FormTag2 color="green" title="FFFO3" value={"$ " + FO3} img="a1" />
                                         </li>
                                     </ul>
                                 </div>
@@ -218,16 +218,16 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Percentile Trade Plane</h4>
                                     <ul className="p-0 mt-5">
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="yellow" title="EEEO1" value={EEEO1 + " k"} img="a1" />
+                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + EEEO1} img="a1" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="blue" title="EEEO2" value={EEEO2 + " k"} img="a2" />
+                                            <FormTag2 color="blue" title="EEEO2" value={EEEO2} img="a2" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="red" title="KKKO1" value={KO1 + " k"} img="a3" />
+                                            <FormTag2 color="red" title="KKKO1" value={"$ " + KO1} img="a3" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="green" title="KKKO2" value={KO2 + " k"} img="a1" />
+                                            <FormTag2 color="green" title="KKKO2" value={"$ " + KO2} img="a1" />
                                         </li>
                                     </ul>
                                 </div>
@@ -327,16 +327,16 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                                     <ul className="p-0 mt-5">
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="white" title="LLLO1" value={LO1 + " k"} img="a1" />
+                                            <FormTag2 color="white" title="LLLO1" value={"$ " + LO1} img="a1" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="white" title="LLLO2" value={LO2 + " k"} img="a2" />
+                                            <FormTag2 color="white" title="LLLO2" value={"$ " + LO2} img="a2" />
                                         </li>
                                         <li className="d-flex mb-4 pb-1">
-                                            <FormTag2 color="white" title="LLLO3" value={LO3 + " k"} img="a3" />
+                                            <FormTag2 color="white" title="LLLO3" value={"$ " + LO3} img="a3" />
                                         </li>
                                         <li className="d-flex ">
-                                            <FormTag2 color="white" title="HHHO2" value={LO4 + " k"} img="a1" />
+                                            <FormTag2 color="white" title="HHHO2" value={"$ " + HO2} img="a1" />
                                         </li>
                                     </ul>
                                 </div>
