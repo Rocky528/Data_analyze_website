@@ -3,7 +3,7 @@ import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
 import FormTag3 from '../Component/FormTag3';
 import GaugeChart from "react-gauge-chart";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export default function App() {
     const [gauge, setGauge] = useState(0.1);
