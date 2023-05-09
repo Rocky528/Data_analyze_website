@@ -291,11 +291,12 @@ const Dashboard = () => {
                       <FormTag color="input_green" val="$" title="GGGO1($)" onChange={handleGGGO1} />
                     </div>
                   </div>
-                  <div class="row mt-4">
-                    <div class="col">
-                      <div class="float-right">
-                        <ButtonTag color="input_green" title="Price" value="Show Plan" />
-                      </div>
+                  <div className="row mt-5 text-center">
+                    <div className="col-6">
+                      <ButtonTag color="input_green" title="Price" value="Clear data" />
+                    </div>
+                    <div className="col-6">
+                      <ButtonTag color="input_green" title="Price" value="Show Plan" />
                     </div>
                   </div>
                 </div>
