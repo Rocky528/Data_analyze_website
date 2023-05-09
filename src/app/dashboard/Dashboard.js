@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice'
 import FormTag from '../Component/FormTag';
@@ -7,7 +7,10 @@ import GaugeChart from "react-gauge-chart";
 import ButtonTag from '../Component/ButtonTag';
 import './style.css';
 const Dashboard = () => {
-
+  const focusNext = (e) => p => {
+    alert("w")
+    console.log(e.target.value, p)
+  }
   const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1 } = useSelector((state) => state.InputValue);
   const dispatch = useDispatch();
   //BBBO1 AO1*AO2
@@ -144,77 +147,73 @@ const Dashboard = () => {
       <div className="row">
         {/* 1 */}
         <div className="col-sm-4">
-          <div className='row mb-4'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
-                  <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
-                  <div className="row mt-5">
-                    <div className="col-6 col-sm-6">
-                      <FormTag color="green" title="BBBO1" value={"$ " + BO1.toFixed(2)} />
+                  <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                  <div className="row mt-3 text-center" >
+                    <div className="col-sm-6">
+                      <FormTag color="green" title="Bbbo1" value={"$ " + BO1.toFixed(2)} />
                     </div>
-                    <div className="col-6 col-sm-6">
-                      <FormTag color="green" title="BBBO2" value={"$ " + BO2.toFixed(2)} />
+                    <div className="col-sm-6">
+                      <FormTag color="green" title="Bbbo2" value={"$ " + BO2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='row mb-4'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
-                  <div className="row mt-4">
-                    <div className="col-12">
-                      <FormTag value={AAAO1} color="input_yellow" title="AAAO1($)" val="$" onChange={handleAAAO1} />
+                  <div className="row mt-3">
+                    <div className="col-6">
+                      <FormTag id="text-1" max={10000000} onKeyDown={e => focusNext('text-2')} value={AAAO1} color="input_yellow" title="aaao1($)" val="$" onChange={handleAAAO1} />
+                    </div>
+                    <div className="col-6">
+                      <FormTag id="text-2" max={100000} onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2(%)" val="%" onChange={handleAAAO2} />
                     </div>
                   </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={AAAO2} color="input_yellow" title="AAAO2(%)" val="%" onChange={handleAAAO2} />
+                  <div className="row">
+                    <div className="col-6">
+                      <FormTag value={CCCO1} max={100000} color="input_red" title="ccco1($)" val="$" onChange={handleCCCO1} />
+                    </div>
+                    <div className="col-6">
+                      <FormTag value={CCCO2} max={100000} color="input_green" title="ccco2($)" onChange={handleCCCO2} val="$" />
                     </div>
                   </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={CCCO1} color="input_red" title="CCCO1($)" val="$" onChange={handleCCCO1} />
+                  <div className="row">
+                    <div className="col-6">
+                      <FormTag value={MMMO1} max={1000} color="input_white" title="mmmo1" onChange={handleMMMO1} />
                     </div>
                   </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={CCCO2} color="input_green" title="CCCO2($)" onChange={handleCCCO2} val="$" />
-                    </div>
-                  </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={MMMO1} color="input_white" title="MMMO1" onChange={handleMMMO1} />
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
           </div>
-          <div className='row mb-4'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
-                  <h6 style={{ color: '#7071A4' }}>Risk Reward (%)</h6>
-                  <div className="row mt-4">
+                  <h6 style={{ color: '#7071A4' }}>Risk Reward  <span style={{ color: '#CBCBE2' }}>{GO2 / CO1} %</span></h6>
+                  <div className="row">
                     <div className="col-sm-12">
                       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
                         <GaugeChart
+                          hideText
                           textColor="#FFFF"
-                          nrOfLevels={4}
+                          // nrOfLevels={4}
                           colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
-                          formatTextValue={(value) => '3X'}
-                          percent={0.3}
+                          // formatTextValue={(value) => '3X'}
+                          // percent={0.3}
                           arcsLength={[0.2, 0.1, 0.2, 0.5]}
                         />
                       </div>
-                      <h4 className="text-center mt-4">HHHO3 = {HO3}= GGGO2/CCCO1</h4>
+                      <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO3}  <span style={{ fontSize: '25px' }}>(X)</span> </h6>
                     </div>
                   </div>
                 </div>
@@ -224,73 +223,75 @@ const Dashboard = () => {
         </div>
         {/* 2 */}
         <div className="col-sm-4">
-          <div className='row mb-4'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
-                  <h4 style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
-                  <div className="row mt-5">
-                    <div className="col-6">
-                      <FormTag color="red" title="FFFO1" value={"$" + FO1.toFixed(2)} />
+                  <h4 className='' style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
+                  <div className="row mt-3 text-center">
+                    <div className="col-4">
+                      <FormTag color="red" title="Fffo1" value={"$" + FO1.toFixed(2)} />
                     </div>
-                    <div className="col-6">
-                      <FormTag color="blue" title="DDDO2" value={DO2.toFixed(1)} />
+                    <div className="col-4">
+                      <FormTag color="blue" title="Dddo2" value={DO2.toFixed(1)} />
                     </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag color="red" title="FFFO2" value={"$ " + FO2.toFixed(2)} />
+                    {/* </div> */}
+                    {/* <div className="row mt-4"> */}
+                    <div className="col-4 mb-4">
+                      <FormTag color="red" title="Fffo2" value={"$ " + FO2.toFixed(2)} />
                     </div>
-                    <div className="col-6">
-                      <FormTag color="green" title="FFFO3" value={"$ " + FO3.toFixed(2)} />
+                    <div className="col-4">
+                      <FormTag color="green" title="Fffo3" value={"$ " + FO3.toFixed(2)} />
                     </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag color="yellow" title="HHHO2" value={"$ " + HO2.toFixed(2)} />
+                    {/* </div>
+                  <div className="row mt-4"> */}
+                    <div className="col-4">
+                      <FormTag color="yellow" title="Hhho2" value={"$ " + HO2.toFixed(2)} />
                     </div>
-                    <div className="col-6">
-                      <FormTag color="green" title="GGGO2" value={"$ " + GO2.toFixed(2)} />
+                    <div className="col-4 mb-4">
+                      <FormTag color="green" title="Gggo2" value={"$ " + GO2.toFixed(2)} />
                     </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag color="yellow" title="DDDO1" value={"$ " + DO1.toFixed(2)} />
+                    {/* </div>
+                  <div className="row mt-4"> */}
+                    <div className='col-2'></div>
+                    <div className="col-4">
+                      <FormTag color="yellow" title="Dddo1" value={"$ " + DO1.toFixed(2)} />
                     </div>
-                    <div className="col-6">
-                      <FormTag color="green" title="HHHO1" value={HO1.toFixed(0) + "%"} />
+                    <div className="col-4">
+                      <FormTag color="green" title="Hhho1" value={HO1.toFixed(0) + "%"} />
                     </div>
+                    <div className='col-2'></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='row mb-4'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
                   <div className="row mt-4">
-                    <div className="col-12">
-                      <FormTag value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="EEEO1($)" />
+                    <div className="col-6">
+                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1($)" />
+                    </div>
+                    {/* </div>
+                  <div className="row mt-1"> */}
+                    <div className="col-6">
+                      <FormTag max={100000} value={EEEO2} color="input_blue" title="eeeo2" onChange={handleEEEO2} />
+                    </div>
+                    {/* </div>
+                  <div className="row mt-1"> */}
+                    <div className="col-6">
+                      <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3($)" />
+                    </div>
+                    {/* </div>
+                  <div className="row mt-1"> */}
+                    <div className="col-6">
+                      <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1($)" onChange={handleGGGO1} />
                     </div>
                   </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={EEEO2} color="input_blue" title="EEEO2" onChange={handleEEEO2} />
-                    </div>
-                  </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="EEEO3($)" />
-                    </div>
-                  </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={GGGO1} color="input_green" val="$" title="GGGO1($)" onChange={handleGGGO1} />
-                    </div>
-                  </div>
-                  <div className="row mt-5 text-center">
+                  <div className="row mt-2 text-center">
                     <div className="col-6">
                       <ButtonTag color="input_green" title="Price" value="Clear data" />
                     </div>
@@ -305,33 +306,33 @@ const Dashboard = () => {
         </div>
         {/* 3 */}
         <div className="col-sm-4">
-          <div className='row mb-4'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
-                  <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
-                  <div className="row mt-5">
-                    <div className="col-6">
-                      <FormTag1 color="red" title="HHHO2" value={HO1.toFixed(0) + "%"} />
+                  <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
+                  <div className="row mt-3 text-center">
+                    <div className="col-4">
+                      <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
                     </div>
-                    <div className="col-6">
-                      <FormTag1 color="blue" title="MMMO1" value={MO1.toFixed(1)} />
+                    <div className="col-4">
+                      <FormTag1 color="blue" title="Mmmo1" value={MO1.toFixed(1)} />
                     </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag1 color="red" title="IIIO2" value={"$ " + IO2.toFixed(2)} />
+                    {/* </div>
+                  <div className="row mt-4"> */}
+                    <div className="col-4 mb-4">
+                      <FormTag1 color="red" title="Iiio2" value={"$ " + IO2.toFixed(2)} />
                     </div>
-                    <div className="col-6">
-                      <FormTag1 color="green" title="JJJO2" value={"$ " + JO2.toFixed(2)} />
+                    <div className="col-4">
+                      <FormTag1 color="green" title="Jjjo2" value={"$ " + JO2.toFixed(2)} />
                     </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag1 color="red" title="KKKO1" value={"$ " + KO1.toFixed(2)} />
+                    {/* </div>
+                  <div className="row mt-4"> */}
+                    <div className="col-4">
+                      <FormTag1 color="red" title="Kkko1" value={"$ " + KO1.toFixed(2)} />
                     </div>
-                    <div className="col-6">
-                      <FormTag1 color="green" title="KKKO2" value={"$ " + KO2.toFixed(2)} />
+                    <div className="col-4">
+                      <FormTag1 color="green" title="Kkko2" value={"$ " + KO2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
@@ -343,29 +344,29 @@ const Dashboard = () => {
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
-                  <div className="row mt-4">
-                    <div className="col-12">
-                      <FormTag value={EEEO1} color="input_yellow" val="$" title="EEEO1($)" onChange={handleEEEO1} />
+                  <div className="row mt-3">
+                    <div className="col-6">
+                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1($)" onChange={handleEEEO1} />
+                    </div>
+                    {/* </div>
+                  <div className="row mt-1"> */}
+                    <div className="col-6">
+                      <FormTag max={100000} value={EEEO2} color="input_blue" title="Eeeo2" onChange={handleEEEO2} />
+                    </div>
+                    {/* </div>
+                  <div className="row mt-1"> */}
+                    <div className="col-6">
+                      <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1(%)" onChange={handleIIIO1} />
+                    </div>
+                    {/* </div>
+                  <div className="row mt-1"> */}
+                    <div className="col-6">
+                      <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1(%)" onChange={handleJJJO1} />
                     </div>
                   </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={EEEO2} color="input_blue" title="EEEO2" onChange={handleEEEO2} />
-                    </div>
-                  </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={IIIO1} color="input_red" val="%" title="IIIO1(%)" onChange={handleIIIO1} />
-                    </div>
-                  </div>
-                  <div className="row mt-1">
-                    <div className="col-12">
-                      <FormTag value={JJJO1} color="input_green" val="%" title="JJJO1(%)" onChange={handleJJJO1} />
-                    </div>
-                  </div>
-                  <div class="row mt-4">
-                    <div class="col">
-                      <div class="float-right">
+                  <div className="row mt-2">
+                    <div className="col">
+                      <div className="float-right">
                         <ButtonTag color="input_green" title="Percent" value="Log Plan" />
                       </div>
                     </div>
