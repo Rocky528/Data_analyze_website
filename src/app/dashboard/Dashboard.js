@@ -5,10 +5,9 @@ import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
 import GaugeChart from "react-gauge-chart";
 import ButtonTag from '../Component/ButtonTag';
-
+import './style.css';
 const Dashboard = () => {
 
-  // const count = useSelector((state) => state.counter.value);
   const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1 } = useSelector((state) => state.InputValue);
   const dispatch = useDispatch();
   //BBBO1 AO1*AO2
@@ -152,10 +151,10 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                   <div className="row mt-5">
                     <div className="col-6 col-sm-6">
-                      <FormTag color="green" title="BBBO1" value={"$ " + BO1} />
+                      <FormTag color="green" title="BBBO1" value={"$ " + BO1.toFixed(2)} />
                     </div>
                     <div className="col-6 col-sm-6">
-                      <FormTag color="green" title="BBBO2" value={"$ " + BO2} />
+                      <FormTag color="green" title="BBBO2" value={"$ " + BO2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
@@ -169,27 +168,27 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                   <div className="row mt-4">
                     <div className="col-12">
-                      <FormTag color="input_yellow" title="AAAO1($)" val="$" onChange={handleAAAO1} />
+                      <FormTag value={AAAO1} color="input_yellow" title="AAAO1($)" val="$" onChange={handleAAAO1} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_yellow" title="AAAO2(%)" val="%" onChange={handleAAAO2} />
+                      <FormTag value={AAAO2} color="input_yellow" title="AAAO2(%)" val="%" onChange={handleAAAO2} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_red" title="CCCO1($)" val="$" onChange={handleCCCO1} />
+                      <FormTag value={CCCO1} color="input_red" title="CCCO1($)" val="$" onChange={handleCCCO1} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_green" title="CCCO2($)" onChange={handleCCCO2} val="$" />
+                      <FormTag value={CCCO2} color="input_green" title="CCCO2($)" onChange={handleCCCO2} val="$" />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_white" title="MMMO1" onChange={handleMMMO1} />
+                      <FormTag value={MMMO1} color="input_white" title="MMMO1" onChange={handleMMMO1} />
                     </div>
                   </div>
 
@@ -232,34 +231,34 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
                   <div className="row mt-5">
                     <div className="col-6">
-                      <FormTag color="red" title="FFFO1" value={"$" + FO1} />
+                      <FormTag color="red" title="FFFO1" value={"$" + FO1.toFixed(2)} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="blue" title="DDDO2" value={DO2} />
-                    </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag color="red" title="FFFO2" value={"$ " + FO2} />
-                    </div>
-                    <div className="col-6">
-                      <FormTag color="green" title="FFFO3" value={"$ " + FO3} />
+                      <FormTag color="blue" title="DDDO2" value={DO2.toFixed(1)} />
                     </div>
                   </div>
                   <div className="row mt-4">
                     <div className="col-6">
-                      <FormTag color="yellow" title="HHHO2" value={"$ " + HO2} />
+                      <FormTag color="red" title="FFFO2" value={"$ " + FO2.toFixed(2)} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="green" title="GGGO2" value={"$ " + GO2} />
+                      <FormTag color="green" title="FFFO3" value={"$ " + FO3.toFixed(2)} />
                     </div>
                   </div>
                   <div className="row mt-4">
                     <div className="col-6">
-                      <FormTag color="yellow" title="DDDO1" value={"$ " + DO1} />
+                      <FormTag color="yellow" title="HHHO2" value={"$ " + HO2.toFixed(2)} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="green" title="HHHO1" value={HO1 + "%"} />
+                      <FormTag color="green" title="GGGO2" value={"$ " + GO2.toFixed(2)} />
+                    </div>
+                  </div>
+                  <div className="row mt-4">
+                    <div className="col-6">
+                      <FormTag color="yellow" title="DDDO1" value={"$ " + DO1.toFixed(2)} />
+                    </div>
+                    <div className="col-6">
+                      <FormTag color="green" title="HHHO1" value={HO1.toFixed(0) + "%"} />
                     </div>
                   </div>
                 </div>
@@ -273,22 +272,22 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
                   <div className="row mt-4">
                     <div className="col-12">
-                      <FormTag color="input_yellow" val="$" onChange={handleEEEO1} title="EEEO1($)" />
+                      <FormTag value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="EEEO1($)" />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_blue" title="EEEO2" onChange={handleEEEO2} />
+                      <FormTag value={EEEO2} color="input_blue" title="EEEO2" onChange={handleEEEO2} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_red" val="$" onChange={handleEEEO3} title="EEEO3($)" />
+                      <FormTag value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="EEEO3($)" />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_green" val="$" title="GGGO1($)" onChange={handleGGGO1} />
+                      <FormTag value={GGGO1} color="input_green" val="$" title="GGGO1($)" onChange={handleGGGO1} />
                     </div>
                   </div>
                   <div className="row mt-5 text-center">
@@ -313,26 +312,26 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                   <div className="row mt-5">
                     <div className="col-6">
-                      <FormTag1 color="red" title="HHHO2" value={HO1 + "%"} />
+                      <FormTag1 color="red" title="HHHO2" value={HO1.toFixed(0) + "%"} />
                     </div>
                     <div className="col-6">
-                      <FormTag1 color="blue" title="MMMO1" value={MO1} />
-                    </div>
-                  </div>
-                  <div className="row mt-4">
-                    <div className="col-6">
-                      <FormTag1 color="red" title="IIIO2" value={"$ " + IO2} />
-                    </div>
-                    <div className="col-6">
-                      <FormTag1 color="green" title="JJJO2" value={"$ " + JO2} />
+                      <FormTag1 color="blue" title="MMMO1" value={MO1.toFixed(1)} />
                     </div>
                   </div>
                   <div className="row mt-4">
                     <div className="col-6">
-                      <FormTag1 color="red" title="KKKO1" value={"$ " + KO1} />
+                      <FormTag1 color="red" title="IIIO2" value={"$ " + IO2.toFixed(2)} />
                     </div>
                     <div className="col-6">
-                      <FormTag1 color="green" title="KKKO2" value={"$ " + KO2} />
+                      <FormTag1 color="green" title="JJJO2" value={"$ " + JO2.toFixed(2)} />
+                    </div>
+                  </div>
+                  <div className="row mt-4">
+                    <div className="col-6">
+                      <FormTag1 color="red" title="KKKO1" value={"$ " + KO1.toFixed(2)} />
+                    </div>
+                    <div className="col-6">
+                      <FormTag1 color="green" title="KKKO2" value={"$ " + KO2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
@@ -346,22 +345,22 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                   <div className="row mt-4">
                     <div className="col-12">
-                      <FormTag color="input_yellow" val="$" title="EEEO1($)" onChange={handleEEEO1} />
+                      <FormTag value={EEEO1} color="input_yellow" val="$" title="EEEO1($)" onChange={handleEEEO1} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_blue" title="EEEO2" onChange={handleEEEO2} />
+                      <FormTag value={EEEO2} color="input_blue" title="EEEO2" onChange={handleEEEO2} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_red" val="%" title="IIIO1(%)" onChange={handleIIIO1} />
+                      <FormTag value={IIIO1} color="input_red" val="%" title="IIIO1(%)" onChange={handleIIIO1} />
                     </div>
                   </div>
                   <div className="row mt-1">
                     <div className="col-12">
-                      <FormTag color="input_green" val="%" title="JJJO1(%)" onChange={handleJJJO1} />
+                      <FormTag value={JJJO1} color="input_green" val="%" title="JJJO1(%)" onChange={handleJJJO1} />
                     </div>
                   </div>
                   <div class="row mt-4">

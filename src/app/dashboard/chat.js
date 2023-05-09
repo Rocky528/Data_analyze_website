@@ -46,7 +46,7 @@ export default function App() {
     };
 
     return (
-        <div className="app">
+        <div className="app cursor-pointer">
             <div className='row'>
                 <div className="col-sm-8 mb-4">
                     <div className="card">
@@ -136,10 +136,10 @@ export default function App() {
                                     <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row mt-4">
                                         <div className="col-6">
-                                            <FormTag color="red" title="CCCO1" value={"$ " + CCCO1} />
+                                            <FormTag color="red" title="CCCO1" value={"$ " + CCCO1.toFixed(2)} />
                                         </div>
                                         <div className="col-6">
-                                            <FormTag color="green" title="CCCO2" value={"$" + CCCO2} />
+                                            <FormTag color="green" title="CCCO2" value={"$" + CCCO2.toFixed(2)} />
                                         </div>
                                     </div>
                                 </div>
@@ -153,26 +153,26 @@ export default function App() {
                                     <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                                     <div className="row mt-5">
                                         <div className="col-6">
-                                            <FormTag1 color="red" title="HHHO2" value={"$ " + HO2} />
+                                            <FormTag1 color="red" title="HHHO2" value={"$ " + HO2.toFixed(2)} />
                                         </div>
                                         <div className="col-6">
-                                            <FormTag1 color="blue" title="MMMO1" value={MMMO1} />
-                                        </div>
-                                    </div>
-                                    <div className="row mt-4">
-                                        <div className="col-6">
-                                            <FormTag1 color="red" title="IIIO2" value={"$ " + IO2} />
-                                        </div>
-                                        <div className="col-6">
-                                            <FormTag1 color="green" title="JJJO2" value={"$ " + JO2} />
+                                            <FormTag1 color="blue" title="MMMO1" value={MMMO1.toFixed(1)} />
                                         </div>
                                     </div>
                                     <div className="row mt-4">
                                         <div className="col-6">
-                                            <FormTag1 color="red" title="KKKO1" value={"$ " + KO1} />
+                                            <FormTag1 color="red" title="IIIO2" value={"$ " + IO2.toFixed(2)} />
                                         </div>
                                         <div className="col-6">
-                                            <FormTag1 color="green" title="KKKO2" value={"$ " + KO2} />
+                                            <FormTag1 color="green" title="JJJO2" value={"$ " + JO2.toFixed(2)} />
+                                        </div>
+                                    </div>
+                                    <div className="row mt-4">
+                                        <div className="col-6">
+                                            <FormTag1 color="red" title="KKKO1" value={"$ " + KO1.toFixed(2)} />
+                                        </div>
+                                        <div className="col-6">
+                                            <FormTag1 color="green" title="KKKO2" value={"$ " + KO2.toFixed(2)} />
                                         </div>
                                     </div>
                                 </div>
