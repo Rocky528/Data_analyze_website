@@ -285,7 +285,7 @@ const Dashboard = () => {
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3($)" />
                     </div>
-                    {/* </div>
+                  {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1($)" onChange={handleGGGO1} />
