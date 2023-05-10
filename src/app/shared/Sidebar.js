@@ -119,20 +119,20 @@ class Sidebar extends Component {
           <li className={this.isPathActive('/dashboard') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <Link className="nav-link" to="/dashboard">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
-              <span className="menu-title"><Trans>First Page</Trans></span>
+              <span className="menu-title"><Trans>TradePal</Trans></span>
             </Link>
           </li>
           <li className={this.isPathActive('/tab1') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <Link className="nav-link" to="/tab1">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
-              <span className="menu-title"><Trans>Second Page</Trans></span>
+              <span className="menu-title"><Trans>Candiestick Analysis</Trans></span>
             </Link>
           </li>
 
           <li className={this.isPathActive('/tab2') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <Link className="nav-link" to="/tab2">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
-              <span className="menu-title"><Trans>Third Page</Trans></span>
+              <span className="menu-title"><Trans>Detailed Report</Trans></span>
             </Link>
           </li>
           {/* <li className={this.isPathActive('/tab3') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
