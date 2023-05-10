@@ -30,13 +30,14 @@ export class FormTag extends Component {
                                     <span className="input-group-text " style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
                                 </div>
                                 <Form.Control
+                                    onKeyPress={this.props.onKeyPress}
                                     value={this.props.value}
                                     type="number"
                                     style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
                                     className="form-control"
                                     aria-describedby="basic-addon1"
-                                    onKeyDown={this.props.onKeyDown}
                                     onChange={this.props.onChange}
+                                    name = {this.props.name}
                                 />
 
                             </div>
