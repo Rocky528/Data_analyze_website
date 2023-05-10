@@ -74,10 +74,10 @@ const Tab2 = () => {
                                     <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row mt-3 text-center" >
                                         <div className="col-sm-6">
-                                            <FormTag color="green" title="Bbbo1" value={"$ " + BO1.toFixed(2)} />
+                                            <FormTag color="green" title="Maximum Risk Per Trade($)" value={"$ " + BO1.toFixed(2)} />
                                         </div>
                                         <div className="col-sm-6">
-                                            <FormTag color="green" title="Bbbo2" value={"$ " + BO2.toFixed(2)} />
+                                            <FormTag color="green" title="Quantity" value={"$ " + BO2.toFixed(2)} />
                                         </div>
                                     </div>
                                 </div>
@@ -89,40 +89,35 @@ const Tab2 = () => {
                             <div className="card" style={{ borderRadius: '8px' }}>
                                 <div className="card">
                                     <div className="card-body">
-                                        <h4 className='' style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
+                                        <h4 className='ml-5' style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
                                         <div className="row mt-3 text-center">
-                                            <div className="col-4">
+                                            <div className="col-6">
                                                 <FormTag color="red" title="Fffo1" value={"$" + FO1.toFixed(2)} />
                                             </div>
-                                            <div className="col-4">
+                                            <div className="col-6 mb-4">
                                                 <FormTag color="blue" title="Dddo2" value={DO2.toFixed(1)} />
                                             </div>
-                                            {/* </div> */}
-                                            {/* <div className="row mt-4"> */}
-                                            <div className="col-4 mb-4">
+
+                                            <div className="col-6 ">
                                                 <FormTag color="red" title="Fffo2" value={"$ " + FO2.toFixed(2)} />
                                             </div>
-                                            <div className="col-4">
-                                                <FormTag color="green" title="Fffo3" value={"$ " + FO3.toFixed(2)} />
+                                            <div className="col-6 mb-4">
+                                                <FormTag color="green" title="Fffo3" value={"$ " + (FO3 * 1).toFixed(2)} />
                                             </div>
-                                            {/* </div>
-                  <div className="row mt-4"> */}
-                                            <div className="col-4">
+
+                                            <div className="col-6">
                                                 <FormTag color="yellow" title="Hhho2" value={"$ " + HO2.toFixed(2)} />
                                             </div>
-                                            <div className="col-4 mb-4">
+                                            <div className="col-6 mb-4">
                                                 <FormTag color="green" title="Gggo2" value={"$ " + GO2.toFixed(2)} />
                                             </div>
-                                            {/* </div>
-                  <div className="row mt-4"> */}
-                                            <div className='col-2'></div>
-                                            <div className="col-4">
+
+                                            <div className="col-6">
                                                 <FormTag color="yellow" title="Dddo1" value={"$ " + DO1.toFixed(2)} />
                                             </div>
-                                            <div className="col-4">
+                                            <div className="col-6 mb-4">
                                                 <FormTag color="green" title="Hhho1" value={HO1.toFixed(0) + "%"} />
                                             </div>
-                                            <div className='col-2'></div>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +179,7 @@ const Tab2 = () => {
                                             <FormTag1 color="red" title="Kkko1" value={"$ " + KO1.toFixed(2)} />
                                         </div>
                                         <div className="col-4">
-                                            <FormTag1 color="green" title="Kkko2" value={"$ " + KO2.toFixed(2)} />
+                                            <FormTag1 color="green" title="Kkko2" value={"$ " + (KO2 * 1).toFixed(2)} />
                                         </div>
                                     </div>
                                 </div>
@@ -201,16 +196,17 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Price Trading Plan</h4>
                                     <ul className="p-0 mt-4">
                                         <li className="d-flex mb-2">
-                                            <FormTag2 color="yellow" title="EEEO1" value={EEEO1.toFixed(2) + " $"} img="a1" />
+                                            <FormTag2 color="yellow" title="EEEO1" value={parseFloat(EEEO1).toFixed(2) + " $"} img="a1" />
                                         </li>
+                                        {/*  */}
                                         <li className="d-flex mb-2">
-                                            <FormTag2 color="blue" title="EEEO2" value={EEEO2.toFixed(1)} img="a2" />
+                                            <FormTag2 color="blue" title="EEEO2" value={parseFloat(EEEO2).toFixed(1)} img="a2" />
                                         </li>
                                         <li className="d-flex mb-2">
                                             <FormTag2 color="red" title="FFFO2" value={"$ " + FO2.toFixed(2)} img="a3" />
                                         </li>
                                         <li className="d-flex">
-                                            <FormTag2 color="green" title="FFFO3" value={"$ " + FO3.toFixed(2)} img="a1" />
+                                            <FormTag2 color="green" title="FFFO3" value={"$ " + (FO3 * 1).toFixed(2)} img="a1" />
                                         </li>
                                     </ul>
                                 </div>
@@ -224,16 +220,16 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Percentile Trade Plane</h4>
                                     <ul className="p-0 mt-4">
                                         <li className="d-flex mb-2">
-                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + EEEO1.toFixed(2)} img="a1" />
+                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + parseFloat(EEEO1).toFixed(2)} img="a1" />
                                         </li>
                                         <li className="d-flex mb-2">
-                                            <FormTag2 color="blue" title="EEEO2" value={EEEO2.toFixed(1)} img="a2" />
+                                            <FormTag2 color="blue" title="EEEO2" value={parseFloat(EEEO2).toFixed(1)} img="a2" />
                                         </li>
                                         <li className="d-flex mb-2">
                                             <FormTag2 color="red" title="KKKO1" value={"$ " + KO1.toFixed(2)} img="a3" />
                                         </li>
                                         <li className="d-flex mb-2">
-                                            <FormTag2 color="green" title="KKKO2" value={"$ " + KO2.toFixed(2)} img="a1" />
+                                            <FormTag2 color="green" title="KKKO2" value={"$ " + (KO2 * 1).toFixed(2)} img="a1" />
                                         </li>
                                     </ul>
                                 </div>

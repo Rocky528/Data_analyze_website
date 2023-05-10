@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 export const InputSlice = createSlice({
   name: 'input',
   initialState: {
-    AAAO1: Number,
+    AAAO1: 0,
     AAAO2: 0,
     EEEO1: 0,
-    MMMO1: 0,
+    MMMO1: 1,
     CCCO1: 0,
     EEEO3: 0,
     EEEO2: 0,
