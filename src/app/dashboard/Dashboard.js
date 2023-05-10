@@ -9,13 +9,19 @@ import './style.css';
 const Dashboard = () => {
 
 
+  const [countI, setCountI] = useState(2);
   //////////////////enter key////////////////////////
   const handleKeyPress = (target) => {
     if (target.charCode == 13) {
-      // alert('Enter clicked!!!'); 
+      if (countI < 14)
+        setCountI(countI + 1);
+      else {
+        setCountI(1);
+      }
+      console.log(countI);
       console.log(target);
       const nextSibling = document.querySelector(
-        `input[name=AO2]`
+        `input[name=CIO${countI}]`
       );
       console.log(nextSibling);
 
@@ -212,23 +218,23 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Trade Risk Management</h4>
                   <div className="row mt-3">
                     <div className="col-6">
-                      <FormTag key={0} value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="AO1" />
+                      <FormTag key={0} value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" />
                     </div>
                     <div className="col-6">
-                      <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} name="AO2" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
-                      <FormTag value={CCCO1} color="input_red" title="ccco1" val="$" onChange={handleCCCO1} />
-                    </div>
-                    <div className="col-6">
-                      <FormTag value={CCCO2} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" />
+                      <FormTag id="text-2" onKeyPress={handleKeyPress} value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} name="CIO2" />
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-6">
-                      <FormTag value={MMMO1} color="input_white" onChange={handleMMMO1} title="mmmo1" val="" />
+                      <FormTag value={CCCO1} onKeyPress={handleKeyPress} color="input_red" title="ccco1" val="$" onChange={handleCCCO1} name="CIO3" />
+                    </div>
+                    <div className="col-6">
+                      <FormTag value={CCCO2} onKeyPress={handleKeyPress} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" name="CIO4" />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-6">
+                      <FormTag value={MMMO1} color="input_white" onChange={handleMMMO1} title="mmmo1" val="" onKeyPress={handleKeyPress} name="CIO5" />
                     </div>
                   </div>
                 </div>
@@ -314,22 +320,22 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
                   <div className="row mt-4">
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1" />
+                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1" onKeyPress={handleKeyPress} name="CIO6" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO2} color="input_blue" title="eeeo2" onChange={handleEEEO2} />
+                      <FormTag max={100000} value={EEEO2} color="input_blue" title="eeeo2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO7" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3" />
+                      <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3" onKeyPress={handleKeyPress} name="CIO8" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1" onChange={handleGGGO1} />
+                      <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1" onChange={handleGGGO1} onKeyPress={handleKeyPress} name="CIO9" />
                     </div>
                   </div>
                   <div className="row mt-2 text-center">
@@ -387,22 +393,22 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                   <div className="row mt-3">
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1" onChange={handleEEEO1} />
+                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1" onChange={handleEEEO1} onKeyPress={handleKeyPress} name="CIO10" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO2} color="input_blue" title="Eeeo2" onChange={handleEEEO2} />
+                      <FormTag max={100000} value={EEEO2} color="input_blue" title="Eeeo2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO11" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1" onChange={handleIIIO1} />
+                      <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1" onChange={handleIIIO1} onKeyPress={handleKeyPress} name="CIO12" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1" onChange={handleJJJO1} />
+                      <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1" onChange={handleJJJO1} onKeyPress={handleKeyPress} name="CIO13" />
                     </div>
                   </div>
                   <div className="row mt-2">

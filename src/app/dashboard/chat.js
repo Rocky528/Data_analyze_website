@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import FormTag from '../Component/FormTag';
-import FormTag1 from '../Component/FormTag1';
-import FormTag3 from '../Component/FormTag3';
 import FormTag4 from '../Component/FormTag4';
 import GaugeChart from "react-gauge-chart";
 import './style.css';
@@ -9,6 +7,27 @@ import { useSelector, useDispatch } from 'react-redux'
 import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice';
 
 export default function App() {
+
+    const [countII, setCountII] = useState(2)
+    const handleKeyPress = (target) => {
+        if (target.charCode == 13) {
+            if (countII < 9)
+                setCountII(countII + 1);
+            else {
+                setCountII(1);
+            }
+            console.log(countII);
+            const nextSibling = document.querySelector(
+                `input[name=CIIO${countII}]`
+            );
+            console.log(nextSibling);
+
+            // If found, focus the next field
+            if (nextSibling !== null) {
+                nextSibling.focus();
+            }
+        }
+    }
     const [gauge, setGauge] = useState(0.1);
     const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
     const dispatch = useDispatch();
@@ -36,19 +55,28 @@ export default function App() {
     const [FO1, setFO1] = useState(0);
     const [DO2, setDO2] = useState(0);
     const [MO1, setMO1] = useState(MMMO1);
-    const [CO1, setCO1] = useState(CCCO1);
+    let CCCO1temp = (CCCO1 === 0) ? "" : CCCO1;
+    const [CO1, setCO1] = useState(CCCO1temp);
     const [FO2, setFO2] = useState(0);
     const [FO3, setFO3] = useState(0);
-    const [CO2, setCO2] = useState(CCCO2);
+    let CCCO2temp = (CCCO2 === 0) ? "" : CCCO2;
+    const [CO2, setCO2] = useState(CCCO2temp);
     const [DO1, setDO1] = useState(0);
     const [HO1, setHO1] = useState(0);
-    const [GO1, setGO1] = useState(GGGO1);
-    const [EO1, setEO1] = useState(EEEO1);
-    const [EO3, setEO3] = useState(EEEO3);
+    let GGGO1temp = (GGGO1 === 0) ? "" : GGGO1;
+    const [GO1, setGO1] = useState(GGGO1temp);
+    let EEEO1temp = (EEEO1 === 0) ? "" : EEEO1;
+    const [EO1, setEO1] = useState(EEEO1temp);
+    let EEEO3temp = (EEEO3 === 0) ? "" : EEEO3;
+    const [EO3, setEO3] = useState(EEEO3temp);
     const [BO1, setBO1] = useState(0);
-    const [AO1, setAO1] = useState(AAAO1);
-    const [AO2, setAO2] = useState(AAAO2);
+    let AAAO1temp = (AAAO1 === 0) ? "" : AAAO1;
+    const [AO1, setAO1] = useState(AAAO1temp);
+    let AAAO2temp = (AAAO2 === 0) ? "" : AAAO2;
+    const [AO2, setAO2] = useState(AAAO2temp);
     const [BO2, setBO2] = useState(0);
+    let EEEO2temp = (EEEO2 === 0) ? "" : EEEO2;
+    const [EO2, setEO2] = useState(EEEO2temp);
     const handleMMMO1 = (evt) => {
         if (evt.target.value <= 1000)
             setMO1(evt.target.value);
@@ -81,7 +109,6 @@ export default function App() {
         if (evt.target.value <= 100000)
             setGO1(evt.target.value);
     }
-    const [EO2, setEO2] = useState(EEEO2);
     const handleEEEO2 = (evt) => {
         if (evt.target.value <= 100000)
             setEO2(evt.target.value);
@@ -133,22 +160,22 @@ export default function App() {
                                 <div className="col-md-3 d-none d-md-block">
                                     <div className="row mt-5 " style={{ marginBottom: '220px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={GGGO1} color="input_white" title="Alto-GGGO1" onChange={handleGGGO1} val="$" />
+                                            <FormTag4 value={GGGO1} color="input_white" title="Alto-GGGO1" onChange={handleGGGO1} val="$" onKeyPress={handleKeyPress} name="CIIO1" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '140px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO1" onChange={handleEEEO2} />
+                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIIO2" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '120px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={EEEO1} color="input_white" title="Alpha EEEO1" onChange={handleEEEO1} val="$" />
+                                            <FormTag4 value={EEEO1} color="input_white" title="Alpha EEEO1" onChange={handleEEEO1} val="$" onKeyPress={handleKeyPress} name="CIIO3" />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} val="$" />
+                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} val="$" onKeyPress={handleKeyPress} name="CIIO4" />
                                         </div>
                                     </div>
                                 </div>
@@ -250,23 +277,23 @@ export default function App() {
                                     <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row mt-3">
                                         <div className="col-6">
-                                            <FormTag id="text-1" value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} />
+                                            <FormTag id="text-1" value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIIO5" />
                                         </div>
                                         <div className="col-6">
-                                            <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <FormTag value={CCCO1} color="input_red" title="ccco1" val="$" onChange={handleCCCO1} />
-                                        </div>
-                                        <div className="col-6">
-                                            <FormTag value={CCCO2} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" />
+                                            <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} onKeyPress={handleKeyPress} name="CIIO6" />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-6">
-                                            <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} />
+                                            <FormTag value={CCCO1} color="input_red" title="ccco1" val="$" onChange={handleCCCO1} onKeyPress={handleKeyPress} name="CIIO7" />
+                                        </div>
+                                        <div className="col-6">
+                                            <FormTag value={CCCO2} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" onKeyPress={handleKeyPress} name="CIIO8" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} onKeyPress={handleKeyPress} name="CIIO9" />
                                         </div>
                                     </div>
                                 </div>
