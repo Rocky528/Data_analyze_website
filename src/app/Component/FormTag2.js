@@ -30,11 +30,11 @@ export class FormTag2 extends Component {
                         src={require(`../../assets/images/${this.props.img}.png`)}
                         alt="User" className="rounded" />
                 </div>
-                <div className="d-flex w-100 ml-2 flex-wrap align-items-center justify-content-between gap-2" >
+                <div className="d-flex w-100 ml-2 flex-wrap align-items-center justify-content-between " >
                     <div className="">
                         <h6 className="mb-0">{this.props.title}</h6>
                     </div>
-                    <div className="user-progress d-flex align-items-center gap-1">
+                    <div className="user-progress d-flex align-items-center">
                         <h6 className="mb-0" style={this.renderSwitch(this.props.color)}>{this.props.value}</h6>
                     </div>
                 </div>

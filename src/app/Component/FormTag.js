@@ -37,20 +37,19 @@ export class FormTag extends Component {
                         <label className='px-1 ' style={this.renderSwitch(this.props.color)}>{this.props.title}</label>
                         <Form.Group >
                             <div className="input-group" >
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text " style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
+                                </div>
                                 <Form.Control
-                                    max={this.props.max}
                                     value={this.props.value}
                                     type="number"
-                                    style={{ color: "white", borderRadius: '6px 0px 0px 6px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
+                                    style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
                                     className="form-control"
                                     aria-describedby="basic-addon1"
-                                    // onClick={this.props.onClick}
                                     onKeyDown={this.props.onKeyDown}
                                     onChange={this.props.onChange}
                                 />
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text " style={{ fontSize: 14, borderRadius: '0px 6px 6px 0px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
-                                </div>
+
                             </div>
                         </Form.Group>
                     </div> : <div className="">

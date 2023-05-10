@@ -18,11 +18,13 @@ const Dashboard = () => {
   const [AO2, setAO2] = useState(AAAO2);
   const [BO1, setBO1] = useState(0);
   const handleAAAO1 = (evt) => {
-    setAO1(evt.target.value);
+    if (evt.target.value <= 10000000)
+      setAO1(evt.target.value);
   }
 
   const handleAAAO2 = (evt) => {
-    setAO2(evt.target.value);
+    if (evt.target.value <= 100000)
+      setAO2(evt.target.value);
   }
 
   //BBBO2 BO1/EO1/MO1
@@ -31,10 +33,12 @@ const Dashboard = () => {
   const [MO1, setMO1] = useState(MMMO1);
 
   const handleMMMO1 = (evt) => {
-    setMO1(evt.target.value);
+    if (evt.target.value <= 1000)
+      setMO1(evt.target.value);
   }
   const handleEEEO1 = (evt) => {
-    setEO1(evt.target.value);
+    if (evt.target.value <= 100000)
+      setEO1(evt.target.value);
   }
 
   //DDDO1 (CO1/(EO1-EO3)/MO1)*EO1*MO1
@@ -42,10 +46,12 @@ const Dashboard = () => {
   const [CO1, setCO1] = useState(CCCO1);
   const [EO3, setEO3] = useState(EEEO3);
   const handleCCCO1 = (evt) => {
-    setCO1(evt.target.value);
+    if (evt.target.value <= 100000)
+      setCO1(evt.target.value);
   }
   const handleEEEO3 = (evt) => {
-    setEO3(evt.target.value);
+    if (evt.target.value <= 100000)
+      setEO3(evt.target.value);
   }
 
   //DDDO2 (CO1/(EO1-EO3)/MO1)
@@ -55,7 +61,8 @@ const Dashboard = () => {
   const [HO2, setHO2] = useState(0);
   const [EO2, setEO2] = useState(EEEO2);
   const handleEEEO2 = (evt) => {
-    setEO2(evt.target.value);
+    if (evt.target.value <= 100000)
+      setEO2(evt.target.value);
   }
 
   //FFFO1 HO2-(EO3/EO1*HO2)
@@ -68,14 +75,16 @@ const Dashboard = () => {
   const [FO3, setFO3] = useState(0);
   const [CO2, setCO2] = useState(CCCO2);
   const handleCCCO2 = (evt) => {
-    setCO2(evt.target.value);
+    if (evt.target.value <= 100000)
+      setCO2(evt.target.value);
   }
 
   //GGGO2 (EO2*GO1-EO2*EO1)*MO1
   const [GO2, setGO2] = useState(0);
   const [GO1, setGO1] = useState(GGGO1);
   const handleGGGO1 = (evt) => {
-    setGO1(evt.target.value);
+    if (evt.target.value <= 100000)
+      setGO1(evt.target.value);
   }
 
   //HHHO1 GO2/HO2
@@ -85,14 +94,16 @@ const Dashboard = () => {
   const [IO2, setIO2] = useState(0);
   const [IO1, setIO1] = useState(IIIO1);
   const handleIIIO1 = (evt) => {
-    setIO1(evt.target.value);
+    if (evt.target.value <= 100000)
+      setIO1(evt.target.value);
   }
 
   //JJJO2 EO1*EO2*JO1*MO1
   const [JO2, setJO2] = useState(0);
   const [JO1, setJO1] = useState(JJJO1);
   const handleJJJO1 = (evt) => {
-    setJO1(evt.target.value);
+    if (evt.target.value <= 100000)
+      setJO1(evt.target.value);
   }
 
   //KKKO1 EO1-IO1*EO1
@@ -171,23 +182,23 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                   <div className="row mt-3">
                     <div className="col-6">
-                      <FormTag id="text-1" max={10000000} onKeyDown={e => focusNext('text-2')} value={AAAO1} color="input_yellow" title="aaao1($)" val="$" onChange={handleAAAO1} />
+                      <FormTag id="text-1" onKeyDown={e => focusNext('text-2')} value={AAAO1} color="input_yellow" title="aaao1($)" val="$" onChange={handleAAAO1} />
                     </div>
                     <div className="col-6">
-                      <FormTag id="text-2" max={100000} onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2(%)" val="%" onChange={handleAAAO2} />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
-                      <FormTag value={CCCO1} max={100000} color="input_red" title="ccco1($)" val="$" onChange={handleCCCO1} />
-                    </div>
-                    <div className="col-6">
-                      <FormTag value={CCCO2} max={100000} color="input_green" title="ccco2($)" onChange={handleCCCO2} val="$" />
+                      <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2(%)" val="%" onChange={handleAAAO2} />
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-6">
-                      <FormTag value={MMMO1} max={1000} color="input_white" title="mmmo1" onChange={handleMMMO1} />
+                      <FormTag value={CCCO1} color="input_red" title="ccco1($)" val="$" onChange={handleCCCO1} />
+                    </div>
+                    <div className="col-6">
+                      <FormTag value={CCCO2} color="input_green" title="ccco2($)" onChange={handleCCCO2} val="$" />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-6">
+                      <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} />
                     </div>
                   </div>
                 </div>
@@ -285,7 +296,7 @@ const Dashboard = () => {
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3($)" />
                     </div>
-                  {/* </div>
+                    {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1($)" onChange={handleGGGO1} />
@@ -316,7 +327,7 @@ const Dashboard = () => {
                       <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
                     </div>
                     <div className="col-4">
-                      <FormTag1 color="blue" title="Mmmo1" value={MO1.toFixed(1)} />
+                      <FormTag1 color="blue" title="Mmmo1" value={MO1} />
                     </div>
                     {/* </div>
                   <div className="row mt-4"> */}
@@ -339,7 +350,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className='row'>
+          <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
