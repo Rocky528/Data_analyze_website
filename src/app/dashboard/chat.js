@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
 import FormTag3 from '../Component/FormTag3';
+import FormTag4 from '../Component/FormTag4';
 import GaugeChart from "react-gauge-chart";
-import { useSelector } from 'react-redux'
+import './style.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice';
 
 export default function App() {
     const [gauge, setGauge] = useState(0.1);
     const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
+    const dispatch = useDispatch();
+
     //HHHO2 EO1*EO2*MO1
     const [HO2, setHO2] = useState(0);
 
@@ -29,20 +34,71 @@ export default function App() {
     //HHHO3 GO2/CO1
     const [HO3, setHO3] = useState(0);
     const [FO1, setFO1] = useState(0);
-    const [EO3, setEO3] = useState(EEEO3);
-    const [EO1, setEO1] = useState(EEEO1);
     const [DO2, setDO2] = useState(0);
     const [MO1, setMO1] = useState(MMMO1);
     const [CO1, setCO1] = useState(CCCO1);
     const [FO2, setFO2] = useState(0);
     const [FO3, setFO3] = useState(0);
-    const [EO2, setEO2] = useState(EEEO2);
     const [CO2, setCO2] = useState(CCCO2);
     const [DO1, setDO1] = useState(0);
     const [HO1, setHO1] = useState(0);
-
+    const [GO1, setGO1] = useState(GGGO1);
+    const [EO1, setEO1] = useState(EEEO1);
+    const [EO3, setEO3] = useState(EEEO3);
+    const [BO1, setBO1] = useState(0);
+    const [AO1, setAO1] = useState(AAAO1);
+    const [AO2, setAO2] = useState(AAAO2);
+    const [BO2, setBO2] = useState(0);
+    const handleMMMO1 = (evt) => {
+        if (evt.target.value <= 1000)
+            setMO1(evt.target.value);
+    }
+    const handleCCCO1 = (evt) => {
+        if (evt.target.value <= 100000)
+            setCO1(evt.target.value);
+    }
+    const handleCCCO2 = (evt) => {
+        if (evt.target.value <= 100000)
+            setCO2(evt.target.value);
+    }
+    const handleAAAO2 = (evt) => {
+        if (evt.target.value <= 100000)
+            setAO2(evt.target.value);
+    }
+    const handleAAAO1 = (evt) => {
+        if (evt.target.value <= 10000000)
+            setAO1(evt.target.value);
+    }
+    const handleEEEO3 = (evt) => {
+        if (evt.target.value <= 100000)
+            setEO3(evt.target.value);
+    }
+    const handleEEEO1 = (evt) => {
+        if (evt.target.value <= 100000)
+            setEO1(evt.target.value);
+    }
+    const handleGGGO1 = (evt) => {
+        if (evt.target.value <= 100000)
+            setGO1(evt.target.value);
+    }
+    const [EO2, setEO2] = useState(EEEO2);
+    const handleEEEO2 = (evt) => {
+        if (evt.target.value <= 100000)
+            setEO2(evt.target.value);
+    }
 
     useEffect(() => {
+        dispatch(InputAAAO1(AO1));
+        dispatch(InputAAAO2(AO2));
+        dispatch(InputEEEO1(EO1));
+        dispatch(InputMMMO1(MO1));
+        dispatch(InputCCCO1(CO1));
+        dispatch(InputEEEO3(EO3));
+        dispatch(InputEEEO2(EO2));
+        dispatch(InputCCCO2(CO2));
+        dispatch(InputGGGO1(GO1));
+        setBO1(AO1 * 0.01 * AO2);
+        setBO2(BO1 / EO1 / MO1);
         setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
         setHO1(GO2 * 100 / HO2);
         setDO2((CO1 / (EO1 - EO3) / MO1));
@@ -73,51 +129,69 @@ export default function App() {
                     <div className="card">
                         <div className="card-body">
                             <h4 className="mb-5" style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
-                            <div className="row" style={{ marginTop: '60px' }}>
-                                <div className="col-md-3 pl-5 d-none d-md-block">
-                                    <div style={{ marginTop: "64px" }}>
-                                        <FormTag3 color="white1" value="Alto" />
+                            <div className="row" style={{ marginTop: '0px' }}>
+                                <div className="col-md-3 d-none d-md-block">
+                                    <div className="row mt-5 " style={{ marginBottom: '220px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={GGGO1} color="input_white" title="Alto-GGGO1" onChange={handleGGGO1} val="$" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "190px" }}>
-                                        <FormTag3 color="white1" value="Beta" />
-
+                                    <div className="row" style={{ marginBottom: '140px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO1" onChange={handleEEEO2} />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "97px" }}>
-                                        <FormTag3 color="white1" value="Alpha" />
-
+                                    <div className="row" style={{ marginBottom: '120px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={EEEO1} color="input_white" title="Alpha EEEO1" onChange={handleEEEO1} val="$" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "132px" }}>
-                                        <FormTag3 color="white1" value="Theta" />
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} val="$" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-sm-12 col-md-6">
                                     <div className="row">
                                         <div className="col-sm-12" style={{
-                                            textAlign: 'center', marginBottom: '110px'
+                                            textAlign: 'center'
                                         }}>
-                                            <img src={require('../../assets/images/Group 49.png')} alt="profile" className="profile-pic just-content-center" style={{ width: '250px', height: '600px' }} />
+                                            <img src={require('../../assets/images/Group 149.png')} alt="profile" className="profile-pic just-content-center" />
 
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-3 pr-2 d-none d-md-block text-right">
-                                    <div style={{ marginTop: "38px" }}>
-                                        <FormTag3 color="white1" value="Alto1" />
+                                <div className="col-md-3 d-none d-md-block">
+                                    <div className="row mt-3 " style={{ marginBottom: '40px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + FO3.toFixed(2)} color="green" title="Alto 1-FFFO3" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "12px" }}>
-                                        <FormTag3 color="white1" value="Alto2" />
+                                    <div className="row" style={{ marginBottom: '140px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + GO2.toFixed(2)} color="green" title="Alto 2" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "142px" }}>
-                                        <FormTag3 color="white1" value="Beta1" />
+                                    <div className="row" style={{ marginBottom: '50px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={DO2.toFixed(2)} color="blue" title="Beta 1" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "12px" }}>
-                                        <FormTag3 color="white1" value="Beta2" />
+                                    <div className="row" style={{ marginBottom: '300px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + DO1.toFixed(2)} color="blue" title="Beta 2" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "210px" }}>
-                                        <FormTag3 color="white1" value="Theta1" />
+                                    <div className="row mb-5">
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + FO2.toFixed(2)} color="red" title="Theta 1" />
+                                        </div>
                                     </div>
-                                    <div style={{ marginTop: "6px", }}>
-                                        <FormTag3 color="white1" value="Theta2" />
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + FO1.toFixed(2)} color="red" title="Theta 2" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,42 +228,16 @@ export default function App() {
                     </div>
                     <div className='row mb-2'>
                         <div className='col-sm-12'>
-                            <div className="card">
+                            <div className="card" style={{ borderRadius: '8px' }}>
                                 <div className="card-body">
-                                    <h4 className='' style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
-                                    <div className="row mt-3 text-center">
-                                        <div className="col-4">
-                                            <FormTag color="red" title="Fffo1" value={"$" + FO1.toFixed(2)} />
+                                    <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                                    <div className="row mt-3 text-center" >
+                                        <div className="col-sm-6">
+                                            <FormTag color="green" title="Bbbo1" value={"$ " + BO1.toFixed(2)} />
                                         </div>
-                                        <div className="col-4">
-                                            <FormTag color="blue" title="Dddo2" value={DO2.toFixed(1)} />
+                                        <div className="col-sm-6">
+                                            <FormTag color="green" title="Bbbo2" value={BO2.toFixed(2)} />
                                         </div>
-                                        {/* </div> */}
-                                        {/* <div className="row mt-4"> */}
-                                        <div className="col-4 mb-4">
-                                            <FormTag color="red" title="Fffo2" value={"$ " + FO2.toFixed(2)} />
-                                        </div>
-                                        <div className="col-4">
-                                            <FormTag color="green" title="Fffo3" value={"$ " + FO3.toFixed(2)} />
-                                        </div>
-                                        {/* </div>
-                  <div className="row mt-4"> */}
-                                        <div className="col-4">
-                                            <FormTag color="yellow" title="Hhho2" value={"$ " + HO2.toFixed(2)} />
-                                        </div>
-                                        <div className="col-4 mb-4">
-                                            <FormTag color="green" title="Gggo2" value={"$ " + GO2.toFixed(2)} />
-                                        </div>
-                                        {/* </div>
-                  <div className="row mt-4"> */}
-                                        <div className='col-2'></div>
-                                        <div className="col-4">
-                                            <FormTag color="yellow" title="Dddo1" value={"$ " + DO1.toFixed(2)} />
-                                        </div>
-                                        <div className="col-4">
-                                            <FormTag color="green" title="Hhho1" value={HO1.toFixed(0) + "%"} />
-                                        </div>
-                                        <div className='col-2'></div>
                                     </div>
                                 </div>
                             </div>
@@ -197,31 +245,28 @@ export default function App() {
                     </div>
                     <div className='row mb-2'>
                         <div className='col-sm-12'>
-                            <div className="card">
+                            <div className="card" style={{ borderRadius: '8px' }}>
                                 <div className="card-body">
-                                    <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
-                                    <div className="row mt-3 text-center">
-                                        <div className="col-4">
-                                            <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
+                                    <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                                    <div className="row mt-3">
+                                        <div className="col-6">
+                                            <FormTag id="text-1" value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} />
                                         </div>
-                                        <div className="col-4">
-                                            <FormTag1 color="blue" title="Mmmo1" value={MO1} />
+                                        <div className="col-6">
+                                            <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} />
                                         </div>
-                                        {/* </div>
-                  <div className="row mt-4"> */}
-                                        <div className="col-4 mb-4">
-                                            <FormTag1 color="red" title="Iiio2" value={"$ " + IO2.toFixed(2)} />
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <FormTag value={CCCO1} color="input_red" title="ccco1" val="$" onChange={handleCCCO1} />
                                         </div>
-                                        <div className="col-4">
-                                            <FormTag1 color="green" title="Jjjo2" value={"$ " + JO2.toFixed(2)} />
+                                        <div className="col-6">
+                                            <FormTag value={CCCO2} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" />
                                         </div>
-                                        {/* </div>
-                  <div className="row mt-4"> */}
-                                        <div className="col-4">
-                                            <FormTag1 color="red" title="Kkko1" value={"$ " + KO1.toFixed(2)} />
-                                        </div>
-                                        <div className="col-4">
-                                            <FormTag1 color="green" title="Kkko2" value={"$ " + KO2.toFixed(2)} />
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} />
                                         </div>
                                     </div>
                                 </div>

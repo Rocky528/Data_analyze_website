@@ -54,13 +54,15 @@ class Sidebar extends Component {
   render() {
     return (
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
-        <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <div className="sidebar-brand-wrapper mt-2 d-none d-lg-flex align-items-center justify-content-center fixed-top">
 
-          <a className="sidebar-brand brand-logo" style={{ color: 'white' }} href="index.html"><h3>Info kay</h3></a>
+          <a className="sidebar-brand brand-logo" style={{ color: 'white' }} href="index.html">
+            <img style={{ height: '70px' }} src={require('../../assets/images/logo.png')} alt="logo" />
+          </a>
           {/* <a className="sidebar-brand brand-logo-mini" href="index.html"><img src={require('../../assets/images/logo-mini.svg')} alt="logo" /></a> */}
         </div>
         <ul className="nav">
-          <li className="nav-item profile">
+          {/* <li className="nav-item profile">
             <div className="profile-desc">
               <div className="profile-pic">
                 <div className="count-indicator">
@@ -112,9 +114,9 @@ class Sidebar extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-          </li>
+          </li> */}
           <li className="nav-item nav-category">
-            <span className="nav-link"><Trans>Navigation</Trans></span>
+            <span className="nav-link"></span>
           </li>
           <li className={this.isPathActive('/dashboard') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
             <Link className="nav-link" to="/dashboard">

@@ -7,16 +7,35 @@ import GaugeChart from "react-gauge-chart";
 import ButtonTag from '../Component/ButtonTag';
 import './style.css';
 const Dashboard = () => {
-  const focusNext = (e) => p => {
-    alert("w")
-    console.log(e.target.value, p)
+
+
+  //////////////////enter key////////////////////////
+  const handleKeyPress = (target) => {
+    if (target.charCode == 13) {
+      // alert('Enter clicked!!!'); 
+      console.log(target);
+      const nextSibling = document.querySelector(
+        `input[name=AO2]`
+      );
+      console.log(nextSibling);
+
+      // If found, focus the next field
+      if (nextSibling !== null) {
+        nextSibling.focus();
+      }
+    }
   }
+
+
   const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1 } = useSelector((state) => state.InputValue);
   const dispatch = useDispatch();
   //BBBO1 AO1*AO2
-  const [AO1, setAO1] = useState(AAAO1);
-  const [AO2, setAO2] = useState(AAAO2);
+  let AAAO1temp = (AAAO1 === 0) ? "" : AAAO1;
+  const [AO1, setAO1] = useState(AAAO1temp);
+  let AAAO2temp = (AAAO2 === 0) ? "" : AAAO2;
+  const [AO2, setAO2] = useState(AAAO2temp);
   const [BO1, setBO1] = useState(0);
+
   const handleAAAO1 = (evt) => {
     if (evt.target.value <= 10000000)
       setAO1(evt.target.value);
@@ -29,7 +48,9 @@ const Dashboard = () => {
 
   //BBBO2 BO1/EO1/MO1
   const [BO2, setBO2] = useState(0);
-  const [EO1, setEO1] = useState(EEEO1);
+  let EEEO1temp = (EEEO1 === 0) ? "" : EEEO1;
+  const [EO1, setEO1] = useState(EEEO1temp);
+  // let MMMO1temp = (MMMO1 === 1) ? "" : MMMO1;
   const [MO1, setMO1] = useState(MMMO1);
 
   const handleMMMO1 = (evt) => {
@@ -43,8 +64,11 @@ const Dashboard = () => {
 
   //DDDO1 (CO1/(EO1-EO3)/MO1)*EO1*MO1
   const [DO1, setDO1] = useState(0);
-  const [CO1, setCO1] = useState(CCCO1);
-  const [EO3, setEO3] = useState(EEEO3);
+  let CCCO1temp = (CCCO1 === 0) ? "" : CCCO1;
+  const [CO1, setCO1] = useState(CCCO1temp);
+
+  let EEEO3temp = (EEEO3 === 0) ? "" : EEEO3;
+  const [EO3, setEO3] = useState(EEEO3temp);
   const handleCCCO1 = (evt) => {
     if (evt.target.value <= 100000)
       setCO1(evt.target.value);
@@ -59,7 +83,9 @@ const Dashboard = () => {
 
   //HHHO2 EO1*EO2*MO1
   const [HO2, setHO2] = useState(0);
-  const [EO2, setEO2] = useState(EEEO2);
+
+  let EEEO2temp = (EEEO2 === 0) ? "" : EEEO2;
+  const [EO2, setEO2] = useState(EEEO2temp);
   const handleEEEO2 = (evt) => {
     if (evt.target.value <= 100000)
       setEO2(evt.target.value);
@@ -73,7 +99,8 @@ const Dashboard = () => {
 
   //FFFO3 EO1+(EO1*CO2/HO2)
   const [FO3, setFO3] = useState(0);
-  const [CO2, setCO2] = useState(CCCO2);
+  let CCCO2temp = (CCCO2 === 0) ? "" : CCCO2;
+  const [CO2, setCO2] = useState(CCCO2temp);
   const handleCCCO2 = (evt) => {
     if (evt.target.value <= 100000)
       setCO2(evt.target.value);
@@ -81,7 +108,8 @@ const Dashboard = () => {
 
   //GGGO2 (EO2*GO1-EO2*EO1)*MO1
   const [GO2, setGO2] = useState(0);
-  const [GO1, setGO1] = useState(GGGO1);
+  let GGGO1temp = (GGGO1 === 0) ? "" : GGGO1;
+  const [GO1, setGO1] = useState(GGGO1temp);
   const handleGGGO1 = (evt) => {
     if (evt.target.value <= 100000)
       setGO1(evt.target.value);
@@ -92,7 +120,8 @@ const Dashboard = () => {
 
   //IIIO2 HO2*IO1*0.01*-1
   const [IO2, setIO2] = useState(0);
-  const [IO1, setIO1] = useState(IIIO1);
+  let IIIO1temp = (IIIO1 === 0) ? "" : IIIO1;
+  const [IO1, setIO1] = useState(IIIO1temp);
   const handleIIIO1 = (evt) => {
     if (evt.target.value <= 100000)
       setIO1(evt.target.value);
@@ -100,7 +129,8 @@ const Dashboard = () => {
 
   //JJJO2 EO1*EO2*JO1*MO1
   const [JO2, setJO2] = useState(0);
-  const [JO1, setJO1] = useState(JJJO1);
+  let JJJO1temp = (JJJO1 === 0) ? "" : JJJO1;
+  const [JO1, setJO1] = useState(JJJO1temp);
   const handleJJJO1 = (evt) => {
     if (evt.target.value <= 100000)
       setJO1(evt.target.value);
@@ -155,20 +185,20 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="row">
+      <div className="row ">
         {/* 1 */}
         <div className="col-sm-4">
           <div className='row mb-2'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
-                  <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                  <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Risk</h4>
                   <div className="row mt-3 text-center" >
                     <div className="col-sm-6">
-                      <FormTag color="green" title="Bbbo1" value={"$ " + BO1.toFixed(2)} />
+                      <FormTag color="green" title="Risk Per Trade" value={"$ " + BO1.toFixed(2)} />
                     </div>
                     <div className="col-sm-6">
-                      <FormTag color="green" title="Bbbo2" value={"$ " + BO2.toFixed(2)} />
+                      <FormTag color="green" title="Equivalent Qty" value={"$ " + BO2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
@@ -179,26 +209,26 @@ const Dashboard = () => {
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
-                  <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                  <h4 style={{ color: "#CBCBE2" }}>Trade Risk Management</h4>
                   <div className="row mt-3">
                     <div className="col-6">
-                      <FormTag id="text-1" onKeyDown={e => focusNext('text-2')} value={AAAO1} color="input_yellow" title="aaao1($)" val="$" onChange={handleAAAO1} />
+                      <FormTag key={0} value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="AO1" />
                     </div>
                     <div className="col-6">
-                      <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2(%)" val="%" onChange={handleAAAO2} />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
-                      <FormTag value={CCCO1} color="input_red" title="ccco1($)" val="$" onChange={handleCCCO1} />
-                    </div>
-                    <div className="col-6">
-                      <FormTag value={CCCO2} color="input_green" title="ccco2($)" onChange={handleCCCO2} val="$" />
+                      <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} name="AO2" />
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-6">
-                      <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} />
+                      <FormTag value={CCCO1} color="input_red" title="ccco1" val="$" onChange={handleCCCO1} />
+                    </div>
+                    <div className="col-6">
+                      <FormTag value={CCCO2} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-6">
+                      <FormTag value={MMMO1} color="input_white" onChange={handleMMMO1} title="mmmo1" val="" />
                     </div>
                   </div>
                 </div>
@@ -238,7 +268,7 @@ const Dashboard = () => {
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
-                  <h4 className='' style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
+                  <h4 className='' style={{ color: "#CBCBE2" }}>Risk Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-4">
                       <FormTag color="red" title="Fffo1" value={"$" + FO1.toFixed(2)} />
@@ -284,7 +314,7 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Price Position Trading</h4>
                   <div className="row mt-4">
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1($)" />
+                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
@@ -294,12 +324,12 @@ const Dashboard = () => {
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3($)" />
+                      <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3" />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1($)" onChange={handleGGGO1} />
+                      <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1" onChange={handleGGGO1} />
                     </div>
                   </div>
                   <div className="row mt-2 text-center">
@@ -321,13 +351,13 @@ const Dashboard = () => {
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
-                  <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
+                  <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentile Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-4">
                       <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
                     </div>
                     <div className="col-4">
-                      <FormTag1 color="blue" title="Mmmo1" value={MO1} />
+                      <FormTag1 color="blue" title="Mmmo1" value={(MO1 * 1).toFixed(1)} />
                     </div>
                     {/* </div>
                   <div className="row mt-4"> */}
@@ -357,7 +387,7 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
                   <div className="row mt-3">
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1($)" onChange={handleEEEO1} />
+                      <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1" onChange={handleEEEO1} />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
@@ -367,12 +397,12 @@ const Dashboard = () => {
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1(%)" onChange={handleIIIO1} />
+                      <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1" onChange={handleIIIO1} />
                     </div>
                     {/* </div>
                   <div className="row mt-1"> */}
                     <div className="col-6">
-                      <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1(%)" onChange={handleJJJO1} />
+                      <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1" onChange={handleJJJO1} />
                     </div>
                   </div>
                   <div className="row mt-2">
@@ -392,3 +422,4 @@ const Dashboard = () => {
   );
 }
 export default Dashboard;
+
