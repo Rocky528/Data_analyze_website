@@ -8,7 +8,9 @@ import ButtonTag from '../Component/ButtonTag';
 import './style.css';
 const Dashboard = () => {
 
-
+  let num = Intl.NumberFormat('en-US');
+  let usdc = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+  // console.log(usdc.format(111111223));
   const [countI, setCountI] = useState(2);
   //////////////////enter key////////////////////////
   const handleKeyPress = (target) => {
@@ -18,13 +20,9 @@ const Dashboard = () => {
       else {
         setCountI(1);
       }
-      console.log(countI);
-      console.log(target);
       const nextSibling = document.querySelector(
         `input[name=CIO${countI}]`
       );
-      console.log(nextSibling);
-
       // If found, focus the next field
       if (nextSibling !== null) {
         nextSibling.focus();
@@ -44,12 +42,12 @@ const Dashboard = () => {
 
   const handleAAAO1 = (evt) => {
     if (evt.target.value <= 10000000)
-      setAO1(evt.target.value);
+      setAO1(parseFloat(evt.target.value));
   }
 
   const handleAAAO2 = (evt) => {
     if (evt.target.value <= 100000)
-      setAO2(evt.target.value);
+      setAO2(parseFloat(evt.target.value));
   }
 
   //BBBO2 BO1/EO1/MO1
@@ -61,11 +59,11 @@ const Dashboard = () => {
 
   const handleMMMO1 = (evt) => {
     if (evt.target.value <= 1000)
-      setMO1(evt.target.value);
+      setMO1(parseFloat(evt.target.value));
   }
   const handleEEEO1 = (evt) => {
     if (evt.target.value <= 100000)
-      setEO1(evt.target.value);
+      setEO1(parseFloat(evt.target.value));
   }
 
   //DDDO1 (CO1/(EO1-EO3)/MO1)*EO1*MO1
@@ -77,11 +75,11 @@ const Dashboard = () => {
   const [EO3, setEO3] = useState(EEEO3temp);
   const handleCCCO1 = (evt) => {
     if (evt.target.value <= 100000)
-      setCO1(evt.target.value);
+      setCO1(parseFloat(evt.target.value));
   }
   const handleEEEO3 = (evt) => {
     if (evt.target.value <= 100000)
-      setEO3(evt.target.value);
+      setEO3(parseFloat(evt.target.value));
   }
 
   //DDDO2 (CO1/(EO1-EO3)/MO1)
@@ -94,7 +92,7 @@ const Dashboard = () => {
   const [EO2, setEO2] = useState(EEEO2temp);
   const handleEEEO2 = (evt) => {
     if (evt.target.value <= 100000)
-      setEO2(evt.target.value);
+      setEO2(parseFloat(evt.target.value));
   }
 
   //FFFO1 HO2-(EO3/EO1*HO2)
@@ -109,7 +107,7 @@ const Dashboard = () => {
   const [CO2, setCO2] = useState(CCCO2temp);
   const handleCCCO2 = (evt) => {
     if (evt.target.value <= 100000)
-      setCO2(evt.target.value);
+      setCO2(parseFloat(evt.target.value));
   }
 
   //GGGO2 (EO2*GO1-EO2*EO1)*MO1
@@ -118,7 +116,7 @@ const Dashboard = () => {
   const [GO1, setGO1] = useState(GGGO1temp);
   const handleGGGO1 = (evt) => {
     if (evt.target.value <= 100000)
-      setGO1(evt.target.value);
+      setGO1(parseFloat(evt.target.value));
   }
 
   //HHHO1 GO2/HO2
@@ -130,7 +128,7 @@ const Dashboard = () => {
   const [IO1, setIO1] = useState(IIIO1temp);
   const handleIIIO1 = (evt) => {
     if (evt.target.value <= 100000)
-      setIO1(evt.target.value);
+      setIO1(parseFloat(evt.target.value));
   }
 
   //JJJO2 EO1*EO2*JO1*MO1
@@ -172,21 +170,35 @@ const Dashboard = () => {
     dispatch(InputGGGO1(GO1));
     dispatch(InputIIIO1(IO1));
     dispatch(InputJJJO1(JO1));
-    setBO1(AO1 * 0.01 * AO2);
-    setBO2(BO1 / EO1 / MO1);
-    setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
-    setDO2((CO1 / (EO1 - EO3) / MO1));
-    setHO2(EO1 * EO2 * MO1);
-    setFO1(HO2 - (EO3 / EO1 * HO2));
-    setFO2(EO1 - (CO1 / EO2) / MO1);
-    setFO3(EO1 * 1 + (EO1 * CO2) / HO2);
-    setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
-    setHO1(GO2 * 100 / HO2);
-    setIO2(HO2 * IO1 * 0.01 * -1);
-    setJO2(EO1 * EO2 * JO1 * 0.01 * MO1);
-    setKO1(EO1 - IO1 * 0.01 * EO1);
-    setKO2(EO1 * 1 + (EO1 * JO2 / HO2));
-    setHO3(GO2 / CO1);
+    !(AO1 * 0.01 * AO2) || (AO1 * 0.01 * AO2 === Infinity) || (AO1 * 0.01 * AO2 === -Infinity) ? setBO1(0) : setBO1(AO1 * 0.01 * AO2);
+
+    !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
+
+    !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 == Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
+
+    !((CO1 / (EO1 - EO3) / MO1)) || ((CO1 / (EO1 - EO3) / MO1) === Infinity) || ((CO1 / (EO1 - EO3) / MO1) === -Infinity) ? setDO2(0) : setDO2((CO1 / (EO1 - EO3) / MO1));
+
+    !(EO1 * EO2 * MO1) || (EO1 * EO2 * MO1 === Infinity) || (EO1 * EO2 * MO1 === -Infinity) ? setHO2(0) : setHO2(EO1 * EO2 * MO1);
+
+    !(HO2 - (EO3 / EO1 * HO2)) || (HO2 - (EO3 / EO1 * HO2) === Infinity) || (HO2 - (EO3 / EO1 * HO2) === -Infinity) ? setFO1(0) : setFO1(HO2 - (EO3 / EO1 * HO2));
+
+    !(EO1 - (CO1 / EO2) / MO1) || (EO1 - (CO1 / EO2) / MO1 === Infinity) || (EO1 - (CO1 / EO2) / MO1 === -Infinity) ? setFO2(0) : setFO2(EO1 - (CO1 / EO2) / MO1);
+
+    !(EO1 * 1 + (EO1 * CO2) / HO2) || (EO1 * 1 + (EO1 * CO2) / HO2 === Infinity) || (EO1 * 1 + (EO1 * CO2) / HO2 === -Infinity) ? setFO3(0) : setFO3(EO1 * 1 + (EO1 * CO2) / HO2);
+
+    !((EO2 * GO1 - EO2 * EO1) * MO1) || ((EO2 * GO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
+
+    !(GO2 * 100 / HO2) || (GO2 * 100 / HO2 === Infinity) || (GO2 * 100 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / HO2);
+
+    !(HO2 * IO1 * 0.01 * -1) || (HO2 * IO1 * 0.01 * -1 === Infinity) || (HO2 * IO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IO1 * 0.01 * -1);
+
+    !(EO1 * EO2 * JO1 * 0.01 * MO1) || (EO1 * EO2 * JO1 * 0.01 * MO1 === Infinity) || (EO1 * EO2 * JO1 * 0.01 * MO1 === -Infinity) ? setJO2(0) : setJO2(EO1 * EO2 * JO1 * 0.01 * MO1);
+
+    !(EO1 - IO1 * 0.01 * EO1) || (EO1 - IO1 * 0.01 * EO1 === Infinity) || (EO1 - IO1 * 0.01 * EO1 === -Infinity) ? setKO1(0) : setKO1(EO1 - IO1 * 0.01 * EO1);
+
+    !(EO1 * 1 + (EO1 * JO2 / HO2)) || (EO1 * 1 + (EO1 * JO2 / HO2) === Infinity) || (EO1 * 1 + (EO1 * JO2 / HO2) === -Infinity) ? setKO2(0) : setKO2(EO1 * 1 + (EO1 * JO2 / HO2));
+
+    !(GO2 / CO1) || (GO2 / CO1 === Infinity) || (GO2 / CO1 === -Infinity) ? setHO3(0) : setHO3(GO2 / CO1);
   },);
 
   return (
@@ -194,29 +206,29 @@ const Dashboard = () => {
       <div className="row ">
         {/* 1 */}
         <div className="col-sm-4">
-          <div className='row mb-2'>
+          <div className='row mb-1'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
                   <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Risk</h4>
-                  <div className="row mt-3 text-center" >
+                  <div className="row text-center" >
                     <div className="col-sm-6">
                       <FormTag color="green" title="Risk Per Trade" value={"$ " + BO1.toFixed(2)} />
                     </div>
                     <div className="col-sm-6">
-                      <FormTag color="green" title="Equivalent Qty" value={"$ " + BO2.toFixed(2)} />
+                      <FormTag color="blue" title="Dddo2" value={DO2.toFixed(1)} />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='row mb-2'>
+          <div className='row mb-1'>
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Trade Risk Management</h4>
-                  <div className="row mt-3">
+                  <div className="row">
                     <div className="col-6">
                       <FormTag key={0} value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" />
                     </div>
@@ -241,26 +253,26 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className='row mb-2'>
+          <div className='row mb-1'>
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
-                  <h4 style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
-                  <h6 style={{ color: '#7071A4' }}>Risk Reward  <span style={{ color: '#CBCBE2' }}>{GO2 / CO1} %</span></h6>
+                  <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
+                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)} %</span></h6>
                   <div className="row">
                     <div className="col-sm-12">
                       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
-                        <GaugeChart
+                        <GaugeChart style={{ height: '' }}
                           hideText
                           textColor="#FFFF"
                           // nrOfLevels={4}
                           colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
                           // formatTextValue={(value) => '3X'}
-                          // percent={0.3}
+                          percent={HO1 ? HO1 * 0.01 : 0}
                           arcsLength={[0.2, 0.1, 0.2, 0.5]}
                         />
                       </div>
-                      <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO3}  <span style={{ fontSize: '25px' }}>(X)</span> </h6>
+                      <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}<span style={{ fontSize: '20px' }}> X</span> </h6>
                     </div>
                   </div>
                 </div>
@@ -280,7 +292,7 @@ const Dashboard = () => {
                       <FormTag color="red" title="Fffo1" value={"$" + FO1.toFixed(2)} />
                     </div>
                     <div className="col-4">
-                      <FormTag color="blue" title="Dddo2" value={DO2.toFixed(1)} />
+                      <FormTag color="green" title="Equivalent Qty" value={BO2.toFixed(2)} />
                     </div>
                     {/* </div> */}
                     {/* <div className="row mt-4"> */}

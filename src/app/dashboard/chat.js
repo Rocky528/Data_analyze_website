@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FormTag from '../Component/FormTag';
 import FormTag4 from '../Component/FormTag4';
+import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux'
@@ -79,7 +80,7 @@ export default function App() {
     const [EO2, setEO2] = useState(EEEO2temp);
     const handleMMMO1 = (evt) => {
         if (evt.target.value <= 1000)
-            setMO1(evt.target.value);
+            setMO1(parseFloat(evt.target.value));
     }
     const handleCCCO1 = (evt) => {
         if (evt.target.value <= 100000)
@@ -87,31 +88,31 @@ export default function App() {
     }
     const handleCCCO2 = (evt) => {
         if (evt.target.value <= 100000)
-            setCO2(evt.target.value);
+            setCO2(parseFloat(evt.target.value));
     }
     const handleAAAO2 = (evt) => {
         if (evt.target.value <= 100000)
-            setAO2(evt.target.value);
+            setAO2(parseFloat(evt.target.value));
     }
     const handleAAAO1 = (evt) => {
         if (evt.target.value <= 10000000)
-            setAO1(evt.target.value);
+            setAO1(parseFloat(evt.target.value));
     }
     const handleEEEO3 = (evt) => {
         if (evt.target.value <= 100000)
-            setEO3(evt.target.value);
+            setEO3(parseFloat(evt.target.value));
     }
     const handleEEEO1 = (evt) => {
         if (evt.target.value <= 100000)
-            setEO1(evt.target.value);
+            setEO1(parseFloat(evt.target.value));
     }
     const handleGGGO1 = (evt) => {
         if (evt.target.value <= 100000)
-            setGO1(evt.target.value);
+            setGO1(parseFloat(evt.target.value));
     }
     const handleEEEO2 = (evt) => {
         if (evt.target.value <= 100000)
-            setEO2(evt.target.value);
+            setEO2(parseFloat(evt.target.value));
     }
 
     useEffect(() => {
@@ -124,21 +125,35 @@ export default function App() {
         dispatch(InputEEEO2(EO2));
         dispatch(InputCCCO2(CO2));
         dispatch(InputGGGO1(GO1));
-        setBO1(AO1 * 0.01 * AO2);
-        setBO2(BO1 / EO1 / MO1);
-        setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
-        setHO1(GO2 * 100 / HO2);
-        setDO2((CO1 / (EO1 - EO3) / MO1));
-        setFO2(EO1 - (CO1 / EO2) / MO1);
-        setFO3(EO1 * 1 + (EO1 * CO2) / HO2);
-        setHO2(EEEO1 * MMMO1 * EEEO2);
-        setIO2(HO2 * IIIO1 * 0.01 * -1);
-        setJO2(EEEO1 * MMMO1 * EEEO2 * JJJO1 * 0.01);
-        setKO1(EEEO1 - IIIO1 * 0.01 * EEEO1);
-        setKO2(EEEO1 * 1 + (EEEO1 * JO2 / HO2));
-        setGO2((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MMMO1);
-        setHO3(GO2 / CCCO1);
-        setFO1(HO2 - (EO3 / EO1 * HO2));
+        !(AO1 * 0.01 * AO2) || (AO1 * 0.01 * AO2 === Infinity) || (AO1 * 0.01 * AO2 === -Infinity) ? setBO1(0) : setBO1(AO1 * 0.01 * AO2);
+
+        !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
+
+        !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 == Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
+
+        !((CO1 / (EO1 - EO3) / MO1)) || ((CO1 / (EO1 - EO3) / MO1) === Infinity) || ((CO1 / (EO1 - EO3) / MO1) === -Infinity) ? setDO2(0) : setDO2((CO1 / (EO1 - EO3) / MO1));
+
+        !(EO1 * EO2 * MO1) || (EO1 * EO2 * MO1 === Infinity) || (EO1 * EO2 * MO1 === -Infinity) ? setHO2(0) : setHO2(EO1 * EO2 * MO1);
+
+        !(HO2 - (EO3 / EO1 * HO2)) || (HO2 - (EO3 / EO1 * HO2) === Infinity) || (HO2 - (EO3 / EO1 * HO2) === -Infinity) ? setFO1(0) : setFO1(HO2 - (EO3 / EO1 * HO2));
+
+        !(EO1 - (CO1 / EO2) / MO1) || (EO1 - (CO1 / EO2) / MO1 === Infinity) || (EO1 - (CO1 / EO2) / MO1 === -Infinity) ? setFO2(0) : setFO2(EO1 - (CO1 / EO2) / MO1);
+
+        !(EO1 * 1 + (EO1 * CO2) / HO2) || (EO1 * 1 + (EO1 * CO2) / HO2 === Infinity) || (EO1 * 1 + (EO1 * CO2) / HO2 === -Infinity) ? setFO3(0) : setFO3(EO1 * 1 + (EO1 * CO2) / HO2);
+
+        !((EO2 * GO1 - EO2 * EO1) * MO1) || ((EO2 * GO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
+
+        !(GO2 * 100 / HO2) || (GO2 * 100 / HO2 === Infinity) || (GO2 * 100 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / HO2);
+
+        !(HO2 * IIIO1 * 0.01 * -1) || (HO2 * IIIO1 * 0.01 * -1 === Infinity) || (HO2 * IIIO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IIIO1 * 0.01 * -1);
+
+        !(EO1 * EO2 * JJJO1 * 0.01 * MO1) || (EO1 * EO2 * JJJO1 * 0.01 * MO1 === Infinity) || (EO1 * EO2 * JJJO1 * 0.01 * MO1 === -Infinity) ? setJO2(0) : setJO2(EO1 * EO2 * JJJO1 * 0.01 * MO1);
+
+        !(EO1 - IIIO1 * 0.01 * EO1) || (EO1 - IIIO1 * 0.01 * EO1 === Infinity) || (EO1 - IIIO1 * 0.01 * EO1 === -Infinity) ? setKO1(0) : setKO1(EO1 - IIIO1 * 0.01 * EO1);
+
+        !(EO1 * 1 + (EO1 * JO2 / HO2)) || (EO1 * 1 + (EO1 * JO2 / HO2) === Infinity) || (EO1 * 1 + (EO1 * JO2 / HO2) === -Infinity) ? setKO2(0) : setKO2(EO1 * 1 + (EO1 * JO2 / HO2));
+
+        !(GO2 / CO1) || (GO2 / CO1 === Infinity) || (GO2 / CO1 === -Infinity) ? setHO3(0) : setHO3(GO2 / CO1);
 
     },);
 
@@ -152,23 +167,23 @@ export default function App() {
         <div className="app cursor-pointer">
             <div className='row'>
                 {/* 1 */}
-                <div className="col-sm-8 mb-2">
+                <div className="col-sm-8 mb-1">
                     <div className="card">
                         <div className="card-body">
-                            <h4 className="mb-5" style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
+                            <h4 className="" style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
                             <div className="row" style={{ marginTop: '0px' }}>
                                 <div className="col-md-3 d-none d-md-block">
-                                    <div className="row mt-5 " style={{ marginBottom: '220px' }}>
+                                    <div className="row mt-5 " style={{ marginBottom: '150px' }}>
                                         <div className="col-12">
                                             <FormTag4 value={GGGO1} color="input_white" title="Alto-GGGO1" onChange={handleGGGO1} val="$" onKeyPress={handleKeyPress} name="CIIO1" />
                                         </div>
                                     </div>
-                                    <div className="row" style={{ marginBottom: '140px' }}>
+                                    <div className="row" style={{ marginBottom: '80px' }}>
                                         <div className="col-12">
                                             <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIIO2" />
                                         </div>
                                     </div>
-                                    <div className="row" style={{ marginBottom: '120px' }}>
+                                    <div className="row" style={{ marginBottom: '70px' }}>
                                         <div className="col-12">
                                             <FormTag4 value={EEEO1} color="input_white" title="Alpha EEEO1" onChange={handleEEEO1} val="$" onKeyPress={handleKeyPress} name="CIIO3" />
                                         </div>
@@ -184,18 +199,18 @@ export default function App() {
                                         <div className="col-sm-12" style={{
                                             textAlign: 'center'
                                         }}>
-                                            <img src={require('../../assets/images/Group 149.png')} alt="profile" className="profile-pic just-content-center" />
+                                            <img src={require('../../assets/images/Group 149.png')} alt="profile" style={{ height: '650px' }} className="profile-pic just-content-center" />
 
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-md-3 d-none d-md-block">
-                                    <div className="row mt-3 " style={{ marginBottom: '40px' }}>
+                                    <div className="row mt-3 " style={{ marginBottom: '10px' }}>
                                         <div className="col-12">
                                             <FormTag4 value={"$ " + FO3.toFixed(2)} color="green" title="Alto 1-FFFO3" />
                                         </div>
                                     </div>
-                                    <div className="row" style={{ marginBottom: '140px' }}>
+                                    <div className="row" style={{ marginBottom: '60px' }}>
                                         <div className="col-12">
                                             <FormTag4 value={"$ " + GO2.toFixed(2)} color="green" title="Alto 2" />
                                         </div>
@@ -205,7 +220,7 @@ export default function App() {
                                             <FormTag4 value={DO2.toFixed(2)} color="blue" title="Beta 1" />
                                         </div>
                                     </div>
-                                    <div className="row" style={{ marginBottom: '300px' }}>
+                                    <div className="row" style={{ marginBottom: '160px' }}>
                                         <div className="col-12">
                                             <FormTag4 value={"$ " + DO1.toFixed(2)} color="blue" title="Beta 2" />
                                         </div>
@@ -227,38 +242,38 @@ export default function App() {
                 </div>
                 {/* 2 */}
                 <div className="col-sm-4">
-                    <div className='row mb-2'>
+                    <div className='row mb-1'>
                         <div className='col-sm-12'>
                             <div className="card">
                                 <div className="card-body">
-                                    <h4 style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
-                                    <h6 style={{ color: '#7071A4' }}>Risk Reward  <span style={{ color: '#CBCBE2' }}>{GO2 / CO1} %</span></h6>
+                                    <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
+                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)} %</span></h6>
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
-                                                <GaugeChart
+                                                <GaugeChart style={{ height: '' }}
                                                     hideText
                                                     textColor="#FFFF"
                                                     // nrOfLevels={4}
                                                     colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
                                                     // formatTextValue={(value) => '3X'}
-                                                    // percent={0.3}
+                                                    percent={HO1 ? HO1 * 0.01 : 0}
                                                     arcsLength={[0.2, 0.1, 0.2, 0.5]}
                                                 />
                                             </div>
-                                            <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO3}  <span style={{ fontSize: '25px' }}>(X)</span> </h6>
+                                            <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}<span style={{ fontSize: '20px' }}> X</span> </h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='row mb-2'>
+                    <div className='row mb-1'>
                         <div className='col-sm-12'>
                             <div className="card" style={{ borderRadius: '8px' }}>
                                 <div className="card-body">
                                     <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
-                                    <div className="row mt-3 text-center" >
+                                    <div className="row text-center" >
                                         <div className="col-sm-6">
                                             <FormTag color="green" title="Bbbo1" value={"$ " + BO1.toFixed(2)} />
                                         </div>
@@ -270,12 +285,12 @@ export default function App() {
                             </div>
                         </div>
                     </div>
-                    <div className='row mb-2'>
+                    <div className='row mb-1'>
                         <div className='col-sm-12'>
                             <div className="card" style={{ borderRadius: '8px' }}>
                                 <div className="card-body">
                                     <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
-                                    <div className="row mt-3">
+                                    <div className="row">
                                         <div className="col-6">
                                             <FormTag id="text-1" value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIIO5" />
                                         </div>
@@ -294,6 +309,14 @@ export default function App() {
                                     <div className="row">
                                         <div className="col-6">
                                             <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} onKeyPress={handleKeyPress} name="CIIO9" />
+                                        </div>
+                                    </div>
+                                    <div className="row text-center">
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" value="Clear data" />
+                                        </div>
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" value="Show Plan" />
                                         </div>
                                     </div>
                                 </div>

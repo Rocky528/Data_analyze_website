@@ -35,14 +35,32 @@ export class FormTag extends Component {
                 {this.props.color == 'input_yellow' || this.props.color == 'input_green' || this.props.color == 'input_red' || this.props.color == 'input_white' || this.props.color == 'input_blue' ?
                     <div style={{ width: "80%", marginLeft: '10%' }}>
                         <label className='px-1 ' style={this.renderSwitch(this.props.color)}>{this.props.title}</label>
-                        <Form.Group >
+                        {this.props.val == "%" ? <Form.Group >
+                            <div className="input-group" >
+                                <Form.Control
+                                    onKeyPress={this.props.onKeyPress}
+                                    ref={this.props.ref}
+                                    value={this.props.value}
+                                    type="number"
+                                    style={{ color: "white", backgroundColor: "#3B4758", borderColor: "#3B4758" }}
+                                    className="form-control"
+                                    aria-describedby="basic-addon1"
+                                    onKeyDown={this.props.onKeyDown}
+                                    onChange={this.props.onChange}
+                                    name={this.props.name}
+                                />
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text " style={{ fontSize: 14, borderRadius: '0px 6px 6px 0px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
+                                </div>
+                            </div>
+                        </Form.Group> : <Form.Group >
                             <div className="input-group" >
                                 <div className="input-group-prepend">
                                     <span className="input-group-text " style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
                                 </div>
                                 <Form.Control
-                                    onKeyPress = {this.props.onKeyPress}
-                                    ref = {this.props.ref}
+                                    onKeyPress={this.props.onKeyPress}
+                                    ref={this.props.ref}
                                     value={this.props.value}
                                     type="number"
                                     style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
@@ -50,11 +68,12 @@ export class FormTag extends Component {
                                     aria-describedby="basic-addon1"
                                     onKeyDown={this.props.onKeyDown}
                                     onChange={this.props.onChange}
-                                    name = {this.props.name}
+                                    name={this.props.name}
                                 />
 
                             </div>
-                        </Form.Group>
+                        </Form.Group>}
+
                     </div> : <div className="">
                         <span className="px-2" style={this.renderSwitch(this.props.color)}>{this.props.title}</span>
                         <div className="mt-2" style={{ fontSize: 13, color: "#CBCBE2" }}>{this.props.value}</div>
