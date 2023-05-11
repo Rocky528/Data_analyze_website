@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 const Tab2 = () => {
+    let num = Intl.NumberFormat('en-US');
     const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
     const [BO1, setBO1] = useState(0);
     const [BO2, setBO2] = useState(0);

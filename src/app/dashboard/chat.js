@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice';
 
 export default function App() {
-
+    let num = Intl.NumberFormat('en-US');
     const [countII, setCountII] = useState(2)
     const handleKeyPress = (target) => {
         if (target.charCode == 13) {
@@ -207,32 +207,32 @@ export default function App() {
                                 <div className="col-md-3 d-none d-md-block">
                                     <div className="row mt-3 " style={{ marginBottom: '10px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + FO3.toFixed(2)} color="green" title="Alto 1-FFFO3" />
+                                            <FormTag4 value={"$ " + num.format(FO3.toFixed(2))} color="green" title="Alto 1-FFFO3" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '60px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + GO2.toFixed(2)} color="green" title="Alto 2" />
+                                            <FormTag4 value={"$ " + num.format(GO2.toFixed(2))} color="green" title="Alto 2" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '50px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={DO2.toFixed(2)} color="blue" title="Beta 1" />
+                                            <FormTag4 value={num.format(DO2.toFixed(2))} color="blue" title="Beta 1" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '160px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + DO1.toFixed(2)} color="blue" title="Beta 2" />
+                                            <FormTag4 value={"$ " + num.format(DO1.toFixed(2))} color="blue" title="Beta 2" />
                                         </div>
                                     </div>
                                     <div className="row mb-5">
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + FO2.toFixed(2)} color="red" title="Theta 1" />
+                                            <FormTag4 value={"$ " + num.format(FO2.toFixed(2))} color="red" title="Theta 1" />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + FO1.toFixed(2)} color="red" title="Theta 2" />
+                                            <FormTag4 value={"$ " + num.format(FO1.toFixed(2))} color="red" title="Theta 2" />
                                         </div>
                                     </div>
                                 </div>
@@ -275,10 +275,10 @@ export default function App() {
                                     <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row text-center" >
                                         <div className="col-sm-6">
-                                            <FormTag color="green" title="Bbbo1" value={"$ " + BO1.toFixed(2)} />
+                                            <FormTag color="green" title="Bbbo1" value={"$ " + num.format(BO1.toFixed(2))} />
                                         </div>
                                         <div className="col-sm-6">
-                                            <FormTag color="green" title="Bbbo2" value={BO2.toFixed(2)} />
+                                            <FormTag color="green" title="Bbbo2" value={num.format(BO2.toFixed(2))} />
                                         </div>
                                     </div>
                                 </div>
