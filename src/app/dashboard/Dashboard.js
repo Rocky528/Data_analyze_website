@@ -118,7 +118,7 @@ const Dashboard = () => {
       setGO1(parseFloat(evt.target.value));
   }
 
-  //HHHO1 GO2/HO2
+  //HHHO1 GO2/CO1
   const [HO1, setHO1] = useState(0);
 
   //IIIO2 HO2*IO1*0.01*-1
@@ -187,7 +187,7 @@ const Dashboard = () => {
 
     !((EO2 * GO1 - EO2 * EO1) * MO1) || ((EO2 * GO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
 
-    !(GO2 * 100 / HO2) || (GO2 * 100 / HO2 === Infinity) || (GO2 * 100 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / HO2);
+    !(GO2 * 100 / CCCO1) || (GO2 * 100 / CCCO1 === Infinity) || (GO2 * 100 / CCCO1 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / CCCO1);
 
     !(HO2 * IO1 * 0.01 * -1) || (HO2 * IO1 * 0.01 * -1 === Infinity) || (HO2 * IO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IO1 * 0.01 * -1);
 
@@ -257,7 +257,7 @@ const Dashboard = () => {
               <div className="card">
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)} %</span></h6>
+                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}</span></h6>
                   <div className="row">
                     <div className="col-sm-12">
                       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >

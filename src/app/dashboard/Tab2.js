@@ -59,7 +59,7 @@ const Tab2 = () => {
 
         !((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1) || ((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1 === Infinity) || ((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1);
 
-        !(GO2 * 100 / HO2) || (GO2 * 100 / HO2 === Infinity) || (GO2 * 100 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / HO2);
+        !(GO2 * 100 / CCCO1) || (GO2 * 100 / CCCO1 === Infinity) || (GO2 * 100 / CCCO1 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / CCCO1);
 
         !(EEEO1 - IIIO1 * 0.01 * EEEO1) || (EEEO1 - IIIO1 * 0.01 * EEEO1 === Infinity) || (EEEO1 - IIIO1 * 0.01 * EEEO1 === -Infinity) ? setKO1(0) : setKO1(EEEO1 - IIIO1 * 0.01 * EEEO1);
 
@@ -158,7 +158,7 @@ const Tab2 = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)} %</span></h6>
+                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}</span></h6>
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
