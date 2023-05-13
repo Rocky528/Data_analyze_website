@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice'
 import FormTag from '../Component/FormTag';
@@ -9,9 +9,7 @@ import './style.css';
 const Dashboard = () => {
 
   let num = Intl.NumberFormat('en-US');
-  // console.log(usdc.format(111111223));
   const [countI, setCountI] = useState(2);
-  //////////////////enter key////////////////////////
   const handleKeyPress = (target) => {
     if (target.charCode == 13) {
       if (countI < 14)
@@ -22,13 +20,11 @@ const Dashboard = () => {
       const nextSibling = document.querySelector(
         `input[name=CIO${countI}]`
       );
-      // If found, focus the next field
       if (nextSibling !== null) {
         nextSibling.focus();
       }
     }
   }
-
 
   const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1 } = useSelector((state) => state.InputValue);
   const dispatch = useDispatch();
@@ -148,14 +144,6 @@ const Dashboard = () => {
   //HHHO3 GO2/CO1
   const [HO3, setHO3] = useState(0);
 
-  //LLLO1 EO3-EO1
-
-  //LLLO2 GO1-EO1
-
-  //LLLO3 GO1-EO3
-
-  //LLLO4 GO2-100
-
   useEffect(() => {
     // Update the document title using the browser API
     dispatch(InputAAAO1(AO1));
@@ -264,9 +252,7 @@ const Dashboard = () => {
                         <GaugeChart style={{ height: '' }}
                           hideText
                           textColor="#FFFF"
-                          // nrOfLevels={4}
                           colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
-                          // formatTextValue={(value) => '3X'}
                           percent={HO1 ? HO1 * 0.01 : 0}
                           arcsLength={[0.2, 0.1, 0.2, 0.5]}
                         />
@@ -293,24 +279,18 @@ const Dashboard = () => {
                     <div className="col-4">
                       <FormTag color="green" title="Equivalent Qty" value={BO2.toFixed(2)} />
                     </div>
-                    {/* </div> */}
-                    {/* <div className="row mt-4"> */}
                     <div className="col-4 mb-4">
                       <FormTag color="red" title="Fffo2" value={"$ " + num.format(FO2.toFixed(2))} />
                     </div>
                     <div className="col-4">
                       <FormTag color="green" title="Fffo3" value={"$ " + num.format(FO3.toFixed(2))} />
                     </div>
-                    {/* </div>
-                  <div className="row mt-4"> */}
                     <div className="col-4">
                       <FormTag color="yellow" title="Hhho2" value={"$ " + num.format(HO2.toFixed(2))} />
                     </div>
                     <div className="col-4 mb-4">
                       <FormTag color="green" title="Gggo2" value={"$ " + num.format(GO2.toFixed(2))} />
                     </div>
-                    {/* </div>
-                  <div className="row mt-4"> */}
                     <div className='col-2'></div>
                     <div className="col-4">
                       <FormTag color="yellow" title="Dddo1" value={"$ " + num.format(DO1.toFixed(2))} />
@@ -333,18 +313,12 @@ const Dashboard = () => {
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1" onKeyPress={handleKeyPress} name="CIO6" />
                     </div>
-                    {/* </div>
-                  <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO2} color="input_blue" title="eeeo2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO7" />
                     </div>
-                    {/* </div>
-                  <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3" onKeyPress={handleKeyPress} name="CIO8" />
                     </div>
-                    {/* </div>
-                  <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={GGGO1} color="input_green" val="$" title="gggo1" onChange={handleGGGO1} onKeyPress={handleKeyPress} name="CIO9" />
                     </div>
@@ -376,16 +350,12 @@ const Dashboard = () => {
                     <div className="col-4">
                       <FormTag1 color="blue" title="Mmmo1" value={num.format((MO1 * 1).toFixed(1))} />
                     </div>
-                    {/* </div>
-                  <div className="row mt-4"> */}
                     <div className="col-4 mb-4">
                       <FormTag1 color="red" title="Iiio2" value={"$ " + num.format(IO2.toFixed(2))} />
                     </div>
                     <div className="col-4">
                       <FormTag1 color="green" title="Jjjo2" value={"$ " + num.format(JO2.toFixed(2))} />
                     </div>
-                    {/* </div>
-                  <div className="row mt-4"> */}
                     <div className="col-4">
                       <FormTag1 color="red" title="Kkko1" value={"$ " + num.format(KO1.toFixed(2))} />
                     </div>
@@ -406,18 +376,12 @@ const Dashboard = () => {
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1" onChange={handleEEEO1} onKeyPress={handleKeyPress} name="CIO10" />
                     </div>
-                    {/* </div>
-                  <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO2} color="input_blue" title="Eeeo2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO11" />
                     </div>
-                    {/* </div>
-                  <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1" onChange={handleIIIO1} onKeyPress={handleKeyPress} name="CIO12" />
                     </div>
-                    {/* </div>
-                  <div className="row mt-1"> */}
                     <div className="col-6">
                       <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1" onChange={handleJJJO1} onKeyPress={handleKeyPress} name="CIO13" />
                     </div>

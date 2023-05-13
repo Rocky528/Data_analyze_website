@@ -5,7 +5,7 @@ import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux'
-import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice';
+import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1 } from '../../reducers/InputSlice';
 
 export default function App() {
     let num = Intl.NumberFormat('en-US');
@@ -17,19 +17,15 @@ export default function App() {
             else {
                 setCountII(1);
             }
-            console.log(countII);
             const nextSibling = document.querySelector(
                 `input[name=CIIO${countII}]`
             );
-            console.log(nextSibling);
-
             // If found, focus the next field
             if (nextSibling !== null) {
                 nextSibling.focus();
             }
         }
     }
-    const [gauge, setGauge] = useState(0.1);
     const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
     const dispatch = useDispatch();
 
@@ -254,9 +250,7 @@ export default function App() {
                                                 <GaugeChart style={{ height: '' }}
                                                     hideText
                                                     textColor="#FFFF"
-                                                    // nrOfLevels={4}
                                                     colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
-                                                    // formatTextValue={(value) => '3X'}
                                                     percent={HO1 ? HO1 * 0.01 : 0}
                                                     arcsLength={[0.2, 0.1, 0.2, 0.5]}
                                                 />

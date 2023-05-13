@@ -32,10 +32,10 @@ export class FormTag extends Component {
     render() {
         return (
             <>
-                {this.props.color == 'input_yellow' || this.props.color == 'input_green' || this.props.color == 'input_red' || this.props.color == 'input_white' || this.props.color == 'input_blue' ?
+                {this.props.color === 'input_yellow' || this.props.color === 'input_green' || this.props.color === 'input_red' || this.props.color === 'input_white' || this.props.color === 'input_blue' ?
                     <div style={{ width: "80%", marginLeft: '10%' }}>
                         <label className='px-1 ' style={this.renderSwitch(this.props.color)}>{this.props.title}</label>
-                        {this.props.val == "%" ? <Form.Group >
+                        {this.props.val === "%" ? <Form.Group >
                             <div className="input-group" >
                                 <Form.Control
                                     onKeyPress={this.props.onKeyPress}

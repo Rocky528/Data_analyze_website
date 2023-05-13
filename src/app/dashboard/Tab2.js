@@ -4,14 +4,12 @@ import FormTag1 from '../Component/FormTag1';
 import FormTag2 from '../Component/FormTag2';
 import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
-import { useSelector, useDispatch } from 'react-redux'
-
-
+import { useSelector } from 'react-redux'
 
 
 const Tab2 = () => {
     let num = Intl.NumberFormat('en-US');
-    const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
+    const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1 } = useSelector((state) => state.InputValue);
     const [BO1, setBO1] = useState(0);
     const [BO2, setBO2] = useState(0);
     const [HO2, setHO2] = useState(0);
@@ -67,22 +65,6 @@ const Tab2 = () => {
 
         !(HO2 * IIIO1 * 0.01 * -1) || (HO2 * IIIO1 * 0.01 * -1 === Infinity) || (HO2 * IIIO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IIIO1 * 0.01 * -1);
         !(HO2 - (EEEO3 / EEEO1 * HO2)) || (HO2 - (EEEO3 / EEEO1 * HO2) === Infinity) || (HO2 - (EEEO3 / EEEO1 * HO2) === -Infinity) ? setFO1(0) : setFO1(HO2 - (EEEO3 / EEEO1 * HO2));
-
-        // setBO1(AAAO1 * 0.01 * AAAO2);
-        // setBO2(BO1 / EEEO1 / MMMO1);
-        // setHO2(EEEO1 * EEEO2 * MMMO1);
-        // setFO1(HO2 - (EEEO3 / EEEO1 * HO2));
-        // setDO2((CCCO1 / (EEEO1 - EEEO3) / MMMO1));
-        // setFO2(EEEO1 - (CCCO1 / EEEO2) / MMMO1);
-        // setFO3(EEEO1 + (EEEO1 * CCCO2 / HO2));
-        // setGO2((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MMMO1);
-        // setDO1((CCCO1 / (EEEO1 - EEEO3) / MMMO1) * EEEO1 * MMMO1);
-        // setHO1(GO2 * 100 / HO2);
-        // setHO3(GO2 / CCCO1);
-        // setIO2(HO2 * IIIO1 * 0.01 * -1);
-        // setJO2(EEEO1 * EEEO2 * JJJO1 * MMMO1);
-        // setKO1(EEEO1 - IIIO1 * EEEO1);
-        // setKO2(EEEO1 + (EEEO1 * JO2 / HO2));
         setLO1(EEEO3 - EEEO1);
         setLO2(GGGO1 - EEEO1);
         setLO3(GGGO1 - EEEO3);
@@ -165,9 +147,7 @@ const Tab2 = () => {
                                                 <GaugeChart style={{ height: '' }}
                                                     hideText
                                                     textColor="#FFFF"
-                                                    // nrOfLevels={4}
                                                     colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
-                                                    // formatTextValue={(value) => '3X'}
                                                     percent={HO1 ? HO1 * 0.01 : 0}
                                                     arcsLength={[0.2, 0.1, 0.2, 0.5]}
                                                 />
@@ -197,8 +177,6 @@ const Tab2 = () => {
                                         <div className="col-4 mb-4">
                                             <FormTag1 color="green" title="Jjjo2" value={"$ " + num.format(JO2.toFixed(2))} />
                                         </div>
-                                        {/* </div>
-                  <div className="row mt-4"> */}
                                         <div className="col-4 mb-4">
                                             <FormTag1 color="red" title="Kkko1" value={"$ " + num.format(KO1.toFixed(2))} />
                                         </div>
@@ -220,11 +198,10 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Price Trading Plan</h4>
                                     <ul className="p-0 ">
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="yellow" title="EEEO1" value={num.format(parseFloat(EEEO1).toFixed(2)) + " $"} img="a1" />
+                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + (!EEEO1 || EEEO1 === Infinity || EEEO1 === -Infinity ? "0" : (num.format(parseFloat(EEEO1).toFixed(2))))} img="a1" />
                                         </li>
-                                        {/*  */}
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="blue" title="EEEO2" value={num.format(parseFloat(EEEO2).toFixed(1))} img="a2" />
+                                            <FormTag2 color="blue" title="EEEO2" value={!EEEO2 || EEEO2 === Infinity || EEEO2 === -Infinity ? "0" : num.format(parseFloat(EEEO2).toFixed(1))} img="a2" />
                                         </li>
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="red" title="FFFO2" value={"$ " + num.format(FO2.toFixed(2))} img="a3" />
@@ -244,10 +221,10 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Percentile Trade Plane</h4>
                                     <ul className="p-0">
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + num.format(parseFloat(EEEO1).toFixed(2))} img="a1" />
+                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + (!EEEO1 || EEEO1 === Infinity || EEEO1 === -Infinity ? "0" : (num.format(parseFloat(EEEO1).toFixed(2))))} img="a1" />
                                         </li>
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="blue" title="EEEO2" value={num.format(parseFloat(EEEO2).toFixed(1))} img="a2" />
+                                            <FormTag2 color="blue" title="EEEO2" value={!EEEO2 || EEEO2 === Infinity || EEEO2 === -Infinity ? "0" : num.format(parseFloat(EEEO2).toFixed(1))} img="a2" />
                                         </li>
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="red" title="KKKO1" value={"$ " + num.format(KO1.toFixed(2))} img="a3" />
