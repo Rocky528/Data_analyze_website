@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import { Form } from 'react-bootstrap';
 
 
 export class FormTag3 extends Component {
@@ -31,7 +29,6 @@ export class FormTag3 extends Component {
             <>
                 <div>
                     <span style={this.renderSwitch(this.props.color)} >{this.props.value}</span>
-                    {/* <div className="mt-2 ml-2" style={this.renderSwitch(this.props.color)}>{this.props.value}</div> */}
                 </div>
             </>
         )

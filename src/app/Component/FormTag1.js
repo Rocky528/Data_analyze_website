@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Form } from 'react-bootstrap';
-
 
 export class FormTag1 extends Component {
 

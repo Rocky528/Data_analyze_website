@@ -22,7 +22,7 @@ export class FormTag extends Component {
     render() {
         return (
             <>
-                {this.props.color == 'input_white' ?
+                {this.props.color === 'input_white' ?
                     <div style={{ width: "80%", marginLeft: '10%' }}>
                         <Form.Group >
                             <div className="input-group" >
@@ -37,7 +37,7 @@ export class FormTag extends Component {
                                     className="form-control"
                                     aria-describedby="basic-addon1"
                                     onChange={this.props.onChange}
-                                    name = {this.props.name}
+                                    name={this.props.name}
                                 />
 
                             </div>
