@@ -38,11 +38,11 @@ class Sidebar extends Component {
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
         <div className="sidebar-brand-wrapper mt-2 d-none d-lg-flex align-items-center justify-content-center fixed-top">
 
-          <a className="sidebar-brand brand-logo" style={{ color: 'white' }} href="index.html">
-            <img style={{ height: '100%',width:'100%' }} src={require('../../assets/images/logo.png')} alt="logo" />
+          <a className="sidebar-brand brand-logo mt-5" style={{ color: 'white' }} href="index.html">
+            <img style={{ height: '19%',width:'100%' }} src={require('../../assets/images/logo4.png')} alt="logo" />
           </a>
         </div>
-        <ul className="nav">
+        <ul className="nav mt-3">
           <li className="nav-item nav-category">
             <span className="nav-link"></span>
           </li>

@@ -249,7 +249,7 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Trade Risk Management</h4>
                   <div className="row">
                     <div className="col-6">
-                      <FormTag  value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" />
+                      <FormTag value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" />
                     </div>
                     <div className="col-6">
                       <FormTag onKeyPress={handleKeyPress} value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} name="CIO2" />
@@ -285,7 +285,7 @@ const Dashboard = () => {
                           hideText
                           textColor="#FFFF"
                           colors={["#FF0000", "#0A5D00", "#0EFF00"]}
-                          percent={HO1 ? HO1 * 0.01 : 0}
+                          percent={HO1 ? HO1.toFixed(2) : 0}
                           arcsLength={[0.15, 0.35, 0.5]}
                         />
                       </div>
@@ -327,7 +327,7 @@ const Dashboard = () => {
                       <FormTag color="yellow" title="Dddo1" value={"$ " + num.format(DO1.toFixed(2))} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="green" title="Hhho1" value={HO1.toFixed(0) + "%"} />
+                      <FormTag color="green" title="Hhho1" value={(HO1 * 100).toFixed(0) + "%"} />
                     </div>
                   </div>
                 </div>
@@ -377,7 +377,7 @@ const Dashboard = () => {
                   <h4 className='F' style={{ color: "#CBCBE2" }}>Percentile Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-4">
-                      <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
+                      <FormTag1 color="red" title="Hhho2" value={"$ "+HO2.toFixed(0)} />
                     </div>
                     <div className="col-4">
                       <FormTag1 color="blue" title="Mmmo1" value={num.format((MO1 * 1).toFixed(1))} />

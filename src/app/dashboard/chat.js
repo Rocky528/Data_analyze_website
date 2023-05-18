@@ -140,7 +140,7 @@ export default function App() {
 
         !((EO2 * GO1 - EO2 * EO1) * MO1) || ((EO2 * GO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
 
-        !(GO2 * 100 / CCCO1) || (GO2 * 100 / CCCO1 === Infinity) || (GO2 * 100 / CCCO1 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / CCCO1);
+        !(GO2 / HO2) || (GO2 / HO2 === Infinity) || (GO2 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 / HO2);
 
         !(HO2 * IIIO1 * 0.01 * -1) || (HO2 * IIIO1 * 0.01 * -1 === Infinity) || (HO2 * IIIO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IIIO1 * 0.01 * -1);
 
@@ -206,7 +206,7 @@ export default function App() {
                                             <FormTag value={CCCO2} color="input_green" title="ccco2" onChange={handleCCCO2} val="$" onKeyPress={handleKeyPress} name="CIIO8" />
                                         </div>
                                     </div>
-                                    <div className="row">
+                                    <div className="row mb-3">
                                         <div className="col-6">
                                             <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} onKeyPress={handleKeyPress} name="CIIO9" />
                                         </div>
@@ -238,7 +238,7 @@ export default function App() {
                                                     hideText
                                                     textColor="#FFFF"
                                                     colors={["#FF0000", "#0A5D00", "#0EFF00"]}
-                                                    percent={HO1 ? HO1 * 0.01 : 0}
+                                                    percent={HO1 ? HO1.toFixed(2) : 0}
                                                     arcsLength={[0.15, 0.35, 0.5]}
                                                 />
                                             </div>
@@ -283,8 +283,8 @@ export default function App() {
                                         <div className="col-sm-12 " style={{
                                             textAlign: 'center'
                                         }}>
-                                            <div style={{ width: '60%'  }}>
-                                                <img src={require('../../assets/images/Group 149.png')} alt="profile" style={{ height: '650px',width:'100%' }} className="profile-pic just-content-center" />
+                                            <div style={{ width: '60%' }}>
+                                                <img src={require('../../assets/images/Group 149.png')} alt="profile" style={{ height: '650px', width: '100%' }} className="profile-pic just-content-center" />
                                             </div>
                                         </div>
                                     </div>
