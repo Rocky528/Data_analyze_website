@@ -154,13 +154,11 @@ export default function App() {
 
     },);
 
-    const PricePostionDelete = () => {
-        // alert('w')
-        setAO1('');
-        setAO2('');
-        setCO1('');
-        setCO2('');
-        setMO1('');
+    const SummaryDelete = () => {
+        setGO1('');
+        setEO2('');
+        setEO1('');
+        setEO3('');
     }
 
     return (
@@ -213,7 +211,7 @@ export default function App() {
                                     </div>
                                     <div className="row text-center">
                                         <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" onClick={PricePostionDelete} value="Clear data" />
+                                            <ButtonTag color="input_green" title="Price" onClick={SummaryDelete} value="Clear data" />
                                         </div>
                                         <div className="col-6">
                                             <Link to="detailed_report1">
@@ -230,7 +228,7 @@ export default function App() {
                             <div className="card">
                                 <div className="card-body">
                                     <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(2)} %</span></h6>
+                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{(HO1 * 100).toFixed(2)} %</span></h6>
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >

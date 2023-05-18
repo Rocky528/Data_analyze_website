@@ -104,37 +104,15 @@ const Tab2 = () => {
         }
 
     }
-    const PriceDelete = (p) => {
-        if (p === 1) {
-            setEO1(0);
-            setEO2(0);
-            setEO3(0);
-            setFO2(0);
-            setFO3(0);
-            dispatch(InputEEEO1(EO1));
-            dispatch(InputEEEO3(EO3));
-            dispatch(InputEEEO2(EO2));
-        }
-        else if (p === 2) {
-            setEO1(0);
-            setEO2(0);
-            setEO3(0);
-            setKO1(0);
-            setKO2(0);
-            dispatch(InputEEEO1(EO1));
-            dispatch(InputEEEO3(EO3));
-            dispatch(InputEEEO2(EO2));
+    const PriceDelete = () => {
+        setTEO1(0);
+        setTEO2(0);
+        setTEO3(0);
+        setTFO2(0);
+        setTFO3(0);
+        setTKO1(0);
+        setTKO2(0);
 
-        }
-        else if (p === 3) {
-            setTEO1(0);
-            setTEO2(0);
-            setTEO3(0);
-            setTFO2(0);
-            setTFO3(0);
-            setTKO1(0);
-            setTKO2(0);
-        }
     }
     return (
         <div className='cursor-pointer'>
@@ -206,7 +184,7 @@ const Tab2 = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(2)} %</span></h6>
+                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{(HO1 * 100).toFixed(2)} %</span></h6>
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
@@ -276,12 +254,11 @@ const Tab2 = () => {
                                             <FormTag2 color="green" title="FFFO3" value={"$ " + num.format((FO3 * 1).toFixed(2))} img="a1" />
                                         </li>
                                     </ul>
-                                    <div className="row mt-2 text-center">
-                                        <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" onClick={() => PriceDelete(1)} value="Clear data" />
-                                        </div>
-                                        <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" onClick={() => LogPlan(1)} value="Log Plan" />
+                                    <div className="row mt-2">
+                                        <div className="col">
+                                            <div className="float-right">
+                                                <ButtonTag color="input_green" onClick={() => LogPlan(1)} title="Percent" value="Log Plan" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +269,7 @@ const Tab2 = () => {
                         <div className='col-sm-12'>
                             <div className="card">
                                 <div className="card-body">
-                                    <h4 style={{ color: "#CBCBE2" }}>My Percentile Trade Plane</h4>
+                                    <h4 style={{ color: "#CBCBE2" }}>My Percentile Trade</h4>
                                     <ul className="p-0">
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="yellow" title="EO1" value={"$ " + (!EO1 || EO1 === Infinity || EO1 === -Infinity ? "0" : (num.format(parseFloat(EO1).toFixed(2))))} img="a1" />
@@ -307,12 +284,11 @@ const Tab2 = () => {
                                             <FormTag2 color="green" title="KKKO2" value={"$ " + num.format((KO2 * 1).toFixed(2))} img="a1" />
                                         </li>
                                     </ul>
-                                    <div className="row mt-2 text-center">
-                                        <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" onClick={() => PriceDelete(2)} value="Clear data" />
-                                        </div>
-                                        <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" onClick={() => LogPlan(2)} value="Log Plan" />
+                                    <div className="row mt-2">
+                                        <div className="col">
+                                            <div className="float-right">
+                                                <ButtonTag color="input_green" onClick={() => LogPlan(2)} title="Percent" value="Log Plan" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -331,7 +307,7 @@ const Tab2 = () => {
                                     <h4 className="card-title">Responsive Table</h4>
                                 </div>
                                 <div className="col text-right" style={{ marginTop: "-7px" }}>
-                                    <ButtonTag color="input_green" onClick={() => PriceDelete(3)} title="Percent" value="Clear Plan" />
+                                    <ButtonTag color="input_green" onClick={PriceDelete} title="Percent" value="Clear Plan" />
                                 </div>
                             </div>
                             <div className='row'>
@@ -346,7 +322,6 @@ const Tab2 = () => {
                                                     <th>POSITION SIZE</th>
                                                     <th>STOP PRICE</th>
                                                     <th>SELL PRICE</th>
-                                                    <th>TRADE RATING</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -357,7 +332,6 @@ const Tab2 = () => {
                                                     <td>{num.format(TEO2.toFixed(2))}</td>
                                                     <td>{num.format(TFO2.toFixed(2))}</td>
                                                     <td>{num.format(TFO3.toFixed(2))}</td>
-                                                    <td>Pending</td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
@@ -366,12 +340,10 @@ const Tab2 = () => {
                                                     <td>{num.format(TEO2.toFixed(2))}</td>
                                                     <td>{num.format(TKO1.toFixed(2))}</td>
                                                     <td>{num.format(TKO2.toFixed(2))}</td>
-                                                    <td>Fixed</td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
                                                     <td> <TableInput /> </td>
-                                                    <td><TableInput /></td>
                                                     <td><TableInput /></td>
                                                     <td><TableInput /></td>
                                                     <td><TableInput /></td>
@@ -390,7 +362,7 @@ const Tab2 = () => {
                         <div className='col-sm-12'>
                             <div className="card">
                                 <div className="card-body">
-                                    <h4 style={{ color: "#CBCBE2" }}>Percentile Trading</h4>
+                                    <h4 style={{ color: "#CBCBE2" }}>My Trade Metrics</h4>
                                     <ul className="p-0">
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="white" title="LLLO1" value={"$ " + num.format(parseFloat(LO1.toFixed(2)))} img="a1" />

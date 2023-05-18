@@ -3,9 +3,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Spinner from '../app/shared/Spinner';
 
+const INtro = lazy(() => import('./dashboard/Introduction'));
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const Tab1 = lazy(() => import('./dashboard/chat'));
 const Tab2 = lazy(() => import('./dashboard/Tab2'));
+
 
 
 class AppRoutes extends Component {
@@ -13,6 +15,7 @@ class AppRoutes extends Component {
     return (
       <Suspense fallback={<Spinner />}>
         <Switch>
+          <Route exact path="/intro" component={INtro} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/tab1" component={Tab1} />
           <Route exact path="/tab2" component={Tab2} />
