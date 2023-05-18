@@ -39,7 +39,7 @@ class Sidebar extends Component {
         <div className="sidebar-brand-wrapper mt-2 d-none d-lg-flex align-items-center justify-content-center fixed-top">
 
           <a className="sidebar-brand brand-logo" style={{ color: 'white' }} href="index.html">
-            <img style={{ height: '70px' }} src={require('../../assets/images/logo.png')} alt="logo" />
+            <img style={{ height: '100%',width:'100%' }} src={require('../../assets/images/logo.png')} alt="logo" />
           </a>
         </div>
         <ul className="nav">

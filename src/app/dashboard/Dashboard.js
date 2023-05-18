@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } from '../../reducers/InputSlice'
 import FormTag from '../Component/FormTag';
 import FormTag1 from '../Component/FormTag1';
 import GaugeChart from "react-gauge-chart";
 import ButtonTag from '../Component/ButtonTag';
 import './style.css';
+
 const Dashboard = () => {
 
   let num = Intl.NumberFormat('en-US');
@@ -36,13 +38,18 @@ const Dashboard = () => {
   const [BO1, setBO1] = useState(0);
 
   const handleAAAO1 = (evt) => {
-    if (evt.target.value <= 10000000)
-      setAO1(parseFloat(evt.target.value));
+    let EAO1 = evt.target.value;
+    let MAO1 = Number(EAO1.replace(/,/g, ''));
+    if (MAO1 <= 10000000)
+      setAO1(parseFloat(MAO1));
   }
 
+
   const handleAAAO2 = (evt) => {
-    if (evt.target.value <= 100000)
-      setAO2(parseFloat(evt.target.value));
+    let EAO2 = evt.target.value;
+    let MAO2 = Number(EAO2.replace(/,/g, ''));
+    if (MAO2 <= 100000)
+      setAO2(parseFloat(MAO2));
   }
 
   //BBBO2 BO1/EO1/MO1
@@ -53,12 +60,16 @@ const Dashboard = () => {
   const [MO1, setMO1] = useState(MMMO1);
 
   const handleMMMO1 = (evt) => {
-    if (evt.target.value <= 1000)
-      setMO1(parseFloat(evt.target.value));
+    let EMO1 = evt.target.value;
+    let MMO2 = Number(EMO1.replace(/,/g, ''));
+    if (MMO2 <= 1000)
+      setMO1(parseFloat(MMO2));
   }
   const handleEEEO1 = (evt) => {
-    if (evt.target.value <= 100000)
-      setEO1(parseFloat(evt.target.value));
+    let EEO1 = evt.target.value;
+    let MEO1 = Number(EEO1.replace(/,/g, ''));
+    if (MEO1 <= 100000)
+      setEO1(parseFloat(MEO1));
   }
 
   //DDDO1 (CO1/(EO1-EO3)/MO1)*EO1*MO1
@@ -69,12 +80,16 @@ const Dashboard = () => {
   let EEEO3temp = (EEEO3 === 0) ? "" : EEEO3;
   const [EO3, setEO3] = useState(EEEO3temp);
   const handleCCCO1 = (evt) => {
-    if (evt.target.value <= 100000)
-      setCO1(parseFloat(evt.target.value));
+    let ECO1 = evt.target.value;
+    let MCO1 = Number(ECO1.replace(/,/g, ''));
+    if (MCO1 <= 100000)
+      setCO1(parseFloat(MCO1));
   }
   const handleEEEO3 = (evt) => {
-    if (evt.target.value <= 100000)
-      setEO3(parseFloat(evt.target.value));
+    let EEO3 = evt.target.value;
+    let MEO3 = Number(EEO3.replace(/,/g, ''));
+    if (MEO3 <= 100000)
+      setEO3(parseFloat(MEO3));
   }
 
   //DDDO2 (CO1/(EO1-EO3)/MO1)
@@ -86,8 +101,10 @@ const Dashboard = () => {
   let EEEO2temp = (EEEO2 === 0) ? "" : EEEO2;
   const [EO2, setEO2] = useState(EEEO2temp);
   const handleEEEO2 = (evt) => {
-    if (evt.target.value <= 100000)
-      setEO2(parseFloat(evt.target.value));
+    let EEO2 = evt.target.value;
+    let MEO2 = Number(EEO2.replace(/,/g, ''));
+    if (MEO2 <= 100000)
+      setEO2(parseFloat(MEO2));
   }
 
   //FFFO1 HO2-(EO3/EO1*HO2)
@@ -101,8 +118,10 @@ const Dashboard = () => {
   let CCCO2temp = (CCCO2 === 0) ? "" : CCCO2;
   const [CO2, setCO2] = useState(CCCO2temp);
   const handleCCCO2 = (evt) => {
-    if (evt.target.value <= 100000)
-      setCO2(parseFloat(evt.target.value));
+    let ECO2 = evt.target.value;
+    let MCO2 = Number(ECO2.replace(/,/g, ''));
+    if (MCO2 <= 100000)
+      setCO2(parseFloat(MCO2));
   }
 
   //GGGO2 (EO2*GO1-EO2*EO1)*MO1
@@ -110,8 +129,10 @@ const Dashboard = () => {
   let GGGO1temp = (GGGO1 === 0) ? "" : GGGO1;
   const [GO1, setGO1] = useState(GGGO1temp);
   const handleGGGO1 = (evt) => {
-    if (evt.target.value <= 100000)
-      setGO1(parseFloat(evt.target.value));
+    let EGO1 = evt.target.value;
+    let MGO1 = Number(EGO1.replace(/,/g, ''));
+    if (MGO1 <= 100000)
+      setGO1(parseFloat(MGO1));
   }
 
   //HHHO1 GO2/CO1
@@ -122,8 +143,10 @@ const Dashboard = () => {
   let IIIO1temp = (IIIO1 === 0) ? "" : IIIO1;
   const [IO1, setIO1] = useState(IIIO1temp);
   const handleIIIO1 = (evt) => {
-    if (evt.target.value <= 100000)
-      setIO1(parseFloat(evt.target.value));
+    let EIO1 = evt.target.value;
+    let MIO1 = Number(EIO1.replace(/,/g, ''));
+    if (MIO1 <= 100000)
+      setIO1(parseFloat(MIO1));
   }
 
   //JJJO2 EO1*EO2*JO1*MO1
@@ -131,8 +154,10 @@ const Dashboard = () => {
   let JJJO1temp = (JJJO1 === 0) ? "" : JJJO1;
   const [JO1, setJO1] = useState(JJJO1temp);
   const handleJJJO1 = (evt) => {
-    if (evt.target.value <= 100000)
-      setJO1(evt.target.value);
+    let EJO1 = evt.target.value;
+    let MJO1 = Number(EJO1.replace(/,/g, ''));
+    if (MJO1 <= 100000)
+      setJO1(MJO1);
   }
 
   //KKKO1 EO1-IO1*EO1
@@ -175,7 +200,7 @@ const Dashboard = () => {
 
     !((EO2 * GO1 - EO2 * EO1) * MO1) || ((EO2 * GO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GO1 - EO2 * EO1) * MO1);
 
-    !(GO2 * 100 / CCCO1) || (GO2 * 100 / CCCO1 === Infinity) || (GO2 * 100 / CCCO1 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / CCCO1);
+    !(GO2 / HO2) || (GO2 / HO2 === Infinity) || (GO2 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 / HO2);
 
     !(HO2 * IO1 * 0.01 * -1) || (HO2 * IO1 * 0.01 * -1 === Infinity) || (HO2 * IO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IO1 * 0.01 * -1);
 
@@ -188,6 +213,13 @@ const Dashboard = () => {
     !(GO2 / CO1) || (GO2 / CO1 === Infinity) || (GO2 / CO1 === -Infinity) ? setHO3(0) : setHO3(GO2 / CO1);
   },);
 
+  const PricePostionDelete = () => {
+    setEO1('');
+    setEO2('');
+    setEO3('');
+    setGO1('');
+  }
+
   return (
     <div>
       <div className="row ">
@@ -197,7 +229,7 @@ const Dashboard = () => {
             <div className='col-sm-12'>
               <div className="card" style={{ borderRadius: '8px' }}>
                 <div className="card-body">
-                  <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Risk</h4>
+                  <h4 className='' style={{ color: "#CBCBE2" }}>My Portfolio Risk</h4>
                   <div className="row text-center" >
                     <div className="col-sm-6">
                       <FormTag color="green" title="Risk Per Trade" value={"$ " + num.format(BO1.toFixed(2))} />
@@ -217,10 +249,10 @@ const Dashboard = () => {
                   <h4 style={{ color: "#CBCBE2" }}>Trade Risk Management</h4>
                   <div className="row">
                     <div className="col-6">
-                      <FormTag key={0} value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" />
+                      <FormTag  value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" />
                     </div>
                     <div className="col-6">
-                      <FormTag id="text-2" onKeyPress={handleKeyPress} value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} name="CIO2" />
+                      <FormTag onKeyPress={handleKeyPress} value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} name="CIO2" />
                     </div>
                   </div>
                   <div className="row">
@@ -245,19 +277,19 @@ const Dashboard = () => {
               <div className="card">
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}</span></h6>
+                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(2)} %</span></h6>
                   <div className="row">
                     <div className="col-sm-12">
                       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
-                        <GaugeChart style={{ height: '' }}
+                        <GaugeChart
                           hideText
                           textColor="#FFFF"
-                          colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
+                          colors={["#FF0000", "#0A5D00", "#0EFF00"]}
                           percent={HO1 ? HO1 * 0.01 : 0}
-                          arcsLength={[0.2, 0.1, 0.2, 0.5]}
+                          arcsLength={[0.15, 0.35, 0.5]}
                         />
                       </div>
-                      <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}<span style={{ fontSize: '20px' }}> X</span> </h6>
+                      <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO3.toFixed(2)}<span style={{ fontSize: '20px' }}> X</span> </h6>
                     </div>
                   </div>
                 </div>
@@ -273,32 +305,30 @@ const Dashboard = () => {
                 <div className="card-body">
                   <h4 className='' style={{ color: "#CBCBE2" }}>Risk Metrics</h4>
                   <div className="row mt-3 text-center">
-                    <div className="col-4">
+                    <div className="col-6">
                       <FormTag color="red" title="Fffo1" value={"$" + num.format(FO1.toFixed(2))} />
                     </div>
-                    <div className="col-4">
+                    <div className="col-6 mb-4">
                       <FormTag color="green" title="Equivalent Qty" value={BO2.toFixed(2)} />
                     </div>
-                    <div className="col-4 mb-4">
+                    <div className="col-6 ">
                       <FormTag color="red" title="Fffo2" value={"$ " + num.format(FO2.toFixed(2))} />
                     </div>
-                    <div className="col-4">
+                    <div className="col-6 mb-4" >
                       <FormTag color="green" title="Fffo3" value={"$ " + num.format(FO3.toFixed(2))} />
                     </div>
-                    <div className="col-4">
+                    <div className="col-6">
                       <FormTag color="yellow" title="Hhho2" value={"$ " + num.format(HO2.toFixed(2))} />
                     </div>
-                    <div className="col-4 mb-4">
+                    <div className="col-6 mb-4">
                       <FormTag color="green" title="Gggo2" value={"$ " + num.format(GO2.toFixed(2))} />
                     </div>
-                    <div className='col-2'></div>
-                    <div className="col-4">
+                    <div className="col-6">
                       <FormTag color="yellow" title="Dddo1" value={"$ " + num.format(DO1.toFixed(2))} />
                     </div>
-                    <div className="col-4">
+                    <div className="col-6">
                       <FormTag color="green" title="Hhho1" value={HO1.toFixed(0) + "%"} />
                     </div>
-                    <div className='col-2'></div>
                   </div>
                 </div>
               </div>
@@ -325,10 +355,12 @@ const Dashboard = () => {
                   </div>
                   <div className="row mt-2 text-center">
                     <div className="col-6">
-                      <ButtonTag color="input_green" title="Price" value="Clear data" />
+                      <ButtonTag color="input_green" title="Price" onClick={PricePostionDelete} value="Clear data" />
                     </div>
                     <div className="col-6">
-                      <ButtonTag color="input_green" title="Price" value="Show Plan" />
+                      <Link to="detailed_report1">
+                        <ButtonTag color="input_green" title="Price" value="Show Plan" />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -342,7 +374,7 @@ const Dashboard = () => {
             <div className='col-sm-12'>
               <div className="card">
                 <div className="card-body">
-                  <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentile Metrics</h4>
+                  <h4 className='F' style={{ color: "#CBCBE2" }}>Percentile Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-4">
                       <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />

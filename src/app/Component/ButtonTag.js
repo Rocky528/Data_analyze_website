@@ -20,7 +20,7 @@ export class ButtonTag extends Component {
     render() {
         return (
             <>
-                <button type="button" style={this.renderSwitch(this.props.title)} className="btn btn-outline-info btn-md px-2.5 py-2">{this.props.value}</button>
+                <button type="button" onClick={this.props.onClick} style={this.renderSwitch(this.props.title)} className="btn btn-outline-info btn-md px-2.5 py-2">{this.props.value}</button>
             </>
         )
     }

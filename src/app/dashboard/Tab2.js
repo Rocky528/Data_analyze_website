@@ -4,12 +4,30 @@ import FormTag1 from '../Component/FormTag1';
 import FormTag2 from '../Component/FormTag2';
 import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
-import { useSelector } from 'react-redux'
-
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import TableInput from '../Component/TableInput';
+import NumberInput from '../Component/NumberInput';
+import './style.css';
+import { InputEEEO1, InputEEEO3, InputEEEO2 } from '../../reducers/InputSlice'
 
 const Tab2 = () => {
+    const [myNumber, setMyNumber] = useState('12345');
+
+    const handleNumberChange = (newValue) => {
+        // Remove commas from the formatted value and update state
+        const numericValue = parseInt(newValue.replace(/[^0-9]/g, ''), 10);
+        setMyNumber(numericValue.toString());
+    };
+
+
     let num = Intl.NumberFormat('en-US');
     const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1 } = useSelector((state) => state.InputValue);
+    const dispatch = useDispatch();
+
+    const [EO1, setEO1] = useState(EEEO1);
+    const [EO2, setEO2] = useState(EEEO2);
+    const [EO3, setEO3] = useState(EEEO3);
     const [BO1, setBO1] = useState(0);
     const [BO2, setBO2] = useState(0);
     const [HO2, setHO2] = useState(0);
@@ -40,36 +58,92 @@ const Tab2 = () => {
     //LLLO4 GO2-100
     const [LO4, setLO4] = useState(0);
 
+    const [TEO1, setTEO1] = useState(0);
+    const [TEO2, setTEO2] = useState(0);
+    const [TEO3, setTEO3] = useState(0);
+    const [TFO2, setTFO2] = useState(0);
+    const [TFO3, setTFO3] = useState(0);
+    const [TKO1, setTKO1] = useState(0);
+    const [TKO2, setTKO2] = useState(0);
+
+
     useEffect(() => {
         !(AAAO1 * 0.01 * AAAO2) || (AAAO1 * 0.01 * AAAO2 === Infinity) || (AAAO1 * 0.01 * AAAO2 === -Infinity) ? setBO1(0) : setBO1(AAAO1 * 0.01 * AAAO2);
 
-        !(BO1 / EEEO1 / MO1) || (BO1 / EEEO1 / MO1 === Infinity) || (BO1 / EEEO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EEEO1 / MO1);
+        !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
 
-        !((CO1 / (EEEO1 - EEEO3) / MO1) * EEEO1 * MO1) || ((CO1 / (EEEO1 - EEEO3) / MO1) * EEEO1 * MO1 == Infinity) || ((CO1 / (EEEO1 - EEEO3) / MO1) * EEEO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EEEO1 - EEEO3) / MO1) * EEEO1 * MO1);
+        !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 == Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
 
-        !((CO1 / (EEEO1 - EEEO3) / MO1)) || ((CO1 / (EEEO1 - EEEO3) / MO1) === Infinity) || ((CO1 / (EEEO1 - EEEO3) / MO1) === -Infinity) ? setDO2(0) : setDO2((CO1 / (EEEO1 - EEEO3) / MO1));
+        !((CO1 / (EO1 - EO3) / MO1)) || ((CO1 / (EO1 - EO3) / MO1) === Infinity) || ((CO1 / (EO1 - EO3) / MO1) === -Infinity) ? setDO2(0) : setDO2((CO1 / (EO1 - EO3) / MO1));
 
-        !(EEEO1 - (CO1 / EEEO2) / MO1) || (EEEO1 - (CO1 / EEEO2) / MO1 === Infinity) || (EEEO1 - (CO1 / EEEO2) / MO1 === -Infinity) ? setFO2(0) : setFO2(EEEO1 - (CO1 / EEEO2) / MO1);
+        !(EO1 - (CO1 / EO2) / MO1) || (EO1 - (CO1 / EO2) / MO1 === Infinity) || (EO1 - (CO1 / EO2) / MO1 === -Infinity) ? setFO2(0) : setFO2(EO1 - (CO1 / EO2) / MO1);
 
-        !(EEEO1 * 1 + (EEEO1 * CCCO2) / HO2) || (EEEO1 * 1 + (EEEO1 * CCCO2) / HO2 === Infinity) || (EEEO1 * 1 + (EEEO1 * CCCO2) / HO2 === -Infinity) ? setFO3(0) : setFO3(EEEO1 * 1 + (EEEO1 * CCCO2) / HO2);
+        !(EO1 * 1 + (EO1 * CCCO2) / HO2) || (EO1 * 1 + (EO1 * CCCO2) / HO2 === Infinity) || (EO1 * 1 + (EO1 * CCCO2) / HO2 === -Infinity) ? setFO3(0) : setFO3(EO1 * 1 + (EO1 * CCCO2) / HO2);
 
-        !(EEEO1 * EEEO2 * MO1) || (EEEO1 * EEEO2 * MO1 === Infinity) || (EEEO1 * EEEO2 * MO1 === -Infinity) ? setHO2(0) : setHO2(EEEO1 * EEEO2 * MO1);
+        !(EO1 * EO2 * MO1) || (EO1 * EO2 * MO1 === Infinity) || (EO1 * EO2 * MO1 === -Infinity) ? setHO2(0) : setHO2(EO1 * EO2 * MO1);
 
-        !((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1) || ((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1 === Infinity) || ((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EEEO2 * GGGO1 - EEEO2 * EEEO1) * MO1);
+        !((EO2 * GGGO1 - EO2 * EO1) * MO1) || ((EO2 * GGGO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GGGO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GGGO1 - EO2 * EO1) * MO1);
 
         !(GO2 * 100 / CCCO1) || (GO2 * 100 / CCCO1 === Infinity) || (GO2 * 100 / CCCO1 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / CCCO1);
 
-        !(EEEO1 - IIIO1 * 0.01 * EEEO1) || (EEEO1 - IIIO1 * 0.01 * EEEO1 === Infinity) || (EEEO1 - IIIO1 * 0.01 * EEEO1 === -Infinity) ? setKO1(0) : setKO1(EEEO1 - IIIO1 * 0.01 * EEEO1);
+        !(EO1 - IIIO1 * 0.01 * EO1) || (EO1 - IIIO1 * 0.01 * EO1 === Infinity) || (EO1 - IIIO1 * 0.01 * EO1 === -Infinity) ? setKO1(0) : setKO1(EO1 - IIIO1 * 0.01 * EO1);
 
-        !(EEEO1 * 1 + (EEEO1 * JO2 / HO2)) || (EEEO1 * 1 + (EEEO1 * JO2 / HO2) === Infinity) || (EEEO1 * 1 + (EEEO1 * JO2 / HO2) === -Infinity) ? setKO2(0) : setKO2(EEEO1 * 1 + (EEEO1 * JO2 / HO2));
+        !(EO1 * 1 + (EO1 * JO2 / HO2)) || (EO1 * 1 + (EO1 * JO2 / HO2) === Infinity) || (EO1 * 1 + (EO1 * JO2 / HO2) === -Infinity) ? setKO2(0) : setKO2(EO1 * 1 + (EO1 * JO2 / HO2));
 
         !(HO2 * IIIO1 * 0.01 * -1) || (HO2 * IIIO1 * 0.01 * -1 === Infinity) || (HO2 * IIIO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IIIO1 * 0.01 * -1);
-        !(HO2 - (EEEO3 / EEEO1 * HO2)) || (HO2 - (EEEO3 / EEEO1 * HO2) === Infinity) || (HO2 - (EEEO3 / EEEO1 * HO2) === -Infinity) ? setFO1(0) : setFO1(HO2 - (EEEO3 / EEEO1 * HO2));
-        setLO1(EEEO3 - EEEO1);
-        setLO2(GGGO1 - EEEO1);
-        setLO3(GGGO1 - EEEO3);
+        !(HO2 - (EO3 / EO1 * HO2)) || (HO2 - (EO3 / EO1 * HO2) === Infinity) || (HO2 - (EO3 / EO1 * HO2) === -Infinity) ? setFO1(0) : setFO1(HO2 - (EO3 / EO1 * HO2));
+        setLO1(EO3 - EO1);
+        setLO2(GGGO1 - EO1);
+        setLO3(GGGO1 - EO3);
         setLO4(GO2 - 100);
     },);
+
+    const LogPlan = (p) => {
+        setTEO1(EO1);
+        setTEO2(EO2);
+        setTEO3(EO3);
+        if (p === 1) {
+            setTFO2(FO2);
+            setTFO3(FO3);
+        }
+        else if (p === 2) {
+            setTKO1(KO1);
+            setTKO2(KO2);
+        }
+
+    }
+    const PriceDelete = (p) => {
+        if (p === 1) {
+            setEO1(0);
+            setEO2(0);
+            setEO3(0);
+            setFO2(0);
+            setFO3(0);
+            dispatch(InputEEEO1(EO1));
+            dispatch(InputEEEO3(EO3));
+            dispatch(InputEEEO2(EO2));
+        }
+        else if (p === 2) {
+            setEO1(0);
+            setEO2(0);
+            setEO3(0);
+            setKO1(0);
+            setKO2(0);
+            dispatch(InputEEEO1(EO1));
+            dispatch(InputEEEO3(EO3));
+            dispatch(InputEEEO2(EO2));
+
+        }
+        else if (p === 3) {
+            setTEO1(0);
+            setTEO2(0);
+            setTEO3(0);
+            setTFO2(0);
+            setTFO3(0);
+            setTKO1(0);
+            setTKO2(0);
+        }
+    }
     return (
         <div className='cursor-pointer'>
             <div className="row">
@@ -140,19 +214,19 @@ const Tab2 = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}</span></h6>
+                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(2)} %</span></h6>
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
-                                                <GaugeChart style={{ height: '' }}
+                                                <GaugeChart
                                                     hideText
                                                     textColor="#FFFF"
-                                                    colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
+                                                    colors={["#FF0000", "#0A5D00", "#0EFF00"]}
                                                     percent={HO1 ? HO1 * 0.01 : 0}
-                                                    arcsLength={[0.2, 0.1, 0.2, 0.5]}
+                                                    arcsLength={[0.15, 0.35, 0.5]}
                                                 />
                                             </div>
-                                            <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}<span style={{ fontSize: '20px' }}> X</span> </h6>
+                                            <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO3.toFixed(2)}<span style={{ fontSize: '20px' }}> X</span> </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +237,7 @@ const Tab2 = () => {
                         <div className='col-sm-12'>
                             <div className="card">
                                 <div className="card-body">
-                                    <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
+                                    <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentile Trading</h4>
                                     <div className="row text-center">
                                         <div className="col-4 mb-4">
                                             <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
@@ -198,10 +272,10 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Price Trading Plan</h4>
                                     <ul className="p-0 ">
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + (!EEEO1 || EEEO1 === Infinity || EEEO1 === -Infinity ? "0" : (num.format(parseFloat(EEEO1).toFixed(2))))} img="a1" />
+                                            <FormTag2 color="yellow" title="EO1" value={"$ " + (!EO1 || EO1 === Infinity || EO1 === -Infinity ? "0" : (num.format(parseFloat(EO1).toFixed(2))))} img="a1" />
                                         </li>
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="blue" title="EEEO2" value={!EEEO2 || EEEO2 === Infinity || EEEO2 === -Infinity ? "0" : num.format(parseFloat(EEEO2).toFixed(1))} img="a2" />
+                                            <FormTag2 color="blue" title="EO2" value={!EO2 || EO2 === Infinity || EO2 === -Infinity ? "0" : num.format(parseFloat(EO2).toFixed(1))} img="a2" />
                                         </li>
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="red" title="FFFO2" value={"$ " + num.format(FO2.toFixed(2))} img="a3" />
@@ -210,6 +284,14 @@ const Tab2 = () => {
                                             <FormTag2 color="green" title="FFFO3" value={"$ " + num.format((FO3 * 1).toFixed(2))} img="a1" />
                                         </li>
                                     </ul>
+                                    <div className="row mt-2 text-center">
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" onClick={() => PriceDelete(1)} value="Clear data" />
+                                        </div>
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" onClick={() => LogPlan(1)} value="Log Plan" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -221,10 +303,10 @@ const Tab2 = () => {
                                     <h4 style={{ color: "#CBCBE2" }}>My Percentile Trade Plane</h4>
                                     <ul className="p-0">
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="yellow" title="EEEO1" value={"$ " + (!EEEO1 || EEEO1 === Infinity || EEEO1 === -Infinity ? "0" : (num.format(parseFloat(EEEO1).toFixed(2))))} img="a1" />
+                                            <FormTag2 color="yellow" title="EO1" value={"$ " + (!EO1 || EO1 === Infinity || EO1 === -Infinity ? "0" : (num.format(parseFloat(EO1).toFixed(2))))} img="a1" />
                                         </li>
                                         <li className="d-flex mb-1">
-                                            <FormTag2 color="blue" title="EEEO2" value={!EEEO2 || EEEO2 === Infinity || EEEO2 === -Infinity ? "0" : num.format(parseFloat(EEEO2).toFixed(1))} img="a2" />
+                                            <FormTag2 color="blue" title="EO2" value={!EO2 || EO2 === Infinity || EO2 === -Infinity ? "0" : num.format(parseFloat(EO2).toFixed(1))} img="a2" />
                                         </li>
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="red" title="KKKO1" value={"$ " + num.format(KO1.toFixed(2))} img="a3" />
@@ -233,6 +315,14 @@ const Tab2 = () => {
                                             <FormTag2 color="green" title="KKKO2" value={"$ " + num.format((KO2 * 1).toFixed(2))} img="a1" />
                                         </li>
                                     </ul>
+                                    <div className="row mt-2 text-center">
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" onClick={() => PriceDelete(2)} value="Clear data" />
+                                        </div>
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" onClick={() => LogPlan(2)} value="Log Plan" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +331,7 @@ const Tab2 = () => {
             </div>
             {/* 4 */}
             <div className='row'>
-                <div className="col-sm-8 mb-1">
+                <div className="col-md-8 mb-1 d-none d-md-block">
                     <div className="card">
                         <div className="card-body">
                             <div className="row">
@@ -249,12 +339,12 @@ const Tab2 = () => {
                                     <h4 className="card-title">Responsive Table</h4>
                                 </div>
                                 <div className="col text-right" style={{ marginTop: "-7px" }}>
-                                    <ButtonTag color="input_green" title="Percent" value="Log Plan" />
+                                    <ButtonTag color="input_green" onClick={() => PriceDelete(3)} title="Percent" value="Clear Plan" />
                                 </div>
                             </div>
                             <div className='row'>
                                 <div className='col-sm-12'>
-                                    <div className="table-responsive">
+                                    <div className="table-responsive text-center">
                                         <table className="table">
                                             <thead>
                                                 <tr>
@@ -269,31 +359,31 @@ const Tab2 = () => {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>Jacob</td>
-                                                    <td>53275531</td>
-                                                    <td>12 May 2017</td>
-                                                    <td>Pending</td>
-                                                    <td>Pending</td>
-                                                    <td>Pending</td>
+                                                    <td>1</td>
+                                                    <td><TableInput /></td>
+                                                    <td>{TEO1}</td>
+                                                    <td>{TEO2}</td>
+                                                    <td>{TFO2}</td>
+                                                    <td>{TFO3}</td>
                                                     <td>Pending</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>John</td>
-                                                    <td>53275533</td>
-                                                    <td>14 May 2017</td>
-                                                    <td>Fixed</td>
-                                                    <td>53275533</td>
-                                                    <td>14 May 2017</td>
+                                                    <td>2</td>
+                                                    <td> <TableInput /> </td>
+                                                    <td>{TEO1}</td>
+                                                    <td>{TEO2}</td>
+                                                    <td>{TKO1}</td>
+                                                    <td>{TKO2}</td>
                                                     <td>Fixed</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>John</td>
-                                                    <td>53275533</td>
-                                                    <td>14 May 2017</td>
-                                                    <td>Fixed</td>
-                                                    <td>53275533</td>
-                                                    <td>14 May 2017</td>
-                                                    <td>Fixed</td>
+                                                    <td>3</td>
+                                                    <td> <TableInput /> </td>
+                                                    <td><TableInput /></td>
+                                                    <td><TableInput /></td>
+                                                    <td><TableInput /></td>
+                                                    <td><TableInput /></td>
+                                                    <td><TableInput /></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -303,12 +393,12 @@ const Tab2 = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-md-4">
                     <div className='row'>
                         <div className='col-sm-12'>
                             <div className="card">
                                 <div className="card-body">
-                                    <h4 style={{ color: "#CBCBE2" }}>Percentitle Trading</h4>
+                                    <h4 style={{ color: "#CBCBE2" }}>Percentile Trading</h4>
                                     <ul className="p-0">
                                         <li className="d-flex mb-1">
                                             <FormTag2 color="white" title="LLLO1" value={"$ " + num.format(parseFloat(LO1.toFixed(2)))} img="a1" />
@@ -334,3 +424,4 @@ const Tab2 = () => {
     );
 }
 export default Tab2;
+
