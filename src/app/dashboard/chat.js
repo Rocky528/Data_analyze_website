@@ -3,6 +3,7 @@ import FormTag from '../Component/FormTag';
 import FormTag4 from '../Component/FormTag4';
 import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
+import { Link } from 'react-router-dom';
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1 } from '../../reducers/InputSlice';
@@ -153,120 +154,25 @@ export default function App() {
 
     },);
 
-    const gaugeContainerStyle = {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    };
+    const PricePostionDelete = () => {
+        // alert('w')
+        setAO1('');
+        setAO2('');
+        setCO1('');
+        setCO2('');
+        setMO1('');
+    }
 
     return (
         <div className="app cursor-pointer">
             <div className='row'>
                 {/* 1 */}
-                <div className="col-sm-8 mb-1">
-                    <div className="card">
-                        <div className="card-body">
-                            <h4 className="" style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
-                            <div className="row" style={{ marginTop: '0px' }}>
-                                <div className="col-md-3 d-none d-md-block">
-                                    <div className="row mt-5 " style={{ marginBottom: '150px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={GGGO1} color="input_white" title="Alto-GGGO1" onChange={handleGGGO1} val="$" onKeyPress={handleKeyPress} name="CIIO1" />
-                                        </div>
-                                    </div>
-                                    <div className="row" style={{ marginBottom: '80px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIIO2" />
-                                        </div>
-                                    </div>
-                                    <div className="row" style={{ marginBottom: '70px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={EEEO1} color="input_white" title="Alpha EEEO1" onChange={handleEEEO1} val="$" onKeyPress={handleKeyPress} name="CIIO3" />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} val="$" onKeyPress={handleKeyPress} name="CIIO4" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6">
-                                    <div className="row">
-                                        <div className="col-sm-12" style={{
-                                            textAlign: 'center'
-                                        }}>
-                                            <img src={require('../../assets/images/Group 149.png')} alt="profile" style={{ height: '650px' }} className="profile-pic just-content-center" />
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-3 d-none d-md-block">
-                                    <div className="row mt-3 " style={{ marginBottom: '10px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(FO3.toFixed(2))} color="green" title="Alto 1-FFFO3" />
-                                        </div>
-                                    </div>
-                                    <div className="row" style={{ marginBottom: '60px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(GO2.toFixed(2))} color="green" title="Alto 2" />
-                                        </div>
-                                    </div>
-                                    <div className="row" style={{ marginBottom: '50px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={num.format(DO2.toFixed(2))} color="blue" title="Beta 1" />
-                                        </div>
-                                    </div>
-                                    <div className="row" style={{ marginBottom: '160px' }}>
-                                        <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(DO1.toFixed(2))} color="blue" title="Beta 2" />
-                                        </div>
-                                    </div>
-                                    <div className="row mb-5">
-                                        <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(FO2.toFixed(2))} color="red" title="Theta 1" />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(FO1.toFixed(2))} color="red" title="Theta 2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* 2 */}
                 <div className="col-sm-4">
-                    <div className='row mb-1'>
-                        <div className='col-sm-12'>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}</span></h6>
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
-                                                <GaugeChart style={{ height: '' }}
-                                                    hideText
-                                                    textColor="#FFFF"
-                                                    colors={["#7E0000", "#FF0000", "#0EFF00", "#0A5D00"]}
-                                                    percent={HO1 ? HO1 * 0.01 : 0}
-                                                    arcsLength={[0.2, 0.1, 0.2, 0.5]}
-                                                />
-                                            </div>
-                                            <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO1.toFixed(0)}<span style={{ fontSize: '20px' }}> X</span> </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className='row mb-1'>
                         <div className='col-sm-12'>
                             <div className="card" style={{ borderRadius: '8px' }}>
                                 <div className="card-body">
-                                    <h4 className='ml-5' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
+                                    <h4 className='' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row text-center" >
                                         <div className="col-sm-6">
                                             <FormTag color="green" title="Bbbo1" value={"$ " + num.format(BO1.toFixed(2))} />
@@ -307,10 +213,111 @@ export default function App() {
                                     </div>
                                     <div className="row text-center">
                                         <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" value="Clear data" />
+                                            <ButtonTag color="input_green" title="Price" onClick={PricePostionDelete} value="Clear data" />
                                         </div>
                                         <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" value="Show Plan" />
+                                            <Link to="detailed_report1">
+                                                <ButtonTag color="input_green" title="Price" value="Show Plan" />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='row mb-1'>
+                        <div className='col-sm-12'>
+                            <div className="card">
+                                <div className="card-body">
+                                    <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
+                                    <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(2)} %</span></h6>
+                                    <div className="row">
+                                        <div className="col-sm-12">
+                                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
+                                                <GaugeChart
+                                                    hideText
+                                                    textColor="#FFFF"
+                                                    colors={["#FF0000", "#0A5D00", "#0EFF00"]}
+                                                    percent={HO1 ? HO1 * 0.01 : 0}
+                                                    arcsLength={[0.15, 0.35, 0.5]}
+                                                />
+                                            </div>
+                                            <h6 className="text-center" style={{ color: '#CBCBE2' }}>{HO3.toFixed(2)}<span style={{ fontSize: '20px' }}> X</span> </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* 2 */}
+                <div className="col-sm-8 mb-1">
+                    <div className="card">
+                        <div className="card-body">
+                            <h4 className="" style={{ color: "#CBCBE2" }}>Summary Strategy</h4>
+                            <div className="row" style={{ marginTop: '0px' }}>
+                                <div className="col-5 ">
+                                    <div className="row mt-5 " style={{ marginBottom: '150px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={GGGO1} color="input_white" title="Alto-GGGO1" onChange={handleGGGO1} val="$" onKeyPress={handleKeyPress} name="CIIO1" />
+                                        </div>
+                                    </div>
+                                    <div className="row" style={{ marginBottom: '80px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIIO2" />
+                                        </div>
+                                    </div>
+                                    <div className="row" style={{ marginBottom: '70px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={EEEO1} color="input_white" title="Alpha EEEO1" onChange={handleEEEO1} val="$" onKeyPress={handleKeyPress} name="CIIO3" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} val="$" onKeyPress={handleKeyPress} name="CIIO4" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-2">
+                                    <div className="row">
+                                        <div className="col-sm-12 " style={{
+                                            textAlign: 'center'
+                                        }}>
+                                            <div style={{ width: '60%'  }}>
+                                                <img src={require('../../assets/images/Group 149.png')} alt="profile" style={{ height: '650px',width:'100%' }} className="profile-pic just-content-center" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-4 d-flex align-items-center flex-column">
+                                    <div className="row mt-3 " style={{ marginBottom: '10px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + num.format(FO3.toFixed(2))} color="green" title="Alto 1-FFFO3" />
+                                        </div>
+                                    </div>
+                                    <div className="row" style={{ marginBottom: '60px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + num.format(GO2.toFixed(2))} color="green" title="Alto 2" />
+                                        </div>
+                                    </div>
+                                    <div className="row" style={{ marginBottom: '50px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={num.format(DO2.toFixed(2))} color="blue" title="Beta 1" />
+                                        </div>
+                                    </div>
+                                    <div className="row" style={{ marginBottom: '160px' }}>
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + num.format(DO1.toFixed(2))} color="blue" title="Beta 2" />
+                                        </div>
+                                    </div>
+                                    <div className="row mb-5">
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + num.format(FO2.toFixed(2))} color="red" title="Theta 1" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <FormTag4 value={"$ " + num.format(FO1.toFixed(2))} color="red" title="Theta 2" />
                                         </div>
                                     </div>
                                 </div>
@@ -319,6 +326,6 @@ export default function App() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

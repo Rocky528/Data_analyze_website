@@ -16,6 +16,8 @@ class AppRoutes extends Component {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/tab1" component={Tab1} />
           <Route exact path="/tab2" component={Tab2} />
+          <Route exact path="/detailed_report1" component={Tab2} />
+          <Route exact path="/detailed_report2" component={Tab2} />
           <Redirect to="/dashboard" />
         </Switch>
       </Suspense>
