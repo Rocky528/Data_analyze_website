@@ -4,25 +4,15 @@ import FormTag1 from '../Component/FormTag1';
 import FormTag2 from '../Component/FormTag2';
 import ButtonTag from '../Component/ButtonTag';
 import GaugeChart from "react-gauge-chart";
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import TableInput from '../Component/TableInput';
-import NumberInput from '../Component/NumberInput';
 import './style.css';
 import { InputEEEO1, InputEEEO3, InputEEEO2 } from '../../reducers/InputSlice'
 
 const Tab2 = () => {
-    const [myNumber, setMyNumber] = useState('12345');
-
-    const handleNumberChange = (newValue) => {
-        // Remove commas from the formatted value and update state
-        const numericValue = parseInt(newValue.replace(/[^0-9]/g, ''), 10);
-        setMyNumber(numericValue.toString());
-    };
-
 
     let num = Intl.NumberFormat('en-US');
-    const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1 } = useSelector((state) => state.InputValue);
+    const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
     const dispatch = useDispatch();
 
     const [EO1, setEO1] = useState(EEEO1);
@@ -84,7 +74,7 @@ const Tab2 = () => {
 
         !((EO2 * GGGO1 - EO2 * EO1) * MO1) || ((EO2 * GGGO1 - EO2 * EO1) * MO1 === Infinity) || ((EO2 * GGGO1 - EO2 * EO1) * MO1 === -Infinity) ? setGO2(0) : setGO2((EO2 * GGGO1 - EO2 * EO1) * MO1);
 
-        !(GO2 * 100 / CCCO1) || (GO2 * 100 / CCCO1 === Infinity) || (GO2 * 100 / CCCO1 === -Infinity) ? setHO1(0) : setHO1(GO2 * 100 / CCCO1);
+        !(GO2 / HO2) || (GO2 / HO2 === Infinity) || (GO2 / HO2 === -Infinity) ? setHO1(0) : setHO1(GO2 / HO2);
 
         !(EO1 - IIIO1 * 0.01 * EO1) || (EO1 - IIIO1 * 0.01 * EO1 === Infinity) || (EO1 - IIIO1 * 0.01 * EO1 === -Infinity) ? setKO1(0) : setKO1(EO1 - IIIO1 * 0.01 * EO1);
 
@@ -92,6 +82,8 @@ const Tab2 = () => {
 
         !(HO2 * IIIO1 * 0.01 * -1) || (HO2 * IIIO1 * 0.01 * -1 === Infinity) || (HO2 * IIIO1 * 0.01 * -1 === -Infinity) ? setIO2(0) : setIO2(HO2 * IIIO1 * 0.01 * -1);
         !(HO2 - (EO3 / EO1 * HO2)) || (HO2 - (EO3 / EO1 * HO2) === Infinity) || (HO2 - (EO3 / EO1 * HO2) === -Infinity) ? setFO1(0) : setFO1(HO2 - (EO3 / EO1 * HO2));
+        !(GO2 / CO1) || (GO2 / CO1 === Infinity) || (GO2 / CO1 === -Infinity) ? setHO3(0) : setHO3(GO2 / CO1);
+        !(EO1 * EO2 * JJJO1 * 0.01 * MO1) || (EO1 * EO2 * JJJO1 * 0.01 * MO1 === Infinity) || (EO1 * EO2 * JJJO1 * 0.01 * MO1 === -Infinity) ? setJO2(0) : setJO2(EO1 * EO2 * JJJO1 * 0.01 * MO1);
         setLO1(EO3 - EO1);
         setLO2(GGGO1 - EO1);
         setLO3(GGGO1 - EO3);
@@ -198,7 +190,7 @@ const Tab2 = () => {
                                                 <FormTag color="yellow" title="Dddo1" value={"$ " + num.format(DO1.toFixed(2))} />
                                             </div>
                                             <div className="col-6">
-                                                <FormTag color="green" title="Hhho1" value={HO1.toFixed(0) + "%"} />
+                                                <FormTag color="green" title="Hhho1" value={(HO1 * 100).toFixed(0) + "%"} />
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +214,7 @@ const Tab2 = () => {
                                                     hideText
                                                     textColor="#FFFF"
                                                     colors={["#FF0000", "#0A5D00", "#0EFF00"]}
-                                                    percent={HO1 ? HO1 * 0.01 : 0}
+                                                    percent={HO1 ? HO1.toFixed(2) : 0}
                                                     arcsLength={[0.15, 0.35, 0.5]}
                                                 />
                                             </div>
@@ -240,7 +232,7 @@ const Tab2 = () => {
                                     <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentile Trading</h4>
                                     <div className="row text-center">
                                         <div className="col-4 mb-4">
-                                            <FormTag1 color="red" title="Hhho2" value={HO1.toFixed(0) + "%"} />
+                                            <FormTag1 color="red" title="Hhho2" value={"$ " + HO2.toFixed(0)} />
                                         </div>
                                         <div className="col-4 mb-4">
                                             <FormTag1 color="blue" title="Mmmo1" value={num.format(MO1)} />
@@ -331,7 +323,7 @@ const Tab2 = () => {
             </div>
             {/* 4 */}
             <div className='row'>
-                <div className="col-md-8 mb-1 d-none d-md-block">
+                <div className="col-md-8 mb-1 d-none d-md-block" style={{ marginTop: '-30px' }}>
                     <div className="card">
                         <div className="card-body">
                             <div className="row">
@@ -361,19 +353,19 @@ const Tab2 = () => {
                                                 <tr>
                                                     <td>1</td>
                                                     <td><TableInput /></td>
-                                                    <td>{TEO1}</td>
-                                                    <td>{TEO2}</td>
-                                                    <td>{TFO2}</td>
-                                                    <td>{TFO3}</td>
+                                                    <td>{num.format(TEO1.toFixed(2))}</td>
+                                                    <td>{num.format(TEO2.toFixed(2))}</td>
+                                                    <td>{num.format(TFO2.toFixed(2))}</td>
+                                                    <td>{num.format(TFO3.toFixed(2))}</td>
                                                     <td>Pending</td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td> <TableInput /> </td>
-                                                    <td>{TEO1}</td>
-                                                    <td>{TEO2}</td>
-                                                    <td>{TKO1}</td>
-                                                    <td>{TKO2}</td>
+                                                    <td>{num.format(TEO1.toFixed(2))}</td>
+                                                    <td>{num.format(TEO2.toFixed(2))}</td>
+                                                    <td>{num.format(TKO1.toFixed(2))}</td>
+                                                    <td>{num.format(TKO2.toFixed(2))}</td>
                                                     <td>Fixed</td>
                                                 </tr>
                                                 <tr>
