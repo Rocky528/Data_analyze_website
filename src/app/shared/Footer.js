@@ -3,11 +3,27 @@ import React, { Component } from 'react';
 class Footer extends Component {
   render() {
     return (
-      <footer className="footer" style={{ marginTop: '-50px' }}>
+      <footer className="footer" style={{ marginTop: '-30px' }}>
         <div className="container-fluid">
-          <div className="d-sm-flex justify-content-center justify-content-sm-between py-2 w-100">
-            <span className="text-muted text-center text-sm-left d-block d-sm-inline-block">Candlestick TradePal © <a href="" target="_blank" rel="noopener noreferrer">www.candlesticktradepal.com </a>  <a href=""> Help</a> </span>
+          <div className='row px-5'>
+            <div className="col">
+              <div className="float-right">
+                <a href="" target="_blank" rel="noopener noreferrer">www.candlesticktradepal.com </a>
+                <a href=""> Help</a>
+              </div>
+              <div className="float-left text-muted">
+                <h5>
+                  Candlestick TradePal ©
+                </h5>
+              </div>
+            </div>
           </div>
+          {/* <div className="d-sm-flex justify-content-center justify-content-sm-between py-2 w-100">
+
+            <span className="text-muted text-center text-sm-left d-block d-sm-inline-block">Candlestick TradePal ©
+              <a href="" target="_blank" rel="noopener noreferrer">www.candlesticktradepal.com </a>
+              <a href=""> Help</a> </span>
+          </div> */}
         </div>
       </footer>
     );

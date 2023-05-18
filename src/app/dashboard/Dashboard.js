@@ -213,11 +213,20 @@ const Dashboard = () => {
     !(GO2 / CO1) || (GO2 / CO1 === Infinity) || (GO2 / CO1 === -Infinity) ? setHO3(0) : setHO3(GO2 / CO1);
   },);
 
-  const PricePostionDelete = () => {
-    setEO1('');
-    setEO2('');
-    setEO3('');
-    setGO1('');
+  const PricePostionDelete = (p) => {
+    if (p === 1) {
+      setEO1('');
+      setEO2('');
+      setEO3('');
+      setGO1('');
+    }
+    else if (p === 2) {
+      setEO1('');
+      setEO2('');
+      setEO3('');
+      setGO1('');
+    }
+
   }
 
   return (
@@ -277,7 +286,7 @@ const Dashboard = () => {
               <div className="card">
                 <div className="card-body">
                   <h4 style={{ color: "#CBCBE2" }}>Trade Rating</h4>
-                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{HO1.toFixed(2)} %</span></h6>
+                  <h6 style={{ color: '#7071A4' }}>Rol <span style={{ color: '#CBCBE2' }}>{(HO1 * 100).toFixed(2)} %</span></h6>
                   <div className="row">
                     <div className="col-sm-12">
                       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} >
@@ -355,7 +364,7 @@ const Dashboard = () => {
                   </div>
                   <div className="row mt-2 text-center">
                     <div className="col-6">
-                      <ButtonTag color="input_green" title="Price" onClick={PricePostionDelete} value="Clear data" />
+                      <ButtonTag color="input_green" title="Price" onClick={() => PricePostionDelete(1)} value="Clear data" />
                     </div>
                     <div className="col-6">
                       <Link to="detailed_report1">
@@ -377,7 +386,7 @@ const Dashboard = () => {
                   <h4 className='F' style={{ color: "#CBCBE2" }}>Percentile Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-4">
-                      <FormTag1 color="red" title="Hhho2" value={"$ "+HO2.toFixed(0)} />
+                      <FormTag1 color="red" title="Hhho2" value={"$ " + num.format(HO2.toFixed(0))} />
                     </div>
                     <div className="col-4">
                       <FormTag1 color="blue" title="Mmmo1" value={num.format((MO1 * 1).toFixed(1))} />
@@ -418,11 +427,14 @@ const Dashboard = () => {
                       <FormTag max={100000} value={JJJO1} color="input_green" val="%" title="jjjo1" onChange={handleJJJO1} onKeyPress={handleKeyPress} name="CIO13" />
                     </div>
                   </div>
-                  <div className="row mt-2">
-                    <div className="col">
-                      <div className="float-right">
-                        <ButtonTag color="input_green" title="Percent" value="Log Plan" />
-                      </div>
+                  <div className="row mt-2 text-center">
+                    <div className="col-6">
+                      <ButtonTag color="input_green" title="Price" onClick={() => PricePostionDelete(2)} value="Clear data" />
+                    </div>
+                    <div className="col-6">
+                      <Link to="detailed_report1">
+                        <ButtonTag color="input_green" title="Price" value="Show Plan" />
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -8,13 +8,13 @@ export class FormTag extends Component {
     renderSwitch(param) {
         switch (param) {
             case 'green':
-                return { width: '85.91px', height: '26.3px', color: '#71DD37', backgroundColor: '#313B3F', fontSize: '16px', textAlign: 'center', borderRadius: '4.38329px' };
+                return { width: '160px', height: '26.3px', color: '#71DD37', backgroundColor: '#313B3F', fontSize: '16px', textAlign: 'center', borderRadius: '4.38329px' };
             case 'input_white':
                 return { color: '#FFFFFF', fontSize: 14, textAlign: 'center' };
             case 'blue':
-                return { width: '85.91px', height: '26.3px', color: '#03C3EC', backgroundColor: '#06324C', fontSize: '16px', textAlign: 'center', borderRadius: '4.38329px' };
+                return { width: '160px', height: '26.3px', color: '#03C3EC', backgroundColor: '#06324C', fontSize: '16px', textAlign: 'center', borderRadius: '4.38329px' };
             case 'red':
-                return { width: '85.91px', height: '26.3px', color: '#FF3E1D', backgroundColor: '#3F3131', fontSize: '16px', textAlign: 'center', borderRadius: '4.38329px' };
+                return { width: '160px', height: '26.3px', color: '#FF3E1D', backgroundColor: '#3F3131', fontSize: '16px', textAlign: 'center', borderRadius: '4.38329px' };
             default:
                 return 'foo';
         }
@@ -25,22 +25,22 @@ export class FormTag extends Component {
             <>
                 {this.props.color === 'input_white' ?
                     <div style={{ width: "80%", marginLeft: '10%' }}>
-                            <div className="input-group" >
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text " style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
-                                </div>
-                                <NumericFormat thousandSeparator={true} onKeyPress={this.props.onKeyPress}
-                                    ref={this.props.ref}
-                                    value={this.props.value}
-                                    style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
-                                    className="form-control"
-                                    aria-describedby="basic-addon1"
-                                    onKeyDown={this.props.onKeyDown}
-                                    onChange={this.props.onChange}
-                                    name={this.props.name}
+                        <div className="input-group" >
+                            <div className="input-group-prepend">
+                                <span className="input-group-text " style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{this.props.val}</span>
+                            </div>
+                            <NumericFormat thousandSeparator={true} onKeyPress={this.props.onKeyPress}
+                                ref={this.props.ref}
+                                value={this.props.value}
+                                style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
+                                className="form-control"
+                                aria-describedby="basic-addon1"
+                                onKeyDown={this.props.onKeyDown}
+                                onChange={this.props.onChange}
+                                name={this.props.name}
 
-                                />
-                                {/* <Form.Control
+                            />
+                            {/* <Form.Control
                                     onKeyPress={this.props.onKeyPress}
                                     value={this.props.value}
                                     type="number"
@@ -51,7 +51,7 @@ export class FormTag extends Component {
                                     name={this.props.name}
                                 /> */}
 
-                            </div>
+                        </div>
                         <label className='px-1' style={this.renderSwitch(this.props.color)}>{this.props.title}</label>
                     </div> : <div>
                         <div className="text-center mb-3" style={this.renderSwitch(this.props.color)}>{this.props.value}</div>
