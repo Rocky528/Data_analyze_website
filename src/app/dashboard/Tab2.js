@@ -327,7 +327,7 @@ const Tab2 = () => {
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td><TableInput /></td>
+                                                    <td><TableInput type="text" /></td>
                                                     <td>{num.format(TEO1.toFixed(2))}</td>
                                                     <td>{num.format(TEO2.toFixed(2))}</td>
                                                     <td>{num.format(TFO2.toFixed(2))}</td>
@@ -335,7 +335,7 @@ const Tab2 = () => {
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
-                                                    <td> <TableInput /> </td>
+                                                    <td> <TableInput type="text" /> </td>
                                                     <td>{num.format(TEO1.toFixed(2))}</td>
                                                     <td>{num.format(TEO2.toFixed(2))}</td>
                                                     <td>{num.format(TKO1.toFixed(2))}</td>
@@ -343,7 +343,7 @@ const Tab2 = () => {
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
-                                                    <td> <TableInput /> </td>
+                                                    <td> <TableInput type="text" /> </td>
                                                     <td><TableInput /></td>
                                                     <td><TableInput /></td>
                                                     <td><TableInput /></td>

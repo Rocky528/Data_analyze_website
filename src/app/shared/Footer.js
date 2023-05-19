@@ -7,15 +7,15 @@ class Footer extends Component {
         <div className="container-fluid">
           <div className='row px-5'>
             <div className="col">
-              <div className="float-right">
-                <a href="" target="_blank" rel="noopener noreferrer">www.candlesticktradepal.com </a>
-                <a href=""> Help</a>
-              </div>
               <div className="float-left text-muted">
                 <h5>
-                  Candlestick TradePal ©
+                  ©2023 Candlestick TradePal. All Rights Reserved
                 </h5>
               </div>
+              <div className="float-right">
+                <a href="" target="_blank" rel="noopener noreferrer">www.candlesticktradepal.com </a>
+              </div>
+
             </div>
           </div>
           {/* <div className="d-sm-flex justify-content-center justify-content-sm-between py-2 w-100">
