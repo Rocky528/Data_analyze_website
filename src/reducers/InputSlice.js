@@ -12,7 +12,8 @@ export const InputSlice = createSlice({
     CCCO2: 0,
     IIIO1: 0,
     JJJO1: 0,
-    GGGO1: 0
+    GGGO1: 0,
+    Currency: '$'
   },
   reducers: {
     InputAAAO1: (state, action) => {
@@ -48,7 +49,10 @@ export const InputSlice = createSlice({
     InputJJJO1: (state, action) => {
       state.JJJO1 = action.payload
     },
+    InputCurrency: (state, action) => {
+      state.Currency = action.payload
+    }
   },
 })
-export const { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1 } = InputSlice.actions
+export const { InputAAAO1, InputAAAO2, InputEEEO1, InputMMMO1, InputCCCO1, InputEEEO3, InputEEEO2, InputCCCO2, InputGGGO1, InputIIIO1, InputJJJO1, InputCurrency } = InputSlice.actions
 export default InputSlice.reducer
