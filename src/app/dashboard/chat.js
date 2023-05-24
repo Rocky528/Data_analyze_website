@@ -27,7 +27,7 @@ export default function App() {
             }
         }
     }
-    const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1 } = useSelector((state) => state.InputValue);
+    const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, GGGO1, IIIO1, JJJO1, Currency } = useSelector((state) => state.InputValue);
     const dispatch = useDispatch();
 
     //HHHO2 EO1*EO2*MO1
@@ -173,7 +173,7 @@ export default function App() {
                                     <h4 className='' style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row text-center" >
                                         <div className="col-sm-6">
-                                            <FormTag color="green" title="Bbbo1" value={"$ " + num.format(BO1.toFixed(2))} />
+                                            <FormTag color="green" title="Bbbo1" value={Currency + " " + num.format(BO1.toFixed(2))} />
                                         </div>
                                         <div className="col-sm-6">
                                             <FormTag color="green" title="Bbbo2" value={num.format(BO2.toFixed(2))} />
@@ -290,12 +290,12 @@ export default function App() {
                                 <div className="col-4 d-flex align-items-center flex-column">
                                     <div className="row mt-3 " style={{ marginBottom: '10px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(FO3.toFixed(2))} color="green" title="Alto 1-FFFO3" />
+                                            <FormTag4 value={Currency + " " + num.format(FO3.toFixed(2))} color="green" title="Alto 1-FFFO3" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '60px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(GO2.toFixed(2))} color="green" title="Alto 2" />
+                                            <FormTag4 value={Currency + " " + num.format(GO2.toFixed(2))} color="green" title="Alto 2" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '50px' }}>
@@ -305,17 +305,17 @@ export default function App() {
                                     </div>
                                     <div className="row" style={{ marginBottom: '160px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(DO1.toFixed(2))} color="blue" title="Beta 2" />
+                                            <FormTag4 value={Currency + " " + num.format(DO1.toFixed(2))} color="blue" title="Beta 2" />
                                         </div>
                                     </div>
                                     <div className="row mb-5">
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(FO2.toFixed(2))} color="red" title="Theta 1" />
+                                            <FormTag4 value={Currency + " " + num.format(FO2.toFixed(2))} color="red" title="Theta 1" />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                            <FormTag4 value={"$ " + num.format(FO1.toFixed(2))} color="red" title="Theta 2" />
+                                            <FormTag4 value={Currency + " " + num.format(FO1.toFixed(2))} color="red" title="Theta 2" />
                                         </div>
                                     </div>
                                 </div>

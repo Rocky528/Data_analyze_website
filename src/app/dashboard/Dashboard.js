@@ -28,7 +28,7 @@ const Dashboard = () => {
     }
   }
 
-  const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1 } = useSelector((state) => state.InputValue);
+  const { AAAO1, AAAO2, EEEO1, MMMO1, CCCO1, EEEO3, EEEO2, CCCO2, IIIO1, JJJO1, GGGO1, Currency } = useSelector((state) => state.InputValue);
   const dispatch = useDispatch();
   //BBBO1 AO1*AO2
   let AAAO1temp = (AAAO1 === 0) ? "" : AAAO1;
@@ -241,7 +241,7 @@ const Dashboard = () => {
                   <h4 className='' style={{ color: "#CBCBE2" }}>My Portfolio Risk</h4>
                   <div className="row text-center" >
                     <div className="col-sm-6">
-                      <FormTag color="green" title="Risk Per Trade" value={"$ " + num.format(BO1.toFixed(2))} />
+                      <FormTag color="green" title="Risk Per Trade" value={Currency + " " + num.format(BO1.toFixed(2))} />
                     </div>
                     <div className="col-sm-6">
                       <FormTag color="blue" title="Dddo2" value={num.format(DO2.toFixed(1))} />
@@ -315,25 +315,25 @@ const Dashboard = () => {
                   <h4 className='' style={{ color: "#CBCBE2" }}>Risk Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-6">
-                      <FormTag color="red" title="Fffo1" value={"$" + num.format(FO1.toFixed(2))} />
+                      <FormTag color="red" title="Fffo1" value={Currency + " " + num.format(FO1.toFixed(2))} />
                     </div>
                     <div className="col-6 mb-4">
                       <FormTag color="green" title="Equivalent Qty" value={BO2.toFixed(2)} />
                     </div>
                     <div className="col-6 ">
-                      <FormTag color="red" title="Fffo2" value={"$ " + num.format(FO2.toFixed(2))} />
+                      <FormTag color="red" title="Fffo2" value={Currency + " " + num.format(FO2.toFixed(2))} />
                     </div>
                     <div className="col-6 mb-4" >
-                      <FormTag color="green" title="Fffo3" value={"$ " + num.format(FO3.toFixed(2))} />
+                      <FormTag color="green" title="Fffo3" value={Currency + " " + num.format(FO3.toFixed(2))} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="yellow" title="Hhho2" value={"$ " + num.format(HO2.toFixed(2))} />
+                      <FormTag color="yellow" title="Hhho2" value={Currency + " " + num.format(HO2.toFixed(2))} />
                     </div>
                     <div className="col-6 mb-4">
-                      <FormTag color="green" title="Gggo2" value={"$ " + num.format(GO2.toFixed(2))} />
+                      <FormTag color="green" title="Gggo2" value={Currency + " " + num.format(GO2.toFixed(2))} />
                     </div>
                     <div className="col-6">
-                      <FormTag color="yellow" title="Dddo1" value={"$ " + num.format(DO1.toFixed(2))} />
+                      <FormTag color="yellow" title="Dddo1" value={Currency + " " + num.format(DO1.toFixed(2))} />
                     </div>
                     <div className="col-6">
                       <FormTag color="green" title="Hhho1" value={(HO1 * 100).toFixed(0) + "%"} />
@@ -386,22 +386,22 @@ const Dashboard = () => {
                   <h4 className='F' style={{ color: "#CBCBE2" }}>Percentile Metrics</h4>
                   <div className="row mt-3 text-center">
                     <div className="col-4">
-                      <FormTag1 color="red" title="Hhho2" value={"$ " + num.format(HO2.toFixed(0))} />
+                      <FormTag1 color="red" title="Hhho2" value={Currency + " " + num.format(HO2.toFixed(0))} />
                     </div>
                     <div className="col-4">
                       <FormTag1 color="blue" title="Mmmo1" value={num.format((MO1 * 1).toFixed(1))} />
                     </div>
                     <div className="col-4 mb-4">
-                      <FormTag1 color="red" title="Iiio2" value={"$ " + num.format(IO2.toFixed(2))} />
+                      <FormTag1 color="red" title="Iiio2" value={Currency + " " + num.format(IO2.toFixed(2))} />
                     </div>
                     <div className="col-4">
-                      <FormTag1 color="green" title="Jjjo2" value={"$ " + num.format(JO2.toFixed(2))} />
+                      <FormTag1 color="green" title="Jjjo2" value={Currency + " " + num.format(JO2.toFixed(2))} />
                     </div>
                     <div className="col-4">
-                      <FormTag1 color="red" title="Kkko1" value={"$ " + num.format(KO1.toFixed(2))} />
+                      <FormTag1 color="red" title="Kkko1" value={Currency + " " + num.format(KO1.toFixed(2))} />
                     </div>
                     <div className="col-4">
-                      <FormTag1 color="green" title="Kkko2" value={"$ " + num.format(KO2.toFixed(2))} />
+                      <FormTag1 color="green" title="Kkko2" value={Currency + " " + num.format(KO2.toFixed(2))} />
                     </div>
                   </div>
                 </div>
