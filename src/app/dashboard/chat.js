@@ -76,40 +76,58 @@ export default function App() {
     let EEEO2temp = (EEEO2 === 0) ? "" : EEEO2;
     const [EO2, setEO2] = useState(EEEO2temp);
     const handleMMMO1 = (evt) => {
-        if (evt.target.value <= 1000)
-            setMO1(parseFloat(evt.target.value));
+        let EMO1 = evt.target.value;
+        let MMO2 = Number(EMO1.replace(/,/g, ''));
+        // if (MMO2 <= 1000)
+        setMO1(parseFloat(MMO2));
     }
     const handleCCCO1 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setCO1(evt.target.value);
+        let ECO1 = evt.target.value;
+        let MCO1 = Number(ECO1.replace(/,/g, ''));
+        // if (MCO1 <= 100000)
+        setCO1(parseFloat(MCO1));
     }
     const handleCCCO2 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setCO2(parseFloat(evt.target.value));
+        let ECO2 = evt.target.value;
+        let MCO2 = Number(ECO2.replace(/,/g, ''));
+        // if (MCO2 <= 100000)
+        setCO2(parseFloat(MCO2));
     }
     const handleAAAO2 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setAO2(parseFloat(evt.target.value));
+        let EAO2 = evt.target.value;
+        let MAO2 = Number(EAO2.replace(/,/g, ''));
+        // if (MAO2 <= 100000)
+        setAO2(parseFloat(MAO2));
     }
     const handleAAAO1 = (evt) => {
-        // if (evt.target.value <= 10000000)
-            setAO1(parseFloat(evt.target.value));
+        let EAO1 = evt.target.value;
+        let MAO1 = Number(EAO1.replace(/,/g, ''));
+        // if (MAO1 <= 10000000)
+        setAO1(parseFloat(MAO1));
     }
     const handleEEEO3 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setEO3(parseFloat(evt.target.value));
+        let EEO3 = evt.target.value;
+        let MEO3 = Number(EEO3.replace(/,/g, ''));
+        // if (MEO3 <= 100000)
+        setEO3(parseFloat(MEO3));
     }
     const handleEEEO1 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setEO1(parseFloat(evt.target.value));
+        let EEO1 = evt.target.value;
+        let MEO1 = Number(EEO1.replace(/,/g, ''));
+        // if (MEO1 <= 100000)
+        setEO1(parseFloat(MEO1));
     }
     const handleGGGO1 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setGO1(parseFloat(evt.target.value));
+        let EGO1 = evt.target.value;
+        let MGO1 = Number(EGO1.replace(/,/g, ''));
+        // if (MGO1 <= 100000)
+        setGO1(parseFloat(MGO1));
     }
     const handleEEEO2 = (evt) => {
-        // if (evt.target.value <= 100000)
-            setEO2(parseFloat(evt.target.value));
+        let EEO2 = evt.target.value;
+        let MEO2 = Number(EEO2.replace(/,/g, ''));
+        // if (MEO2 <= 100000)
+        setEO2(parseFloat(MEO2));
     }
 
     useEffect(() => {
@@ -190,7 +208,8 @@ export default function App() {
                                     <h4 style={{ color: "#CBCBE2" }}>My Portfolio Management</h4>
                                     <div className="row">
                                         <div className="col-6">
-                                            <FormTag id="text-1" value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIIO5" />
+                                            {/* <FormTag value={AAAO1} color="input_yellow" title="aaao1" val="$" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIO1" /> */}
+                                            <FormTag id="text-1" value={AAAO1} color="input_yellow" title="aaao1" onChange={handleAAAO1} onKeyPress={handleKeyPress} name="CIIO5" />
                                         </div>
                                         <div className="col-6">
                                             <FormTag id="text-2" onkeydown="focusNext(event, 'text-1')" value={AAAO2} color="input_yellow" title="aaao2" val="%" onChange={handleAAAO2} onKeyPress={handleKeyPress} name="CIIO6" />
