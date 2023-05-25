@@ -210,7 +210,7 @@ const Tab2 = () => {
                                     <h4 className='ml-4' style={{ color: "#CBCBE2" }}>Percentile Trading</h4>
                                     <div className="row text-center">
                                         <div className="col-4 mb-4">
-                                            <FormTag1 color="red" title="Hhho2" value={Currency + " " + HO2.toFixed(0)} />
+                                            <FormTag1 color="red" title="Hhho2" value={Currency + " " + num.format(HO2.toFixed(0))} />
                                         </div>
                                         <div className="col-4 mb-4">
                                             <FormTag1 color="blue" title="Mmmo1" value={num.format(MO1)} />
