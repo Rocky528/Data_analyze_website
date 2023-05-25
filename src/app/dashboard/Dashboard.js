@@ -40,7 +40,7 @@ const Dashboard = () => {
   const handleAAAO1 = (evt) => {
     let EAO1 = evt.target.value;
     let MAO1 = Number(EAO1.replace(/,/g, ''));
-    if (MAO1 <= 10000000)
+    // if (MAO1 <= 10000000)
       setAO1(parseFloat(MAO1));
   }
 
@@ -48,7 +48,7 @@ const Dashboard = () => {
   const handleAAAO2 = (evt) => {
     let EAO2 = evt.target.value;
     let MAO2 = Number(EAO2.replace(/,/g, ''));
-    if (MAO2 <= 100000)
+    // if (MAO2 <= 100000)
       setAO2(parseFloat(MAO2));
   }
 
@@ -62,13 +62,13 @@ const Dashboard = () => {
   const handleMMMO1 = (evt) => {
     let EMO1 = evt.target.value;
     let MMO2 = Number(EMO1.replace(/,/g, ''));
-    if (MMO2 <= 1000)
+    // if (MMO2 <= 1000)
       setMO1(parseFloat(MMO2));
   }
   const handleEEEO1 = (evt) => {
     let EEO1 = evt.target.value;
     let MEO1 = Number(EEO1.replace(/,/g, ''));
-    if (MEO1 <= 100000)
+    // if (MEO1 <= 100000)
       setEO1(parseFloat(MEO1));
   }
 
@@ -82,13 +82,13 @@ const Dashboard = () => {
   const handleCCCO1 = (evt) => {
     let ECO1 = evt.target.value;
     let MCO1 = Number(ECO1.replace(/,/g, ''));
-    if (MCO1 <= 100000)
+    // if (MCO1 <= 100000)
       setCO1(parseFloat(MCO1));
   }
   const handleEEEO3 = (evt) => {
     let EEO3 = evt.target.value;
     let MEO3 = Number(EEO3.replace(/,/g, ''));
-    if (MEO3 <= 100000)
+    // if (MEO3 <= 100000)
       setEO3(parseFloat(MEO3));
   }
 
@@ -103,7 +103,7 @@ const Dashboard = () => {
   const handleEEEO2 = (evt) => {
     let EEO2 = evt.target.value;
     let MEO2 = Number(EEO2.replace(/,/g, ''));
-    if (MEO2 <= 100000)
+    // if (MEO2 <= 100000)
       setEO2(parseFloat(MEO2));
   }
 
@@ -120,7 +120,7 @@ const Dashboard = () => {
   const handleCCCO2 = (evt) => {
     let ECO2 = evt.target.value;
     let MCO2 = Number(ECO2.replace(/,/g, ''));
-    if (MCO2 <= 100000)
+    // if (MCO2 <= 100000)
       setCO2(parseFloat(MCO2));
   }
 
@@ -131,7 +131,7 @@ const Dashboard = () => {
   const handleGGGO1 = (evt) => {
     let EGO1 = evt.target.value;
     let MGO1 = Number(EGO1.replace(/,/g, ''));
-    if (MGO1 <= 100000)
+    // if (MGO1 <= 100000)
       setGO1(parseFloat(MGO1));
   }
 
@@ -145,7 +145,7 @@ const Dashboard = () => {
   const handleIIIO1 = (evt) => {
     let EIO1 = evt.target.value;
     let MIO1 = Number(EIO1.replace(/,/g, ''));
-    if (MIO1 <= 100000)
+    // if (MIO1 <= 100000)
       setIO1(parseFloat(MIO1));
   }
 
@@ -156,7 +156,7 @@ const Dashboard = () => {
   const handleJJJO1 = (evt) => {
     let EJO1 = evt.target.value;
     let MJO1 = Number(EJO1.replace(/,/g, ''));
-    if (MJO1 <= 100000)
+    // if (MJO1 <= 100000)
       setJO1(MJO1);
   }
 
@@ -186,7 +186,7 @@ const Dashboard = () => {
 
     !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
 
-    !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 == Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
+    !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
 
     !((CO1 / (EO1 - EO3) / MO1)) || ((CO1 / (EO1 - EO3) / MO1) === Infinity) || ((CO1 / (EO1 - EO3) / MO1) === -Infinity) ? setDO2(0) : setDO2((CO1 / (EO1 - EO3) / MO1));
 
@@ -274,7 +274,7 @@ const Dashboard = () => {
                   </div>
                   <div className="row">
                     <div className="col-6">
-                      <FormTag value={MMMO1} color="input_white" onChange={handleMMMO1} title="mmmo1" val="" onKeyPress={handleKeyPress} name="CIO5" />
+                      <FormTag value={MMMO1} color="input_white" onChange={handleMMMO1} title="mmmo1" val="m" onKeyPress={handleKeyPress} name="CIO5" />
                     </div>
                   </div>
                 </div>

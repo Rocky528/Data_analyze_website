@@ -7,7 +7,7 @@ import GaugeChart from "react-gauge-chart";
 import { useSelector, useDispatch } from 'react-redux'
 import TableInput from '../Component/TableInput';
 import './style.css';
-import { InputEEEO1, InputEEEO3, InputEEEO2 } from '../../reducers/InputSlice'
+// import { InputEEEO1, InputEEEO3, InputEEEO2 } from '../../reducers/InputSlice'
 
 const Tab2 = () => {
 
