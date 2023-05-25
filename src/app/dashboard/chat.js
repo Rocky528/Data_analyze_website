@@ -80,35 +80,35 @@ export default function App() {
             setMO1(parseFloat(evt.target.value));
     }
     const handleCCCO1 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setCO1(evt.target.value);
     }
     const handleCCCO2 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setCO2(parseFloat(evt.target.value));
     }
     const handleAAAO2 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setAO2(parseFloat(evt.target.value));
     }
     const handleAAAO1 = (evt) => {
-        if (evt.target.value <= 10000000)
+        // if (evt.target.value <= 10000000)
             setAO1(parseFloat(evt.target.value));
     }
     const handleEEEO3 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setEO3(parseFloat(evt.target.value));
     }
     const handleEEEO1 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setEO1(parseFloat(evt.target.value));
     }
     const handleGGGO1 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setGO1(parseFloat(evt.target.value));
     }
     const handleEEEO2 = (evt) => {
-        if (evt.target.value <= 100000)
+        // if (evt.target.value <= 100000)
             setEO2(parseFloat(evt.target.value));
     }
 
@@ -206,7 +206,7 @@ export default function App() {
                                     </div>
                                     <div className="row mb-3">
                                         <div className="col-6">
-                                            <FormTag value={MMMO1} color="input_white" title="mmmo1" onChange={handleMMMO1} onKeyPress={handleKeyPress} name="CIIO9" />
+                                            <FormTag value={MMMO1} val="m" color="input_white" title="mmmo1" onChange={handleMMMO1} onKeyPress={handleKeyPress} name="CIIO9" />
                                         </div>
                                     </div>
                                     <div className="row text-center">
