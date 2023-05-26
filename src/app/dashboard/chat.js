@@ -281,7 +281,7 @@ export default function App() {
                                     </div>
                                     <div className="row" style={{ marginBottom: '80px' }}>
                                         <div className="col-12">
-                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIIO2" />
+                                            <FormTag4 value={EEEO2} color="input_white" title="Beta EEEO2" onChange={handleEEEO2} val="m" onKeyPress={handleKeyPress} name="CIIO2" />
                                         </div>
                                     </div>
                                     <div className="row" style={{ marginBottom: '70px' }}>
@@ -291,7 +291,7 @@ export default function App() {
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} val="$" onKeyPress={handleKeyPress} name="CIIO4" />
+                                            <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} onKeyPress={handleKeyPress} name="CIIO4" />
                                         </div>
                                     </div>
                                 </div>

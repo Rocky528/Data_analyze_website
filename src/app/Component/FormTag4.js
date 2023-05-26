@@ -43,32 +43,32 @@ const FormTag4 = (props) => {
         <>
             {props.color === 'input_white' ?
                 <div style={{ width: "80%", marginLeft: '10%' }}>
-                    <div className="input-group" >
-                        <div className="input-group-prepend">
-                            {/* <span className="input-group-text " style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{props.val}</span> */}
-                            <select className="input-group-text " onChange={CurrencyChange} style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }} value={Currency}>{options} </select>
-                        </div>
-                        <NumericFormat thousandSeparator={true} onKeyPress={props.onKeyPress}
-                            ref={props.ref}
-                            value={props.value}
-                            style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
-                            className="form-control"
-                            aria-describedby="basic-addon1"
-                            onKeyDown={props.onKeyDown}
-                            onChange={props.onChange}
-                            name={props.name}
 
-                        />
-                        {/* <Form.Control
-                                onKeyPress={props.onKeyPress}
+                    <div className="input-group" >
+                        {props.val === "m" ? <>
+                            <NumericFormat thousandSeparator={true} onKeyPress={props.onKeyPress}
+                                ref={props.ref}
                                 value={props.value}
-                                type="number"
+                                style={{ color: "white", borderRadius: '6px 6px 6px 6px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
+                                className="form-control"
+                                aria-describedby="basic-addon1"
+                                onKeyDown={props.onKeyDown}
+                                onChange={props.onChange}
+                                name={props.name} />
+                        </> : <>
+                            <div className="input-group-prepend">
+                                <select className="input-group-text " onChange={CurrencyChange} style={{ fontSize: 14, borderRadius: '6px 0px 0px 6px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }} value={Currency}>{options} </select>
+                            </div>
+                            <NumericFormat thousandSeparator={true} onKeyPress={props.onKeyPress}
+                                ref={props.ref}
+                                value={props.value}
                                 style={{ color: "white", borderRadius: '0px 6px 6px 0px', backgroundColor: "#3B4758", borderColor: "#3B4758" }}
                                 className="form-control"
                                 aria-describedby="basic-addon1"
+                                onKeyDown={props.onKeyDown}
                                 onChange={props.onChange}
-                                name={props.name}
-                            /> */}
+                                name={props.name} />
+                        </>}
 
                     </div>
                     <label className='px-1' style={renderSwitch(props.color)}>{props.title}</label>
