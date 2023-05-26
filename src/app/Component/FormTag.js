@@ -61,7 +61,6 @@ const FormTag = (props) => {
                                 onKeyDown={props.onKeyDown}
                                 onChange={props.onChange}
                                 name={props.name}
-
                             />
                             <div className="input-group-prepend">
                                 <span className="input-group-text " style={{ fontSize: 14, borderRadius: '0px 6px 6px 0px', color: '#BAC4D1', backgroundColor: "#3B4758", borderColor: "#3B4758" }}>{props.val}</span>
@@ -97,9 +96,7 @@ const FormTag = (props) => {
                                 />
                             </>}
 
-                        </div>
-                    }
-
+                        </div> }
                 </div> : <div className="">
                     <span className="px-2" style={renderSwitch(props.color)}>{props.title}</span>
                     <div className="mt-2" style={{ fontSize: 13, color: "#CBCBE2" }}>{props.value}</div>
