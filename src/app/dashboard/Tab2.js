@@ -60,7 +60,7 @@ const Tab2 = () => {
     useEffect(() => {
         !(AAAO1 * 0.01 * AAAO2) || (AAAO1 * 0.01 * AAAO2 === Infinity) || (AAAO1 * 0.01 * AAAO2 === -Infinity) ? setBO1(0) : setBO1(AAAO1 * 0.01 * AAAO2);
 
-        !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
+        !(AAAO1 / EO1 / MO1) || (AAAO1 / EO1 / MO1 === Infinity) || (AAAO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(AAAO1 / EO1 / MO1);
 
         !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 == Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
 
@@ -381,7 +381,6 @@ const Tab2 = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div >

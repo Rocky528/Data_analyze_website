@@ -23,13 +23,13 @@ export class FormTag2 extends Component {
         return (
             <>
                 <div className="avatar flex-shrink-0 ">
-                    <img
+                    {/* <img
                         src={require(`../../assets/images/${this.props.img}.png`)}
-                        alt="User" className="rounded" />
+                        alt="User" className="rounded" /> */}
                 </div>
-                <div className="d-flex w-100 ml-2 flex-wrap align-items-center justify-content-between " >
+                <div className="d-flex w-100  flex-wrap align-items-center justify-content-between " >
                     <div className="">
-                        <h6 className="mb-0">{this.props.title}</h6>
+                        <h6 className="mb-0 px-2 py-2">{this.props.title}</h6>
                     </div>
                     <div className="user-progress d-flex align-items-center">
                         <h6 className="mb-0" style={this.renderSwitch(this.props.color)}>{this.props.value}</h6>
