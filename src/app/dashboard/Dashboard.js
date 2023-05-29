@@ -184,7 +184,7 @@ const Dashboard = () => {
     dispatch(InputJJJO1(JO1));
     !(AO1 * 0.01 * AO2) || (AO1 * 0.01 * AO2 === Infinity) || (AO1 * 0.01 * AO2 === -Infinity) ? setBO1(0) : setBO1(AO1 * 0.01 * AO2);
 
-    !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
+    !(AO1 / EO1 / MO1) || (AO1 / EO1 / MO1 === Infinity) || (AO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(AO1 / EO1 / MO1);
 
     !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
 
@@ -244,7 +244,7 @@ const Dashboard = () => {
                       <FormTag color="green" title="Risk Per Trade" value={Currency + " " + num.format(BO1.toFixed(2))} />
                     </div>
                     <div className="col-sm-6">
-                      <FormTag color="blue" title="Dddo2" value={num.format(DO2.toFixed(1))} />
+                      <FormTag color="green" title="Equivalent Qty" value={num.format(BO2.toFixed(2))} />
                     </div>
                   </div>
                 </div>
@@ -318,7 +318,7 @@ const Dashboard = () => {
                       <FormTag color="red" title="Fffo1" value={Currency + " " + num.format(FO1.toFixed(2))} />
                     </div>
                     <div className="col-6 mb-4">
-                      <FormTag color="green" title="Equivalent Qty" value={num.format(BO2.toFixed(2))} />
+                      <FormTag color="blue" title="Dddo2" value={num.format(DO2.toFixed(1))} />
                     </div>
                     <div className="col-6 ">
                       <FormTag color="red" title="Fffo2" value={Currency + " " + num.format(FO2.toFixed(2))} />
@@ -353,7 +353,7 @@ const Dashboard = () => {
                       <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" onChange={handleEEEO1} title="eeeo1" onKeyPress={handleKeyPress} name="CIO6" />
                     </div>
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO2} color="input_blue" title="eeeo2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO7" />
+                      <FormTag max={100000} value={EEEO2} color="input_blue" title="eeeo2" onChange={handleEEEO2} val="m" onKeyPress={handleKeyPress} name="CIO7" />
                     </div>
                     <div className="col-6">
                       <FormTag max={100000} value={EEEO3} color="input_red" val="$" onChange={handleEEEO3} title="eeeo3" onKeyPress={handleKeyPress} name="CIO8" />
@@ -418,7 +418,7 @@ const Dashboard = () => {
                       <FormTag max={100000} value={EEEO1} color="input_yellow" val="$" title="eeeo1" onChange={handleEEEO1} onKeyPress={handleKeyPress} name="CIO10" />
                     </div>
                     <div className="col-6">
-                      <FormTag max={100000} value={EEEO2} color="input_blue" title="Eeeo2" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO11" />
+                      <FormTag max={100000} value={EEEO2} color="input_blue" title="Eeeo2" val="m" onChange={handleEEEO2} onKeyPress={handleKeyPress} name="CIO11" />
                     </div>
                     <div className="col-6">
                       <FormTag max={100000} value={IIIO1} color="input_red" val="%" title="iiio1" onChange={handleIIIO1} onKeyPress={handleKeyPress} name="CIO12" />

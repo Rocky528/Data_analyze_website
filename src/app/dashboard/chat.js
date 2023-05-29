@@ -142,7 +142,7 @@ export default function App() {
         dispatch(InputGGGO1(GO1));
         !(AO1 * 0.01 * AO2) || (AO1 * 0.01 * AO2 === Infinity) || (AO1 * 0.01 * AO2 === -Infinity) ? setBO1(0) : setBO1(AO1 * 0.01 * AO2);
 
-        !(BO1 / EO1 / MO1) || (BO1 / EO1 / MO1 === Infinity) || (BO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(BO1 / EO1 / MO1);
+        !(AO1 / EO1 / MO1) || (AO1 / EO1 / MO1 === Infinity) || (AO1 / EO1 / MO1 === -Infinity) ? setBO2(0) : setBO2(AO1 / EO1 / MO1);
 
         !((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 == Infinity) || ((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1 === -Infinity) ? setDO1(0) : setDO1((CO1 / (EO1 - EO3) / MO1) * EO1 * MO1);
 
@@ -228,16 +228,6 @@ export default function App() {
                                             <FormTag value={MMMO1} val="m" color="input_white" title="mmmo1" onChange={handleMMMO1} onKeyPress={handleKeyPress} name="CIIO9" />
                                         </div>
                                     </div>
-                                    <div className="row text-center">
-                                        <div className="col-6">
-                                            <ButtonTag color="input_green" title="Price" onClick={SummaryDelete} value="Clear data" />
-                                        </div>
-                                        <div className="col-6">
-                                            <Link to="detailed_report1">
-                                                <ButtonTag color="input_green" title="Price" value="Show Plan" />
-                                            </Link>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -292,6 +282,16 @@ export default function App() {
                                     <div className="row">
                                         <div className="col-12">
                                             <FormTag4 value={EEEO3} color="input_white" title="Theta EEEO3" onChange={handleEEEO3} onKeyPress={handleKeyPress} name="CIIO4" />
+                                        </div>
+                                    </div>
+                                    <div className="row text-center">
+                                        <div className="col-6">
+                                            <ButtonTag color="input_green" title="Price" onClick={SummaryDelete} value="Clear data" />
+                                        </div>
+                                        <div className="col-6">
+                                            <Link to="detailed_report1">
+                                                <ButtonTag color="input_green" title="Price" value="Show Plan" />
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
