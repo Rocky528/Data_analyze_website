@@ -7,6 +7,10 @@ const INtro = lazy(() => import('./dashboard/Introduction'));
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const Tab1 = lazy(() => import('./dashboard/chat'));
 const Tab2 = lazy(() => import('./dashboard/Tab2'));
+const Login = lazy(() => import('./user-pages/Login'));
+const Register = lazy(() => import('./user-pages/Register'));
+const ForgotPass = lazy(() => import('./user-pages/ForgotPass'));
+
 
 
 
@@ -21,6 +25,10 @@ class AppRoutes extends Component {
           <Route exact path="/tab2" component={Tab2} />
           <Route exact path="/detailed_report1" component={Tab2} />
           <Route exact path="/detailed_report2" component={Tab2} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/forget_pass" component={ForgotPass} />
+
           <Redirect to="/dashboard" />
         </Switch>
       </Suspense>
