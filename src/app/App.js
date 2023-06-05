@@ -40,6 +40,7 @@ import { withTranslation } from "react-i18next";
 class App extends Component {
   state = {}
   componentDidMount() {
+    // localStorage.setItem('Auth', 1)
     this.onRouteChanged();
   }
   render() {

@@ -3,10 +3,13 @@
   "version": "1.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@lourenci/react-kanban": "^0.13.0",
     "@mdi/font": "^4.2.95",
+    "@mui/material": "^5.13.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@tinymce/tinymce-react": "^3.3.2",
+    "axios": "^1.4.0",
     "bootstrap": "^4.3.1",
     "bosket": "^0.2.3",
     "brace": "^0.11.1",
@@ -85,5 +88,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy":"http://localhost:3001"
 }
