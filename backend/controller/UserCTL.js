@@ -12,6 +12,7 @@ const Register = async (req, res) => {
                 const user = new User({
                     firstName: req.body.fName,
                     lastname: req.body.lName,
+                    fullname: req.body.fullname,
                     username: req.body.uName,
                     email: req.body.eMail,
                     address: req.body.aDdress,
