@@ -1,3 +1,4 @@
+
 const User = require("../model/User");
 const bcrypt = require('bcryptjs');
 
@@ -15,6 +16,7 @@ const Register = async (req, res) => {
                     fullname: req.body.fullname,
                     username: req.body.uName,
                     email: req.body.eMail,
+                    phoneNumber: req.body.phoneNumber,
                     address: req.body.aDdress,
                     state: req.body.sTate,
                     country: req.body.cOuntry,
